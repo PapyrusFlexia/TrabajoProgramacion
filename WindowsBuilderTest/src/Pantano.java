@@ -33,7 +33,7 @@ public class Pantano extends JFrame {
 		setBounds(100, 100, 596, 795);
 		getContentPane().setLayout(null);
 
-		final JFrame holaMundo = new JFrame();
+		final JFrame dado = new JFrame();
 		JLabel lblBienvenido = new JLabel("BIENVENIDO");
 		lblBienvenido.setBounds(180, 116, 79, 14);
 		getContentPane().add(lblBienvenido);
@@ -58,7 +58,7 @@ public class Pantano extends JFrame {
 
 				// Dado Tirada = new Dado();//
 				// Tirada.tirarDado(6);//
-				JOptionPane.showMessageDialog(holaMundo.getComponent(0), "Has sacado un " + Dado.tirarDado(20)); // EL
+				JOptionPane.showMessageDialog(dado.getComponent(0), "Has sacado un " + Dado.tirarDado(20)); // EL
 																													// 20
 																													// ES
 																													// LO
