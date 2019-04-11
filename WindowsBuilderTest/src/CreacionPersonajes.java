@@ -13,20 +13,20 @@ public class CreacionPersonajes extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void NewScreen() {
+	public static void main(String[] args) {
+		// System.out.println(Dado.tirarDado(6)); //
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Bosque window = new Bosque();
-					//window.frame.setVisible(true);
+					Interfaz frame = new Interfaz();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+
 			}
-			
 		});
 	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -39,14 +39,41 @@ public class CreacionPersonajes extends JFrame {
 		
 		
 		
-		
+		final JFrame dado = new JFrame();
 		JLabel lblBienvenido = new JLabel("BIENVENIDO A LA CREACION DE PERSONAJES");
 		lblBienvenido.setBounds(180, 100, 238, 14);
 		getContentPane().add(lblBienvenido);
 		
 		JButton btndParaTu = new JButton("1d8 para tu vida");
+		btndParaTu.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+
+			// Dado Tirada = new Dado();//
+			// Tirada.tirarDado(6);//
+			JOptionPane.showMessageDialog(dado.getComponent(0), "Has sacado un " + Dado.tirarDado(20));
+		}
+	});
 		btndParaTu.setBounds(64, 188, 144, 23);
 		getContentPane().add(btndParaTu);
+		
+		JLabel label = new JLabel("");
+		label.setBounds(274, 192, 46, 14);
+		getContentPane().add(label);
+		
+		JButton btnFinalizar = new JButton("FINALIZAR");
+		btnFinalizar.setBounds(244, 491, 89, 23);
+		getContentPane().add(btnFinalizar);
+		btndParaTu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+		Interfaz nwInterfaz = new Interfaz();
+		nwInterfaz.NewScreen();
+
+		// contentPane.setVisible(false);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		close();
+	
+		}
+	});
 		
 		
 				

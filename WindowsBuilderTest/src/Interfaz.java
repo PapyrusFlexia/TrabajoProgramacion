@@ -11,18 +11,18 @@ public class Interfaz extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		// System.out.println(Dado.tirarDado(6)); //
+	
+	public static void NewScreen() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Interfaz frame = new Interfaz();
-					frame.setVisible(true);
+					Bosque window = new Bosque();
+					//window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
 			}
+			
 		});
 	}
 
