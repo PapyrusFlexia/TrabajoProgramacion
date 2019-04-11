@@ -22,7 +22,7 @@ public class DeleteObjetos extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Bosque window = new Bosque();
+					DeleteObjetos windowD = new DeleteObjetos();
 					// window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -63,8 +63,25 @@ public class DeleteObjetos extends JFrame {
 		});
 		btnAadir.setBounds(356, 253, 89, 23);
 		getContentPane().add(btnAadir);
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.setBounds(481, 11, 89, 23);
+		getContentPane().add(btnVolver);
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new Tienda();
+				Tienda tiendaVisible = new Tienda();  //QUITAR CUANDO SE TERMINE EL PROGRAMA
+				tiendaVisible.setVisible(true);
+				
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+		
+			}
+
+		});
 
 	}
+	
 
 	/**
 	 * Initialize the contents of the frame.

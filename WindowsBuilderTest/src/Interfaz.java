@@ -6,23 +6,26 @@ import java.awt.event.*;
 
 public class Interfaz extends JFrame {
 
+
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
 	
-	public static void NewScreen() {
+	
+	public static void main(String[] args) {               //////////////////CAMBIAR POR NEWSCREEN DE INTERFAZ
+		// System.out.println(Dado.tirarDado(6)); //
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Bosque window = new Bosque();
-					//window.frame.setVisible(true);
+					Interfaz frame = new Interfaz();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+
 			}
-			
 		});
 	}
 
@@ -75,10 +78,6 @@ public class Interfaz extends JFrame {
 
 		});
 
-		JToolBar toolBar = new JToolBar();
-		toolBar.setBounds(0, 0, 87, 16);
-		contentPane.add(toolBar);
-
 		buttonBosque.setBounds(10, 540, 560, 155);
 		contentPane.add(buttonBosque);
 
@@ -93,8 +92,29 @@ public class Interfaz extends JFrame {
 		JLabel lblEligeElBioma = new JLabel("Elige el BIOMA en el que te encuentras");
 		lblEligeElBioma.setBounds(205, 11, 206, 14);
 		contentPane.add(lblEligeElBioma);
+		
+		JButton btnCrearNuevoPj = new JButton("CREAR NUEVO PJ");
+		btnCrearNuevoPj.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CreacionPersonajes nwCreacionPersonajes = new CreacionPersonajes();
+				nwCreacionPersonajes.NewScreen();
+
+				// contentPane.setVisible(false);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+				new CreacionPersonajes();
+				CreacionPersonajes creacionpersonajesVisible = new CreacionPersonajes();
+				creacionpersonajesVisible.setVisible(true);
+
+			}
+
+		});
+		btnCrearNuevoPj.setBounds(10, 8, 136, 23);
+		contentPane.add(btnCrearNuevoPj);
 
 	}
+	
 
 	public void close() {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);

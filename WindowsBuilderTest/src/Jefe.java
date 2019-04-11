@@ -17,7 +17,7 @@ public class Jefe extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Bosque window = new Bosque();
+					Jefe windowJ = new Jefe();
 					//window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

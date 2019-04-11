@@ -17,7 +17,7 @@ public class Inventario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Bosque window = new Bosque();
+					Inventario windowI = new Inventario();
 					//window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -17,7 +17,7 @@ public class Bosque extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Bosque window = new Bosque();
+					Bosque windowB = new Bosque();
 					//window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

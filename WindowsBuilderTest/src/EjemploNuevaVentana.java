@@ -17,7 +17,7 @@ public class EjemploNuevaVentana extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Bosque window = new Bosque();
+					EjemploNuevaVentana windowEj = new EjemploNuevaVentana();
 					//window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
