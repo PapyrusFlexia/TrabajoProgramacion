@@ -42,6 +42,22 @@ public class Jefe extends JFrame {
 		btnNewButton_1.setBounds(225, 60, 89, 23);
 		getContentPane().add(btnNewButton_1);
 		
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.setBounds(481, 11, 89, 23);
+		getContentPane().add(btnVolver);
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new Pantano();
+				Pantano pantanoVisible = new Pantano();  //QUITAR CUANDO SE TERMINE EL PROGRAMA
+				pantanoVisible.setVisible(true);
+				
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+			}
+
+		});
+		
 		
 				
 		

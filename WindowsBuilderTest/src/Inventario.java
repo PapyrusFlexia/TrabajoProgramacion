@@ -118,6 +118,22 @@ public class Inventario extends JFrame {
 		JLabel lblOro = new JLabel("ORO:");
 		lblOro.setBounds(386, 165, 46, 14);
 		getContentPane().add(lblOro);
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.setBounds(481, 11, 89, 23);
+		getContentPane().add(btnVolver);
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new Tienda();
+				Tienda tiendaVisible = new Tienda();  
+				tiendaVisible.setVisible(true);
+				
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+			}
+
+		});
+		
 		
 		
 				

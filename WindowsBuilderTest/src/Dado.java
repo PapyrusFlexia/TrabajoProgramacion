@@ -1,49 +1,42 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Dado {
-  /*  public static int tirarDado(int rango) {
-        double resultado;
-        resultado=Math.random()*rango; // Se le suma 1 si el valor del 0 es 10. 
-        return (int)resultado;
-    } */
-	private int rango;
-	private double resultado;
-	
-	public Dado(int rango, double resultado) {
+	/*
+	 * public static int tirarDado(int rango) { double resultado;
+	 * resultado=Math.random()*rango; // Se le suma 1 si el valor del 0 es 10.
+	 * return (int)resultado; }
+	 */
+	// private int rango;
+	private int resultado;
+
+	public Dado(int resultado) {
 		super();
-		this.rango = rango;
 		this.resultado = resultado;
 	}
-	public Dado() {
-	
-	}
 
-	public int getRango() {
-		return rango;
-	}
-
-	public void setRango(int rango) {
-		this.rango = rango;
-	}
-
-	public double getResultado() {
+	public int getResultado() {
 		return resultado;
 	}
 
-	public void setResultado(double resultado) {
+	public void setResultado(int resultado) {
 		this.resultado = resultado;
 	}
-	
-	public static int tirarDado(int rango) {
-		double resultado;
-        resultado=Math.random()*rango; // Se le suma 1 si el valor del 0 es 10. 
-        return (int)resultado;
-      
-    } 
-	
-    
-    
-    
-    
-    
+
+	@Override
+	public String toString() {
+		return "Dado [resultado=" + resultado + "]";
+	}
+
+	public static int tirarDado(int resultado) { // int rango
+		// double resultado;
+		// resultado=Math.random()*rango; // Se le suma 1 si el valor del 0 es 10.
+
+		// return (int)resultado;
+		Random aleatorio = new Random();
+		resultado = 1 + aleatorio.nextInt(20);
+		return resultado;
+
+	}
+
 }

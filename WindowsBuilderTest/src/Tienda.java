@@ -101,6 +101,23 @@ public class Tienda extends JFrame {
 		lblTeHaTocado.setBounds(213, 587, 135, 14);
 		getContentPane().add(lblTeHaTocado);
 
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.setBounds(481, 80, 89, 23);
+		getContentPane().add(btnVolver);
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new Pantano();
+				Pantano pantanoVisible = new Pantano();  //QUITAR CUANDO SE TERMINE EL PROGRAMA
+				pantanoVisible.setVisible(true);
+				
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+			}
+
+		});
+		
+
 		JButton btnAadirObjetos = new JButton("A\u00D1ADIR OBJETOS");
 
 		btnAadirObjetos.addActionListener(new ActionListener() {
@@ -144,7 +161,7 @@ public class Tienda extends JFrame {
 		btnQuitarObjetos.setBounds(357, 681, 119, 23);
 		getContentPane().add(btnQuitarObjetos);
 		
-		JButton btnAadirArmadura = new JButton("A\u00D1ADIR ARMADURA");
+		/*JButton btnAadirArmadura = new JButton("A\u00D1ADIR ARMADURA");
 		btnAadirArmadura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				AddArmaduras nwAddArmaduras = new AddArmaduras();
@@ -165,7 +182,7 @@ public class Tienda extends JFrame {
 		
 		JButton btnQuitarArmadura = new JButton("QUITAR ARMADURA");
 		btnQuitarArmadura.setBounds(355, 715, 144, 23);
-		getContentPane().add(btnQuitarArmadura);
+		getContentPane().add(btnQuitarArmadura);*/
 
 	}
 

@@ -29,7 +29,7 @@ public class Pantano extends JFrame {
 	 * Create the frame.
 	 */
 	public Pantano() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE); // EXIT
 		setBounds(100, 100, 596, 795);
 		getContentPane().setLayout(null);
 
@@ -68,7 +68,7 @@ public class Pantano extends JFrame {
 
 				// label.setVisible(true); //
 
-				if (Dado.tirarDado(20) >= 10) {
+				if (Dado.tirarDado(20) > 10) {
 					Tienda nwTienda = new Tienda();
 					nwTienda.NewScreen();
 
@@ -90,7 +90,7 @@ public class Pantano extends JFrame {
 					new Jefe();
 					Jefe jefeVisible = new Jefe();
 					jefeVisible.setVisible(true);
-					
+
 				}
 
 			}

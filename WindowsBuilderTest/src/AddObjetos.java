@@ -14,6 +14,8 @@ public class AddObjetos extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
 
 	/**
 	 * Launch the application.
@@ -63,34 +65,56 @@ public class AddObjetos extends JFrame {
 		textField_3.setBounds(173, 337, 86, 20);
 		getContentPane().add(textField_3);
 		textField_3.setColumns(10);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(173, 381, 86, 20);
+		getContentPane().add(textField_4);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(173, 422, 86, 20);
+		getContentPane().add(textField_5);
 
-		JLabel lblNombre = new JLabel("nombre");
+		JLabel lblNombre = new JLabel("id");
 		lblNombre.setBounds(56, 179, 46, 14);
 		getContentPane().add(lblNombre);
 
-		JLabel lblDmg = new JLabel("dmg");
+		JLabel lblDmg = new JLabel("nombre");
 		lblDmg.setBounds(56, 232, 46, 14);
 		getContentPane().add(lblDmg);
 
-		JLabel lblValor = new JLabel("valor");
+		JLabel lblValor = new JLabel("poder");
 		lblValor.setBounds(56, 284, 46, 14);
 		getContentPane().add(lblValor);
 
-		JLabel lblTipo = new JLabel("tipo");
+		JLabel lblTipo = new JLabel("valor");
 		lblTipo.setBounds(56, 343, 46, 14);
 		getContentPane().add(lblTipo);
+		
+		JLabel labelCategoria = new JLabel("categoria");
+		labelCategoria.setBounds(56, 384, 46, 14);
+		getContentPane().add(labelCategoria);
+		
+		JLabel labelTipo = new JLabel("tipo");
+		labelTipo.setBounds(56, 425, 46, 14);
+		getContentPane().add(labelTipo);
 
 		JButton btnAadir = new JButton("A\u00D1ADIR");
 		btnAadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				AddBaseDeDatos(textField.getText(), textField_1.getText(), textField_2.getText(),
-						textField_3.getText());
+						textField_3.getText(), textField_4.getText(), textField_5.getText());
 
 			}
 
 		});
 		btnAadir.setBounds(356, 253, 89, 23);
 		getContentPane().add(btnAadir);
+		
+		
+		
+	
 
 	}
 
@@ -108,10 +132,10 @@ public class AddObjetos extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public static void AddBaseDeDatos(String nombre, String dmg, String valor, String tipo) {
+	public static void AddBaseDeDatos(String id, String nombre, String poder, String valor, String categoria, String tipo) {
 		Conexion.conectar();
 
-		Conexion.EjecutarUpdate(
-				"INSERT INTO armas VALUES (\"" + nombre + "\", " + dmg + ", " + valor + ", \"" + tipo + "\");");
+		Conexion.EjecutarUpdate("INSERT INTO items VALUES (\""+id+"\",\""+nombre+"\",\""+poder+"\",\""+valor+"\",\""+categoria+"\",\""+tipo+"\")");
+				
 	}
 }
