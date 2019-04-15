@@ -155,8 +155,27 @@ public class Tienda extends JFrame {
 			}
 
 		});
-		btnQuitarObjetos.setBounds(357, 681, 119, 23);
+		btnQuitarObjetos.setBounds(351, 681, 119, 23);
 		getContentPane().add(btnQuitarObjetos);
+		
+		JButton btnContinuar = new JButton("CONTINUAR");
+		btnContinuar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Continuar nwContinuar = new Continuar();
+				nwContinuar.NewScreen();
+
+				// contentPane.setVisible(false);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+				new Continuar();
+				Continuar continuar = new Continuar();
+				continuar.setVisible(true);
+			}
+
+		});
+		btnContinuar.setBounds(234, 681, 89, 23);
+		getContentPane().add(btnContinuar);
 
 		JLabel lblTiraElDado = new JLabel("TIRA EL DADO");
 		lblTiraElDado.setBounds(180, 11, 79, 14);
@@ -192,6 +211,8 @@ public class Tienda extends JFrame {
 
 		btnNewButton_3.setBounds(234, 540, 89, 23);
 		getContentPane().add(btnNewButton_3);
+		
+	
 
 	}
 
@@ -208,5 +229,4 @@ public class Tienda extends JFrame {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
-
 }
