@@ -153,7 +153,7 @@ public class AddObjetos extends JFrame {
 				+ valor + "\",\"" + categoria + "\",\"" + tipo + "\")");
 
 	}
-}
+}  
 
 /**
  * Create the frame.
