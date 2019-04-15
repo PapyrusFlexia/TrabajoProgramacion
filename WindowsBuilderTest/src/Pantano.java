@@ -53,7 +53,6 @@ public class Pantano extends JFrame {
 		// topPanel.add(label); //
 		// frame.setVisible(true); //
 
-<<<<<<< HEAD
 		int tirada = Dado.tirarDado(20);
 
 		btnNewButton.addActionListener(new ActionListener() {
@@ -117,53 +116,6 @@ public class Pantano extends JFrame {
 			}
 
 		});
-=======
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				// Dado Tirada = new Dado();//
-				// Tirada.tirarDado(6);//
-				JOptionPane.showMessageDialog(dado.getComponent(0), "Has sacado un " + Dado.tirarDado(20)); // EL
-																													// 20
-																													// ES
-																													// LO
-																													// MAXIMO
-																													// DEL
-																													// DADO
-
-				// label.setVisible(true); //
-
-				if (Dado.tirarDado(20) > 10) {
-					Tienda nwTienda = new Tienda();
-					nwTienda.NewScreen();
-
-					// contentPane.setVisible(false);
-					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					close();
-
-					new Tienda();
-					Tienda tiendaVisible = new Tienda();
-					tiendaVisible.setVisible(true);
-				} else {
-					Jefe nwJefe = new Jefe();
-					nwJefe.NewScreen();
-
-					// contentPane.setVisible(false);
-					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					close();
-
-					new Jefe();
-					Jefe jefeVisible = new Jefe();
-					jefeVisible.setVisible(true);
-
-				}
-
-			}
-		});
-
-		btnNewButton.setBounds(170, 48, 89, 23);
-		getContentPane().add(btnNewButton);
->>>>>>> branch 'master' of https://github.com/PapyrusFlexia/TrabajoProgramacion.git
 
 	}
 
