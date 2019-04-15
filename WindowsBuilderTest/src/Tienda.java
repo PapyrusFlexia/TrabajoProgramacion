@@ -34,6 +34,7 @@ public class Tienda extends JFrame {
 	public Tienda() {
 		getContentPane().setLayout(null);
 		setBounds(100, 100, 596, 795);
+<<<<<<< HEAD
 		
 		final JFrame dado = new JFrame();
 
@@ -198,6 +199,134 @@ public class Tienda extends JFrame {
 
 		btnNewButton_3.setBounds(234, 540, 89, 23);
 		getContentPane().add(btnNewButton_3);
+=======
+
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(155, 293, 89, 23);
+		getContentPane().add(btnNewButton);
+
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.setBounds(155, 327, 89, 23);
+		getContentPane().add(btnNewButton_1);
+
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(36, 297, 46, 14);
+		getContentPane().add(lblNewLabel);
+
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setBounds(36, 331, 46, 14);
+		getContentPane().add(lblNewLabel_1);
+
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setBounds(36, 367, 46, 14);
+		getContentPane().add(lblNewLabel_2);
+
+		JButton btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.setBounds(155, 363, 89, 23);
+		getContentPane().add(btnNewButton_2);
+
+		JLabel lblTiraParaVer = new JLabel("TIRA PARA VER SI HAY LEGENDARIO");
+		lblTiraParaVer.setBounds(190, 492, 184, 14);
+		getContentPane().add(lblTiraParaVer);
+
+		JButton btnNewButton_3 = new JButton("New button");
+		btnNewButton_3.setBounds(234, 540, 89, 23);
+		getContentPane().add(btnNewButton_3);
+
+		JLabel lblTuOro = new JLabel("TU ORO: ");
+		lblTuOro.setBounds(430, 11, 69, 14);
+		getContentPane().add(lblTuOro);
+
+		JLabel lblBienvenidoALa = new JLabel("BIENVENIDO A LA TIENDA DE DO\u00D1A EUGENIA");
+		lblBienvenidoALa.setBounds(10, 11, 243, 14);
+		getContentPane().add(lblBienvenidoALa);
+
+		JButton btnNewButton_4 = new JButton("INVENTARIO");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Inventario nwInventario = new Inventario();
+				nwInventario.NewScreen();
+
+				// contentPane.setVisible(false);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+				new Inventario();
+				Inventario inventarioVisible = new Inventario();
+				inventarioVisible.setVisible(true);
+			}
+		});
+		btnNewButton_4.setBounds(481, 46, 89, 23);
+		getContentPane().add(btnNewButton_4);
+
+		JLabel lblInventario = new JLabel("INVENTARIO:");
+		lblInventario.setBounds(407, 50, 69, 14);
+		getContentPane().add(lblInventario);
+
+		JLabel lblTeHaTocado = new JLabel("TE HA TOCADO: sampletext");
+		lblTeHaTocado.setBounds(213, 587, 135, 14);
+		getContentPane().add(lblTeHaTocado);
+
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.setBounds(481, 80, 89, 23);
+		getContentPane().add(btnVolver);
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new Pantano();
+				Pantano pantanoVisible = new Pantano();  //QUITAR CUANDO SE TERMINE EL PROGRAMA
+				pantanoVisible.setVisible(true);
+				
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+			}
+
+		});
+		
+
+		JButton btnAadirObjetos = new JButton("A\u00D1ADIR OBJETOS");
+
+		btnAadirObjetos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AddObjetos nwAddObjetos = new AddObjetos();
+				nwAddObjetos.NewScreen();
+
+				// contentPane.setVisible(false);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+				new AddObjetos();
+				AddObjetos addobjetosVisible = new AddObjetos();
+				addobjetosVisible.setVisible(true);
+				
+				//getText recoge lo que hay en la casilla
+
+			}
+
+		});
+
+		btnAadirObjetos.setBounds(71, 681, 135, 23);
+		getContentPane().add(btnAadirObjetos);
+
+		JButton btnQuitarObjetos = new JButton("QUITAR OBJETOS");
+		btnQuitarObjetos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DeleteObjetos nwDeleteObjetos = new DeleteObjetos();
+				nwDeleteObjetos.NewScreen();
+
+				// contentPane.setVisible(false);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+				new DeleteObjetos();
+				DeleteObjetos deleteobjetosVisible = new DeleteObjetos();
+				deleteobjetosVisible.setVisible(true);
+			}
+
+		});
+		btnQuitarObjetos.setBounds(357, 681, 119, 23);
+		getContentPane().add(btnQuitarObjetos);
+>>>>>>> branch 'master' of https://github.com/PapyrusFlexia/TrabajoProgramacion.git
 		
 		/*JButton btnAadirArmadura = new JButton("A\u00D1ADIR ARMADURA");
 		btnAadirArmadura.addActionListener(new ActionListener() {

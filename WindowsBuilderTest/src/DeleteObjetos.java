@@ -69,6 +69,7 @@ public class DeleteObjetos extends JFrame {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Tienda();
+<<<<<<< HEAD
 				Tienda tiendaVisible = new Tienda(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
 				tiendaVisible.setVisible(true);
 
@@ -100,5 +101,41 @@ public class DeleteObjetos extends JFrame {
 
 		Conexion.EjecutarUpdate("DELETE FROM items WHERE nombre = \"" + nombre + "\"");
 
+=======
+				Tienda tiendaVisible = new Tienda();  //QUITAR CUANDO SE TERMINE EL PROGRAMA
+				tiendaVisible.setVisible(true);
+				
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+		
+			}
+
+		});
+
+	}
+	
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public void close() {
+		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+	}
+
+	public static void AddBaseDeDatos(String nombre) {
+		Conexion.conectar();
+
+		Conexion.EjecutarUpdate("DELETE FROM items WHERE nombre = \"" + nombre + "\"");
+		
+		
+>>>>>>> branch 'master' of https://github.com/PapyrusFlexia/TrabajoProgramacion.git
 	}
 }
