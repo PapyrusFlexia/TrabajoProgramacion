@@ -11,7 +11,11 @@ public class CreacionPersonajes extends JFrame {
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField vidatotalfield;
+	int VidaTotal = Dado.tirarDado(8);
+	String atkInicial = "1d4";
+	
+	
 
 	/**
 	 * Launch the application.
@@ -32,6 +36,7 @@ public class CreacionPersonajes extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @return 
 	 */
 	public CreacionPersonajes() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,52 +72,69 @@ public class CreacionPersonajes extends JFrame {
 		btnFinalizar.setBounds(244, 491, 89, 23);
 		getContentPane().add(btnFinalizar);
 
-		JLabel label_1 = new JLabel("Tienes  de vida actualmente");
-		label_1.setBounds(193, 232, 46, 14);
-		getContentPane().add(label_1);
+		JLabel vidaActual = new JLabel();
+		vidaActual.setBounds(193, 232, 86, 14);
+		getContentPane().add(vidaActual);
 
-		JLabel label_2 = new JLabel("Tienes  de ataque");
+		JLabel label_2 = new JLabel("1d4");
 		label_2.setBounds(193, 284, 46, 14);
 		getContentPane().add(label_2);
+		
+		JLabel vidatotalfield = new JLabel();
+		vidatotalfield.setBounds(193, 343, 183, 20);
+		getContentPane().add(vidatotalfield);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(193, 343, 183, 20);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		//vidatotalfield = new JTextField();
+		//vidatotalfield.setBounds(193, 343, 183, 20);
+		//getContentPane().add(vidatotalfield);
+		//vidatotalfield.setColumns(10);
 
 		final JFrame dado = new JFrame();
 		JLabel lblBienvenido = new JLabel("BIENVENIDO A LA CREACION DE PERSONAJES");
 		lblBienvenido.setBounds(180, 100, 238, 14);
 		getContentPane().add(lblBienvenido);
 
-		JButton btnAadir = new JButton("A\u00D1ADIR");
-		btnAadir.addActionListener(new ActionListener() {
+		JButton btnCrear = new JButton("CREAR");
+		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddBaseDeDatos(textField.getText());
+				AddBaseDeDatos(textField.getText(), VidaTotal, atkInicial, VidaTotal); //RELLENAR
 
 			}
 
 		});
+		btnCrear.setBounds(244, 399, 89, 23);
+		getContentPane().add(btnCrear);
 
 		JButton btndParaTu = new JButton("1d8 para tu vida");
+		//int VidaActual = VidaTotal;
 		btndParaTu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 				// Dado Tirada = new Dado();//
 				// Tirada.tirarDado(6);//
-				int VidaTotal = Dado.tirarDado(8);
-				JOptionPane.showMessageDialog(dado.getComponent(0), "Has sacado un " + VidaTotal);
-				textField_1.setText("Tienes " + VidaTotal + " de vida");
+				//int VidaTotal = Dado.tirarDado(8);
+			
+				JOptionPane.showMessageDialog(dado.getComponent(0), "Has sacado un " + VidaTotal); ///////// VIDATOTAL
+				vidatotalfield.setText("Tienes " + VidaTotal + " de vida total");
+				vidaActual.setText("Tienes " + VidaTotal + " de vida actual");
+				
+				
 
 			}
 		});
+		
 
 		btndParaTu.setBounds(21, 140, 144, 23);
 		getContentPane().add(btndParaTu);
+		
+		
+		
 
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.setBounds(481, 80, 89, 23);
 		getContentPane().add(btnVolver);
+		
+		
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Interfaz();
@@ -125,8 +147,19 @@ public class CreacionPersonajes extends JFrame {
 			}
 
 		});
+		
+
+		
 
 	}
+	//public int getVidaActual () {
+		//return VidaActual;
+	//}
+	//public void setVidaActual (int VidaActual){
+	//    this.VidaActual = VidaActual;
+	//}
+	
+	
 
 	private void initialize() {
 		frame = new JFrame();
@@ -143,10 +176,11 @@ public class CreacionPersonajes extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public static void AddBaseDeDatos(String nombre) {
+	public static void AddBaseDeDatos(String nombre, int vida, String ataque, int vida_total) {
 		Conexion.conectar();
 
-		Conexion.EjecutarUpdate("INSERT INTO jugadores VALUES (\"" + nombre + "\")");
+		Conexion.EjecutarUpdate("INSERT INTO jugadores VALUES (\"" + nombre + "\",\"" + vida + "\",\"" + ataque + "\",\""
+				 + vida_total + "\")");
 
 	}
 }
