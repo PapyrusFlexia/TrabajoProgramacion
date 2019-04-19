@@ -14,8 +14,6 @@ public class CreacionPersonajes extends JFrame {
 	private JTextField vidatotalfield;
 	int VidaTotal = Dado.tirarDado(8);
 	String atkInicial = "1d4";
-	
-	
 
 	/**
 	 * Launch the application.
@@ -36,7 +34,8 @@ public class CreacionPersonajes extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * @return 
+	 * 
+	 * @return
 	 */
 	public CreacionPersonajes() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,15 +78,15 @@ public class CreacionPersonajes extends JFrame {
 		JLabel label_2 = new JLabel("1d4");
 		label_2.setBounds(193, 284, 46, 14);
 		getContentPane().add(label_2);
-		
+
 		JLabel vidatotalfield = new JLabel();
 		vidatotalfield.setBounds(193, 343, 183, 20);
 		getContentPane().add(vidatotalfield);
 
-		//vidatotalfield = new JTextField();
-		//vidatotalfield.setBounds(193, 343, 183, 20);
-		//getContentPane().add(vidatotalfield);
-		//vidatotalfield.setColumns(10);
+		// vidatotalfield = new JTextField();
+		// vidatotalfield.setBounds(193, 343, 183, 20);
+		// getContentPane().add(vidatotalfield);
+		// vidatotalfield.setColumns(10);
 
 		final JFrame dado = new JFrame();
 		JLabel lblBienvenido = new JLabel("BIENVENIDO A LA CREACION DE PERSONAJES");
@@ -97,7 +96,7 @@ public class CreacionPersonajes extends JFrame {
 		JButton btnCrear = new JButton("CREAR");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddBaseDeDatos(textField.getText(), VidaTotal, atkInicial, VidaTotal); //RELLENAR
+				AddBaseDeDatos(textField.getText(), VidaTotal, atkInicial, VidaTotal); // RELLENAR
 
 			}
 
@@ -106,35 +105,28 @@ public class CreacionPersonajes extends JFrame {
 		getContentPane().add(btnCrear);
 
 		JButton btndParaTu = new JButton("1d8 para tu vida");
-		//int VidaActual = VidaTotal;
+		// int VidaActual = VidaTotal;
 		btndParaTu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 				// Dado Tirada = new Dado();//
 				// Tirada.tirarDado(6);//
-				//int VidaTotal = Dado.tirarDado(8);
-			
+				// int VidaTotal = Dado.tirarDado(8);
+
 				JOptionPane.showMessageDialog(dado.getComponent(0), "Has sacado un " + VidaTotal); ///////// VIDATOTAL
 				vidatotalfield.setText("Tienes " + VidaTotal + " de vida total");
 				vidaActual.setText("Tienes " + VidaTotal + " de vida actual");
-				
-				
 
 			}
 		});
-		
 
 		btndParaTu.setBounds(21, 140, 144, 23);
 		getContentPane().add(btndParaTu);
-		
-		
-		
 
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.setBounds(481, 80, 89, 23);
 		getContentPane().add(btnVolver);
-		
-		
+
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Interfaz();
@@ -147,19 +139,14 @@ public class CreacionPersonajes extends JFrame {
 			}
 
 		});
-		
-
-		
 
 	}
-	//public int getVidaActual () {
-		//return VidaActual;
-	//}
-	//public void setVidaActual (int VidaActual){
-	//    this.VidaActual = VidaActual;
-	//}
-	
-	
+	// public int getVidaActual () {
+	// return VidaActual;
+	// }
+	// public void setVidaActual (int VidaActual){
+	// this.VidaActual = VidaActual;
+	// }
 
 	private void initialize() {
 		frame = new JFrame();
@@ -177,10 +164,9 @@ public class CreacionPersonajes extends JFrame {
 	}
 
 	public static void AddBaseDeDatos(String nombre, int vida, String ataque, int vida_total) {
-		
 
-		Conexion.EjecutarUpdate("INSERT INTO jugadores VALUES (\"" + nombre + "\",\"" + vida + "\",\"" + ataque + "\",\""
-				 + vida_total + "\")");
+		Conexion.EjecutarUpdate("INSERT INTO jugadores VALUES (\"" + nombre + "\",\"" + vida + "\",\"" + ataque
+				+ "\",\"" + vida_total + "\")");
 
 	}
 }

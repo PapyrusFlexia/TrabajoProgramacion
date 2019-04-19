@@ -86,8 +86,6 @@ public class Jefe extends JFrame {
 			}
 
 		});
-		
-		
 
 		btnNewButton.setBounds(197, 133, 145, 23);
 		getContentPane().add(btnNewButton);

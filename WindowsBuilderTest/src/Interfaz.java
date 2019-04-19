@@ -6,15 +6,11 @@ import java.awt.event.*;
 
 public class Interfaz extends JFrame {
 
-
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-	
-	
-
 
 	/**
 	 * Create the frame.
@@ -79,7 +75,7 @@ public class Interfaz extends JFrame {
 		JLabel lblEligeElBioma = new JLabel("Elige el BIOMA en el que te encuentras");
 		lblEligeElBioma.setBounds(205, 11, 206, 14);
 		contentPane.add(lblEligeElBioma);
-		
+
 		JButton btnCrearNuevoPj = new JButton("CREAR NUEVO PJ");
 		btnCrearNuevoPj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -101,7 +97,6 @@ public class Interfaz extends JFrame {
 		contentPane.add(btnCrearNuevoPj);
 
 	}
-	
 
 	public void close() {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);

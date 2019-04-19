@@ -157,7 +157,7 @@ public class Tienda extends JFrame {
 		});
 		btnQuitarObjetos.setBounds(351, 681, 119, 23);
 		getContentPane().add(btnQuitarObjetos);
-		
+
 		JButton btnContinuar = new JButton("CONTINUAR");
 		btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -211,8 +211,6 @@ public class Tienda extends JFrame {
 
 		btnNewButton_3.setBounds(234, 540, 89, 23);
 		getContentPane().add(btnNewButton_3);
-		
-	
 
 	}
 
