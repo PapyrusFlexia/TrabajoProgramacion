@@ -30,6 +30,8 @@ public class Conexion {
 		}
 	}
 
+
+	
 	public static ResultSet EjecutarSentencia(String sentencia) {
 		try {
 			resultado = consulta.executeQuery(sentencia);

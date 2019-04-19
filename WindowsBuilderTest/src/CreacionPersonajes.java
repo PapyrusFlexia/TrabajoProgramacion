@@ -177,7 +177,7 @@ public class CreacionPersonajes extends JFrame {
 	}
 
 	public static void AddBaseDeDatos(String nombre, int vida, String ataque, int vida_total) {
-		Conexion.conectar();
+		
 
 		Conexion.EjecutarUpdate("INSERT INTO jugadores VALUES (\"" + nombre + "\",\"" + vida + "\",\"" + ataque + "\",\""
 				 + vida_total + "\")");

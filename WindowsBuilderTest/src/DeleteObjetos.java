@@ -97,7 +97,7 @@ public class DeleteObjetos extends JFrame {
 	}
 
 	public static void AddBaseDeDatos(String nombre) {
-		Conexion.conectar();
+		
 
 		Conexion.EjecutarUpdate("DELETE FROM items WHERE nombre = \"" + nombre + "\"");
 	}

@@ -14,20 +14,7 @@ public class Interfaz extends JFrame {
 	 */
 	
 	
-	public static void main(String[] args) {               //////////////////CAMBIAR POR NEWSCREEN DE INTERFAZ
-		// System.out.println(Dado.tirarDado(6)); //
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Interfaz frame = new Interfaz();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.

@@ -147,7 +147,7 @@ public class AddObjetos extends JFrame {
 
 	public static void AddBaseDeDatos(String id, String nombre, String poder, String valor, String categoria,
 			String tipo) {
-		Conexion.conectar();
+		
 
 		Conexion.EjecutarUpdate("INSERT INTO items VALUES (\"" + id + "\",\"" + nombre + "\",\"" + poder + "\",\""
 				+ valor + "\",\"" + categoria + "\",\"" + tipo + "\")");
