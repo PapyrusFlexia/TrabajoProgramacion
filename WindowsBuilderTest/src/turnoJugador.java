@@ -7,7 +7,7 @@ import BBDD.Conexion;
 
 import java.awt.event.*;
 
-public class Jefe extends JFrame {
+public class turnoJugador extends JFrame {
 
 	private JFrame frame;
 	static int tirada = Dado.tirarDado(4);
@@ -35,17 +35,17 @@ public class Jefe extends JFrame {
 	 * Create the frame.
 	 */
 
-	public Jefe() {
+	public turnoJugador() {
 		final JFrame dado = new JFrame();
 		//this.combate = combate;
 
 		// Dado Tirada = new Dado();//
 		// Tirada.tirarDado(6);//
-		JOptionPane.showMessageDialog(dado.getComponent(0),"El jefe ha sacado " + tirada + " , pierdes " + tirada + " de vida");
+		JOptionPane.showMessageDialog(dado.getComponent(0),"Has sacado " + tirada + " , el jefe pierde " + tirada + " de vida");
 
 		try {
 
-			ResultSet rs = Conexion.EjecutarSentencia("SELECT vida FROM jugadores WHERE nombre = \"manolo\"");
+			ResultSet rs = Conexion.EjecutarSentencia("SELECT vida FROM jefes WHERE nombre = \"Sans\"");
 			// System.out.println(Conexion.EjecutarSentencia(query));
 			while (rs.next()) {
 
@@ -63,7 +63,7 @@ public class Jefe extends JFrame {
 		AddBaseDeDatos(vidaActual);
 
 		if (vidaActual < 1) {
-			JOptionPane.showMessageDialog(dado.getComponent(0), "Has muerto");
+			JOptionPane.showMessageDialog(dado.getComponent(0), "Has matado al JEFE");
 			new Muerte();
 			Muerte muerteVisible = new Muerte(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
 			muerteVisible.setVisible(true);
@@ -95,11 +95,11 @@ public class Jefe extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public static void AddBaseDeDatos(int vidaJugador) {
+	public static void AddBaseDeDatos(int vidaJefe) {
 		Conexion.conectar();
 		// Conexion.EjecutarUpdate("UPDATE jugadores SET vida = \""+ vidaJugador +
 		// "\"");
-		Conexion.EjecutarUpdate("UPDATE jugadores SET vida = " + vidaJugador); //////////////// FALTA WHERE
+		Conexion.EjecutarUpdate("UPDATE jefes SET vida = " + vidaJefe); //////////////// FALTA WHERE
 
 	}
 }

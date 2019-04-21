@@ -11,6 +11,8 @@ public class Combate extends JFrame {
 
 	private JFrame frame;
 	private Jefe accionJefe;
+	private turnoJugador accionJugador;
+	int vidaActual;
 	
 	   
 
@@ -59,13 +61,19 @@ public class Combate extends JFrame {
 
 		});
 
-		JButton pasarTurno = new JButton("PASAR TURNO");
+		JButton pasarTurno = new JButton("COMENZAR COMBATE");
 		getContentPane().add(pasarTurno);
 		pasarTurno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				accionJefe = new Jefe();
-				//combateJefe.Jefe();
-				//accionJefe.Jefe();
+				//accionJefe = new Jefe();
+				accionJugador = new turnoJugador();
+
+				/*do {
+ 
+					accionJefe = new Jefe(); 
+					
+					accionJugador = new turnoJugador();
+				} while (vidaActual > 0);*/
 				 
 				
 			}
