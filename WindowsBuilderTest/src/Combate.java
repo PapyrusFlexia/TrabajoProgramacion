@@ -7,13 +7,12 @@ import BBDD.Conexion;
 
 import java.awt.event.*;
 
-public class DeleteObjetos extends JFrame {
+public class Combate extends JFrame {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private Jefe accionJefe;
+	
+	   
 
 	/**
 	 * Launch the application.
@@ -22,7 +21,7 @@ public class DeleteObjetos extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DeleteObjetos windowD = new DeleteObjetos();
+					Combate windowC = new Combate();
 					// window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,47 +30,27 @@ public class DeleteObjetos extends JFrame {
 
 		});
 	}
+	
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public DeleteObjetos() {
+	public Combate() {
+		
+		 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 596, 795);
 		getContentPane().setLayout(null);
-
-		JLabel lblBienvenido = new JLabel("BIENVENIDO");
-		lblBienvenido.setBounds(180, 100, 79, 14);
-		getContentPane().add(lblBienvenido);
-
-		textField = new JTextField();
-		textField.setBounds(173, 176, 86, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
-
-		JLabel lblNombre = new JLabel("nombre");
-		lblNombre.setBounds(56, 179, 46, 14);
-		getContentPane().add(lblNombre);
-
-		JButton btnAadir = new JButton("BORRAR");
-		btnAadir.addActionListener(new ActionListener() {
+		
+		JButton btnPruebaJugador = new JButton("IR A JUGADOR (PRUEBA)");
+		btnPruebaJugador.setBounds(168, 301, 222, 23);
+		getContentPane().add(btnPruebaJugador);
+		btnPruebaJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddBaseDeDatos(textField.getText());
-
-			}
-
-		});
-		btnAadir.setBounds(356, 253, 89, 23);
-		getContentPane().add(btnAadir);
-		JButton btnVolver = new JButton("VOLVER");
-		btnVolver.setBounds(481, 11, 89, 23);
-		getContentPane().add(btnVolver);
-		btnVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new Tienda();
-
-				Tienda tiendaVisible = new Tienda(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
-				tiendaVisible.setVisible(true);
+				new Jugador();
+				Jugador jugadorVisible = new Jugador(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
+				jugadorVisible.setVisible(true);
 
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				close();
@@ -79,6 +58,39 @@ public class DeleteObjetos extends JFrame {
 			}
 
 		});
+
+		JButton pasarTurno = new JButton("PASAR TURNO");
+		getContentPane().add(pasarTurno);
+		pasarTurno.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				accionJefe = new Jefe();
+				//combateJefe.Jefe();
+				//accionJefe.Jefe();
+				 
+				
+			}
+
+		});
+
+		pasarTurno.setBounds(197, 133, 145, 23);
+		getContentPane().add(pasarTurno);
+
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.setBounds(481, 11, 89, 23);
+		getContentPane().add(btnVolver);
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new Pantano();
+				Pantano pantanoVisible = new Pantano(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
+				pantanoVisible.setVisible(true);
+
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+			}
+
+		});
+		
 
 	}
 
@@ -93,11 +105,5 @@ public class DeleteObjetos extends JFrame {
 
 	public void close() {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
-		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
-	}
-
-	public static void AddBaseDeDatos(String nombre) {
-		Conexion.conectar();
-		Conexion.EjecutarUpdate("DELETE FROM items WHERE nombre = \"" + nombre + "\"");
 	}
 }

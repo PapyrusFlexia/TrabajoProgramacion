@@ -73,7 +73,7 @@ public class Interfaz extends JFrame {
 		contentPane.add(buttonDesierto);
 
 		JLabel lblEligeElBioma = new JLabel("Elige el BIOMA en el que te encuentras");
-		lblEligeElBioma.setBounds(205, 11, 206, 14);
+		lblEligeElBioma.setBounds(178, 11, 236, 14);
 		contentPane.add(lblEligeElBioma);
 
 		JButton btnCrearNuevoPj = new JButton("CREAR NUEVO PJ");
@@ -93,8 +93,29 @@ public class Interfaz extends JFrame {
 			}
 
 		});
-		btnCrearNuevoPj.setBounds(10, 8, 136, 23);
+		btnCrearNuevoPj.setBounds(32, 7, 136, 23);
 		contentPane.add(btnCrearNuevoPj);
+		
+		JButton btnCrearNuevoJefe = new JButton("CREAR NUEVO JEFE");
+		btnCrearNuevoJefe .addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CreacionJefes nwCreacionJefes = new CreacionJefes();
+				nwCreacionJefes.NewScreen();
+
+				// contentPane.setVisible(false);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+				new CreacionJefes();
+				CreacionJefes creacionjefesVisible = new CreacionJefes();
+				creacionjefesVisible.setVisible(true);
+
+			}
+
+		});
+		btnCrearNuevoJefe.setBounds(403, 7, 152, 23);
+		contentPane.add(btnCrearNuevoJefe );
+
 
 	}
 

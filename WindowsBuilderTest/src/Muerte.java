@@ -4,10 +4,10 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.*;
 
-public class Continuar extends JFrame {
+public class Muerte extends JFrame {
 
 	private JFrame frame;
-	private JTextField txtAtencinSiContinuas;
+	private JTextField crearNuevoPj;
 
 	/**
 	 * Launch the application.
@@ -16,7 +16,7 @@ public class Continuar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Continuar windowCont = new Continuar();
+					Muerte windowM = new Muerte();
 					// window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -29,23 +29,27 @@ public class Continuar extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Continuar() {
+	public Muerte() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 596, 795);
+		getContentPane().setLayout(null);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 448, 173);
 		getContentPane().setLayout(null);
 
-		txtAtencinSiContinuas = new JTextField();
-		txtAtencinSiContinuas.setText("ATENCI\u00D3N, si continuas te enfrentaras a un JEFE \u00BFDeseas continuar?");
-		txtAtencinSiContinuas.setBounds(43, 0, 361, 68);
-		getContentPane().add(txtAtencinSiContinuas);
-		txtAtencinSiContinuas.setColumns(10);
+		crearNuevoPj = new JTextField();
+		crearNuevoPj.setText("HAS MUERTO :( , ¿QUIERES CREAR UN NUEVO PERSONAJE?");
+		crearNuevoPj.setBounds(43, 0, 361, 68);
+		getContentPane().add(crearNuevoPj);
+		crearNuevoPj.setColumns(10);
 
-		JButton btnLeeroyJenkinsContinuar = new JButton("LEEROY JENKINS! CONTINUAR");
+		JButton btnLeeroyJenkinsContinuar = new JButton("LOK'TAR OGAR! (CONTINUAR)");
 		btnLeeroyJenkinsContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new Combate();
-				Combate combateVisible = new Combate(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
-				combateVisible.setVisible(true);
+				new CreacionPersonajes();
+				CreacionPersonajes CreacionPersonajesVisible = new CreacionPersonajes(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
+				CreacionPersonajesVisible.setVisible(true);
 
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				close();
@@ -56,17 +60,12 @@ public class Continuar extends JFrame {
 		btnLeeroyJenkinsContinuar.setBounds(10, 79, 181, 23);
 		getContentPane().add(btnLeeroyJenkinsContinuar);
 
-		JButton btnQuedarseEnLa = new JButton("QUEDARSE EN LA TIENDA");
+		JButton btnQuedarseEnLa = new JButton("ME RETIRO POR HOY, PARA LUCHAR OTRO DIA (ABANDONAR) ");
 		btnQuedarseEnLa.setBounds(241, 79, 181, 23);
 		getContentPane().add(btnQuedarseEnLa);
 		btnQuedarseEnLa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new Tienda();
-				Tienda tiendaVisible = new Tienda(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
-				tiendaVisible.setVisible(true);
-
-				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				close();
+				System.exit(0);
 
 			}
 
