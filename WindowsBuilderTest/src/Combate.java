@@ -65,8 +65,8 @@ public class Combate extends JFrame {
 		getContentPane().add(pasarTurno);
 		pasarTurno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//accionJefe = new Jefe();
-				accionJugador = new turnoJugador();
+				accionJefe = new Jefe();
+				//accionJugador = new turnoJugador();
 				
 				/*do {
  
