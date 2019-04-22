@@ -67,7 +67,7 @@ public class Combate extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				//accionJefe = new Jefe();
 				accionJugador = new turnoJugador();
-
+				
 				/*do {
  
 					accionJefe = new Jefe(); 
