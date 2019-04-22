@@ -46,6 +46,7 @@ public class Jefe extends JFrame {
 		try {
 
 			ResultSet rs = Conexion.EjecutarSentencia("SELECT vida FROM jugadores WHERE nombre = \"manolo\"");
+			
 			// System.out.println(Conexion.EjecutarSentencia(query));
 			while (rs.next()) {
 
@@ -99,7 +100,7 @@ public class Jefe extends JFrame {
 		Conexion.conectar();
 		// Conexion.EjecutarUpdate("UPDATE jugadores SET vida = \""+ vidaJugador +
 		// "\"");
-		Conexion.EjecutarUpdate("UPDATE jugadores SET vida = " + vidaJugador); //////////////// FALTA WHERE
+		Conexion.EjecutarUpdate("UPDATE jugadores SET vida = " + vidaJugador + " WHERE nombre = " + "\"manolo\""); //////////////// FALTA WHERE
 
 	}
 }

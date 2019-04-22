@@ -99,7 +99,7 @@ public class turnoJugador extends JFrame {
 		Conexion.conectar();
 		// Conexion.EjecutarUpdate("UPDATE jugadores SET vida = \""+ vidaJugador +
 		// "\"");
-		Conexion.EjecutarUpdate("UPDATE jefes SET vida = " + vidaJefe); //////////////// FALTA WHERE
+		Conexion.EjecutarUpdate("UPDATE jefes SET vida = " + vidaJefe + " WHERE nombre = " + "\"Sans\""); //////////////// FALTA WHERE
 
 	}
 }
