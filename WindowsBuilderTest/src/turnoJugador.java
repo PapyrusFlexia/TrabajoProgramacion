@@ -10,7 +10,7 @@ import java.awt.event.*;
 public class turnoJugador extends JFrame {
 
 	private JFrame frame;
-	static int tirada = Dado.tirarDado(3)+ 1;
+	static int tirada;
 	int vidaActual;
 	
 
@@ -41,7 +41,8 @@ public class turnoJugador extends JFrame {
 
 		// Dado Tirada = new Dado();//
 		// Tirada.tirarDado(6);//
-		JOptionPane.showMessageDialog(dado.getComponent(0),"Has sacado " + tirada + " , el jefe pierde " + tirada + " de vida");
+		int dmgJugador = tirarJugador();
+		JOptionPane.showMessageDialog(dado.getComponent(0),"Has sacado " + dmgJugador + " , el jefe pierde " + dmgJugador + " de vida");
 
 		try {
 
@@ -59,7 +60,7 @@ public class turnoJugador extends JFrame {
 		}
 		
 
-		vidaActual = vidaActual - tirada;
+		vidaActual = vidaActual - dmgJugador;
 		AddBaseDeDatos(vidaActual);
 
 		if (vidaActual < 1) {
@@ -77,8 +78,9 @@ public class turnoJugador extends JFrame {
 
 	}
 
-	
-	
+	public int tirarJugador(){
+		 return tirada = Dado.tirarDado(3)+ 1;
+	}
 
 	/**
 	 * Initialize the contents of the frame.
