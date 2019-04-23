@@ -13,7 +13,7 @@ public class Conexion {
 	static String url = "jdbc:mysql://localhost:3306/" + dbName + timezone;
 	static String user = "root";
 	static String pass = "manolo";
-	/*static String driver = "com.mysql.cj.jdbc.Driver";*/
+	// static String driver = "com.mysql.cj.jdbc.Driver";
 
 	static Connection conexion;
 	static Statement consulta;
@@ -22,10 +22,9 @@ public class Conexion {
 	public static void conectar() {
 		try {
 			conexion = DriverManager.getConnection(url, user, pass);
-			System.out.println("Conexion estableida de la base de datos");
 			consulta = conexion.createStatement();
 		} catch (SQLException e) {
-			System.out.println("Ha fallado la conexion con la base de datos");
+			System.out.println("Ha fallado la conexión");
 			e.printStackTrace();
 		}
 	}
@@ -33,11 +32,10 @@ public class Conexion {
 	public static ResultSet EjecutarSentencia(String sentencia) {
 		try {
 			resultado = consulta.executeQuery(sentencia);
-			System.out.println("Done");
+			//System.out.println("DONE");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return resultado;
 	}
 
@@ -48,6 +46,7 @@ public class Conexion {
 			e.printStackTrace();
 		}
 	}
+
 	public static void CerrarConexion() {
 		try {
 			consulta.close();
@@ -55,4 +54,5 @@ public class Conexion {
 			e.printStackTrace();
 		}
 	}
+
 }

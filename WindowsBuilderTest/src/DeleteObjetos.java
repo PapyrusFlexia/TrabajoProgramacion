@@ -69,19 +69,18 @@ public class DeleteObjetos extends JFrame {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Tienda();
-				Tienda tiendaVisible = new Tienda();  //QUITAR CUANDO SE TERMINE EL PROGRAMA
+
+				Tienda tiendaVisible = new Tienda(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
 				tiendaVisible.setVisible(true);
-				
+
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				close();
 
-		
 			}
 
 		});
 
 	}
-	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -99,9 +98,6 @@ public class DeleteObjetos extends JFrame {
 
 	public static void AddBaseDeDatos(String nombre) {
 		Conexion.conectar();
-
 		Conexion.EjecutarUpdate("DELETE FROM items WHERE nombre = \"" + nombre + "\"");
-		
-		
 	}
 }

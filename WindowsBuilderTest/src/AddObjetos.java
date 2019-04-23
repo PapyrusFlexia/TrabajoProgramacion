@@ -24,7 +24,8 @@ public class AddObjetos extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddObjetos windowA = new AddObjetos(); //BOSQUE
+
+					AddObjetos windowA = new AddObjetos(); // BOSQUE
 					// window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -65,12 +66,12 @@ public class AddObjetos extends JFrame {
 		textField_3.setBounds(173, 337, 86, 20);
 		getContentPane().add(textField_3);
 		textField_3.setColumns(10);
-		
+
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
 		textField_4.setBounds(173, 381, 86, 20);
 		getContentPane().add(textField_4);
-		
+
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
 		textField_5.setBounds(173, 422, 86, 20);
@@ -91,11 +92,11 @@ public class AddObjetos extends JFrame {
 		JLabel lblTipo = new JLabel("valor");
 		lblTipo.setBounds(56, 343, 46, 14);
 		getContentPane().add(lblTipo);
-		
+
 		JLabel labelCategoria = new JLabel("categoria");
 		labelCategoria.setBounds(56, 384, 46, 14);
 		getContentPane().add(labelCategoria);
-		
+
 		JLabel labelTipo = new JLabel("tipo");
 		labelTipo.setBounds(56, 425, 46, 14);
 		getContentPane().add(labelTipo);
@@ -103,33 +104,30 @@ public class AddObjetos extends JFrame {
 		JButton btnAadir = new JButton("A\u00D1ADIR");
 		btnAadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddBaseDeDatos(textField.getText(), textField_1.getText(), textField_2.getText(),
-						textField_3.getText(), textField_4.getText(), textField_5.getText());
+				AddBaseDeDatos(textField.getText(), textField_1.getText(), textField_2.getText(), textField_3.getText(),
+						textField_4.getText(), textField_5.getText());
 
 			}
 
 		});
 		btnAadir.setBounds(356, 253, 89, 23);
 		getContentPane().add(btnAadir);
-		
+
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.setBounds(481, 11, 89, 23);
 		getContentPane().add(btnVolver);
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Tienda();
-				Tienda tiendaVisible = new Tienda();  //QUITAR CUANDO SE TERMINE EL PROGRAMA
+				Tienda tiendaVisible = new Tienda(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
 				tiendaVisible.setVisible(true);
-				
+
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				close();
 
-		
 			}
 
 		});
-		
-	
 
 	}
 
@@ -147,10 +145,15 @@ public class AddObjetos extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public static void AddBaseDeDatos(String id, String nombre, String poder, String valor, String categoria, String tipo) {
+	public static void AddBaseDeDatos(String id, String nombre, String poder, String valor, String categoria,
+			String tipo) {
 		Conexion.conectar();
+		Conexion.EjecutarUpdate("INSERT INTO items VALUES (\"" + id + "\",\"" + nombre + "\",\"" + poder + "\",\""
+				+ valor + "\",\"" + categoria + "\",\"" + tipo + "\")");
 
-		Conexion.EjecutarUpdate("INSERT INTO items VALUES (\""+id+"\",\""+nombre+"\",\""+poder+"\",\""+valor+"\",\""+categoria+"\",\""+tipo+"\")");
-				
 	}
 }
+
+/**
+ * Create the frame.
+ */

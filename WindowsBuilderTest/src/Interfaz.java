@@ -2,32 +2,18 @@ import java.sql.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import BBDD.Conexion;
+
 import java.awt.event.*;
 
 public class Interfaz extends JFrame {
-
 
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-	
-	
-	public static void main(String[] args) {               //////////////////CAMBIAR POR NEWSCREEN DE INTERFAZ
-		// System.out.println(Dado.tirarDado(6)); //
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Interfaz frame = new Interfaz();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -43,6 +29,7 @@ public class Interfaz extends JFrame {
 		JButton buttonPantano = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cover1.png")));
 		buttonPantano.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Conexion.conectar();
 				Pantano nw = new Pantano();
 				nw.NewScreen();
 				// contentPane.setVisible(false);
@@ -56,13 +43,14 @@ public class Interfaz extends JFrame {
 			}
 		});
 
-		buttonPantano.setBounds(10, 42, 560, 155);
+		buttonPantano.setBounds(10, 93, 560, 155);
 		contentPane.add(buttonPantano);
 
 		JButton buttonBosque = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cover3.png")));
 
 		buttonBosque.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Conexion.conectar();
 				Bosque nwB = new Bosque();
 				nwB.NewScreen();
 
@@ -78,21 +66,21 @@ public class Interfaz extends JFrame {
 
 		});
 
-		buttonBosque.setBounds(10, 540, 560, 155);
+		buttonBosque.setBounds(10, 591, 560, 155);
 		contentPane.add(buttonBosque);
 
 		JButton buttonMontana = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cover2.png")));
-		buttonMontana.setBounds(10, 208, 560, 155);
+		buttonMontana.setBounds(10, 259, 560, 155);
 		contentPane.add(buttonMontana);
 
 		JButton buttonDesierto = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cover5.png")));
-		buttonDesierto.setBounds(10, 374, 560, 155);
+		buttonDesierto.setBounds(10, 425, 560, 155);
 		contentPane.add(buttonDesierto);
 
 		JLabel lblEligeElBioma = new JLabel("Elige el BIOMA en el que te encuentras");
-		lblEligeElBioma.setBounds(205, 11, 206, 14);
+		lblEligeElBioma.setBounds(178, 11, 236, 14);
 		contentPane.add(lblEligeElBioma);
-		
+
 		JButton btnCrearNuevoPj = new JButton("CREAR NUEVO PJ");
 		btnCrearNuevoPj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -110,11 +98,43 @@ public class Interfaz extends JFrame {
 			}
 
 		});
-		btnCrearNuevoPj.setBounds(10, 8, 136, 23);
+		btnCrearNuevoPj.setBounds(32, 7, 136, 23);
 		contentPane.add(btnCrearNuevoPj);
+		
+		JButton btnCrearNuevoJefe = new JButton("CREAR NUEVO JEFE");
+		btnCrearNuevoJefe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CreacionJefes nwCreacionJefes = new CreacionJefes();
+				nwCreacionJefes.NewScreen();
+
+				// contentPane.setVisible(false);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+				new CreacionJefes();
+				CreacionJefes creacionjefesVisible = new CreacionJefes();
+				creacionjefesVisible.setVisible(true);
+
+			}
+
+		});
+		btnCrearNuevoJefe.setBounds(403, 7, 152, 23);
+		contentPane.add(btnCrearNuevoJefe );
+		
+	/*	JButton btnConectar = new JButton("CONECTAR");
+		btnConectar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Conexion.conectar();
+			}
+
+		});	
+		btnConectar.setBounds(222, 36, 121, 23);
+		contentPane.add(btnConectar);*/
+			
+			
+
 
 	}
-	
 
 	public void close() {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);

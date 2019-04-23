@@ -35,6 +35,8 @@ public class Tienda extends JFrame {
 		getContentPane().setLayout(null);
 		setBounds(100, 100, 596, 795);
 
+		final JFrame dado = new JFrame();
+
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.setBounds(155, 293, 89, 23);
 		getContentPane().add(btnNewButton);
@@ -62,10 +64,6 @@ public class Tienda extends JFrame {
 		JLabel lblTiraParaVer = new JLabel("TIRA PARA VER SI HAY LEGENDARIO");
 		lblTiraParaVer.setBounds(190, 492, 184, 14);
 		getContentPane().add(lblTiraParaVer);
-
-		JButton btnNewButton_3 = new JButton("New button");
-		btnNewButton_3.setBounds(234, 540, 89, 23);
-		getContentPane().add(btnNewButton_3);
 
 		JLabel lblTuOro = new JLabel("TU ORO: ");
 		lblTuOro.setBounds(430, 11, 69, 14);
@@ -107,16 +105,15 @@ public class Tienda extends JFrame {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Pantano();
-				Pantano pantanoVisible = new Pantano();  //QUITAR CUANDO SE TERMINE EL PROGRAMA
+				Pantano pantanoVisible = new Pantano(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
 				pantanoVisible.setVisible(true);
-				
+
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				close();
 
 			}
 
 		});
-		
 
 		JButton btnAadirObjetos = new JButton("A\u00D1ADIR OBJETOS");
 
@@ -132,8 +129,8 @@ public class Tienda extends JFrame {
 				new AddObjetos();
 				AddObjetos addobjetosVisible = new AddObjetos();
 				addobjetosVisible.setVisible(true);
-				
-				//getText recoge lo que hay en la casilla
+
+				// getText recoge lo que hay en la casilla
 
 			}
 
@@ -158,31 +155,62 @@ public class Tienda extends JFrame {
 			}
 
 		});
-		btnQuitarObjetos.setBounds(357, 681, 119, 23);
+		btnQuitarObjetos.setBounds(351, 681, 119, 23);
 		getContentPane().add(btnQuitarObjetos);
-		
-		/*JButton btnAadirArmadura = new JButton("A\u00D1ADIR ARMADURA");
-		btnAadirArmadura.addActionListener(new ActionListener() {
+
+		JButton btnContinuar = new JButton("CONTINUAR");
+		btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddArmaduras nwAddArmaduras = new AddArmaduras();
-				nwAddArmaduras.NewScreen();
+				Continuar nwContinuar = new Continuar();
+				nwContinuar.NewScreen();
 
 				// contentPane.setVisible(false);
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				close();
 
-				new AddArmaduras();
-				AddArmaduras addarmadurasVisible = new AddArmaduras();
-				addarmadurasVisible.setVisible(true);
+				new Continuar();
+				Continuar continuar = new Continuar();
+				continuar.setVisible(true);
 			}
 
 		});
-		btnAadirArmadura.setBounds(71, 715, 135, 23);
-		getContentPane().add(btnAadirArmadura);
-		
-		JButton btnQuitarArmadura = new JButton("QUITAR ARMADURA");
-		btnQuitarArmadura.setBounds(355, 715, 144, 23);
-		getContentPane().add(btnQuitarArmadura);*/
+		btnContinuar.setBounds(234, 681, 89, 23);
+		getContentPane().add(btnContinuar);
+
+		JLabel lblTiraElDado = new JLabel("TIRA EL DADO");
+		lblTiraElDado.setBounds(180, 11, 79, 14);
+		getContentPane().add(lblTiraElDado);
+
+		JPanel topPanel = new JPanel();
+
+		// final JLabel label = new JLabel("Hello World"); //
+
+		// label.setVisible(false); //
+		// frame.add(topPanel); //
+		// topPanel.add(btnNewButton); //
+		// topPanel.add(label); //
+		// frame.setVisible(true); //
+
+		int tirada = Dado.tirarDado(20);
+
+		JButton btnNewButton_3 = new JButton("New button");
+
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				// Dado Tirada = new Dado();//
+				// Tirada.tirarDado(6);//
+				JOptionPane.showMessageDialog(dado.getComponent(0), "Has sacado un " + tirada); // EL
+																								// 20
+																								// ES
+																								// LO
+																								// MAXIMO
+
+			}
+		});
+
+		btnNewButton_3.setBounds(234, 540, 89, 23);
+		getContentPane().add(btnNewButton_3);
 
 	}
 
@@ -199,9 +227,4 @@ public class Tienda extends JFrame {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
-	
-	
-		
-		
-	
 }

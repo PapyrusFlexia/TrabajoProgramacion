@@ -53,22 +53,24 @@ public class Pantano extends JFrame {
 		// topPanel.add(label); //
 		// frame.setVisible(true); //
 
+		int tirada = Dado.tirarDado(20) + 1;
+
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 				// Dado Tirada = new Dado();//
 				// Tirada.tirarDado(6);//
-				JOptionPane.showMessageDialog(dado.getComponent(0), "Has sacado un " + Dado.tirarDado(20)); // EL
-																													// 20
-																													// ES
-																													// LO
-																													// MAXIMO
-																													// DEL
-																													// DADO
+				JOptionPane.showMessageDialog(dado.getComponent(0), "Has sacado un " + tirada); // EL
+																								// 20
+																								// ES
+																								// LO
+																								// MAXIMO
+																								// DEL
+																								// DADO
 
 				// label.setVisible(true); //
 
-				if (Dado.tirarDado(20) > 10) {
+				if (tirada > 10) {
 					Tienda nwTienda = new Tienda();
 					nwTienda.NewScreen();
 
@@ -80,16 +82,16 @@ public class Pantano extends JFrame {
 					Tienda tiendaVisible = new Tienda();
 					tiendaVisible.setVisible(true);
 				} else {
-					Jefe nwJefe = new Jefe();
-					nwJefe.NewScreen();
+					Combate nwCombate = new Combate();
+					nwCombate.NewScreen();
 
 					// contentPane.setVisible(false);
 					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					close();
 
-					new Jefe();
-					Jefe jefeVisible = new Jefe();
-					jefeVisible.setVisible(true);
+					new Combate();
+					Combate combateVisible = new Combate();
+					combateVisible.setVisible(true);
 
 				}
 
@@ -98,6 +100,22 @@ public class Pantano extends JFrame {
 
 		btnNewButton.setBounds(170, 48, 89, 23);
 		getContentPane().add(btnNewButton);
+
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.setBounds(481, 80, 89, 23);
+		getContentPane().add(btnVolver);
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new Interfaz();
+				Interfaz interfazVisible = new Interfaz(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
+				interfazVisible.setVisible(true);
+
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+
+			}
+
+		});
 
 	}
 
