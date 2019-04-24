@@ -131,7 +131,7 @@ public class Combate extends JFrame {
 			}
 
 		});
-
+//pruebagit
 		pasarTurno.setBounds(185, 133, 178, 23);
 		getContentPane().add(pasarTurno);
 

@@ -44,7 +44,7 @@ public class Pantano extends JFrame {
 
 		JPanel topPanel = new JPanel();
 
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("PRUEBA");
 		// final JLabel label = new JLabel("Hello World"); //
 
 		// label.setVisible(false); //
