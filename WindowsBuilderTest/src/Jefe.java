@@ -37,11 +37,13 @@ public class Jefe extends JFrame {
 
 	public Jefe() {
 		final JFrame dado = new JFrame();
+		
+		int dmgJefe = tirarJefe();
 		//this.combate = combate;
 
 		// Dado Tirada = new Dado();//
 		// Tirada.tirarDado(6);//
-		JOptionPane.showMessageDialog(dado.getComponent(0),"El jefe ha sacado " + tirada + " , pierdes " + tirada + " de vida");
+		JOptionPane.showMessageDialog(dado.getComponent(0),"El jefe ha sacado " + dmgJefe + " , pierdes " + dmgJefe + " de vida");
 
 		try {
 
@@ -60,7 +62,7 @@ public class Jefe extends JFrame {
 		}
 		
 
-		vidaActual = vidaActual - tirada;
+		vidaActual = vidaActual - dmgJefe;
 		AddBaseDeDatos(vidaActual);
 
 		if (vidaActual < 1) {
@@ -79,7 +81,10 @@ public class Jefe extends JFrame {
 	}
 
 	
-	
+	public int tirarJefe(){
+		 return tirada = Dado.tirarDado(3)+ 1;
+	}
+
 
 	/**
 	 * Initialize the contents of the frame.
