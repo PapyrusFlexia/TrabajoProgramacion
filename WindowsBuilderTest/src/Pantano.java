@@ -2,11 +2,18 @@ import java.sql.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import BBDD.Conexion;
+
 import java.awt.event.*;
 
 public class Pantano extends JFrame {
 
 	private JFrame frame;
+	int VidaTotal = Dado.tirarDado(4);
+	String id = "001";
+	String nombre = "Frikón Ululante";
+	String atkInicial = "1d4";
 
 	/**
 	 * Launch the application.
@@ -82,6 +89,9 @@ public class Pantano extends JFrame {
 					Tienda tiendaVisible = new Tienda();
 					tiendaVisible.setVisible(true);
 				} else {
+					DeleteBaseDeDatos();
+					AddBaseDeDatos(id, nombre, VidaTotal, atkInicial, VidaTotal);
+					
 					Combate nwCombate = new Combate();
 					nwCombate.NewScreen();
 
@@ -131,5 +141,15 @@ public class Pantano extends JFrame {
 	public void close() {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+	}
+	public static void AddBaseDeDatos(String id, String nombre, int vida, String ataque, int vida_total) {
+		Conexion.conectar();
+		Conexion.EjecutarUpdate("INSERT INTO jefespantano VALUES (\"" + id + "\",\"" + nombre + "\",\"" + vida + "\",\"" + ataque
+				+ "\",\"" + vida_total + "\")");
+
+	}
+	public static void DeleteBaseDeDatos() {
+		Conexion.conectar();
+		Conexion.EjecutarUpdate("DELETE FROM jefespantano LIMIT 1");
 	}
 }

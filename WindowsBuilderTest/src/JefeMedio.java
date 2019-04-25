@@ -11,6 +11,7 @@ public class JefeMedio extends JFrame {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JTextField textFieldid;
 	private JTextField vidatotalfield;
 	int VidaMedio = Dado.tirarDado(11) + 1;
 	String atkInicial = "1d12";
@@ -46,6 +47,15 @@ public class JefeMedio extends JFrame {
 		textField.setBounds(193, 179, 86, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		textFieldid = new JTextField();
+		textFieldid.setBounds(193, 133, 86, 20);
+		getContentPane().add(textFieldid);
+		textFieldid.setColumns(10);
+
+		JLabel lblid = new JLabel("id");
+		lblid.setBounds(56, 136, 46, 14);
+		getContentPane().add(lblid);
 
 		JLabel lblNombre = new JLabel("nombre");
 		lblNombre.setBounds(56, 182, 46, 14);
@@ -90,13 +100,13 @@ public class JefeMedio extends JFrame {
 
 		final JFrame dado = new JFrame();
 		JLabel lblBienvenido = new JLabel("BIENVENIDO A LA CREACION DE JEFES");
-		lblBienvenido.setBounds(180, 100, 238, 14);
+		lblBienvenido.setBounds(169, 42, 238, 14);
 		getContentPane().add(lblBienvenido);
 
 		JButton btnCrear = new JButton("CREAR");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddBaseDeDatos(textField.getText(), VidaMedio, atkInicial, VidaMedio); // RELLENAR
+				AddBaseDeDatos(textFieldid.getText(), textField.getText(), VidaMedio, atkInicial, VidaMedio); // RELLENAR
 
 			}
 
@@ -121,7 +131,7 @@ public class JefeMedio extends JFrame {
 			}
 		});
 
-		btndDdoce.setBounds(169, 140, 238, 23);
+		btndDdoce.setBounds(56, 80, 238, 23);
 		getContentPane().add(btndDdoce);
 		
 		
@@ -166,9 +176,9 @@ public class JefeMedio extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public static void AddBaseDeDatos(String nombre, int vida, String ataque, int vida_total) {
+	public static void AddBaseDeDatos(String id, String nombre, int vida, String ataque, int vida_total) {
 		Conexion.conectar();
-		Conexion.EjecutarUpdate("INSERT INTO jefes VALUES (\"" + nombre + "\",\"" + vida + "\",\"" + ataque
+		Conexion.EjecutarUpdate("INSERT INTO jefespantano VALUES (\"" + id + "\",\""+ nombre + "\",\"" + vida + "\",\"" + ataque
 				+ "\",\"" + vida_total + "\")");
 
 	}

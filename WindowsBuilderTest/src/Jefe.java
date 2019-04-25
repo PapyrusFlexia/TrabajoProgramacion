@@ -14,7 +14,8 @@ public class Jefe extends JFrame {
 	int vidaActual;
 	int id_jugador;
 	int cogerId;
-	ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM jugadores ORDER BY RAND() LIMIT 1");
+	ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM jugadores LIMIT 1");
+	
 
 	/**
 	 * Launch the application.
