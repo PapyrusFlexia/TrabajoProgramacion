@@ -11,10 +11,20 @@ public class Continuar extends JFrame {
 
 	private JFrame frame;
 	private JTextField txtAtencinSiContinuas;
-	int VidaTotal = Dado.tirarDado(4);
-	String id = "001";
-	String nombre = "Frikón Ululante";
-	String atkInicial = "1d4";
+	int VidaTotalFacil = Dado.tirarDado(4);
+	int VidaTotalMedio = Dado.tirarDado(6);
+	int VidaTotalDificil = Dado.tirarDado(8);
+	String idFacil = "001";
+	String idMedio = "002";
+	String idDificil = "003";
+	String nombreFacil = "Frikón Ululante";
+	String nombreMedio = "prueba";
+	String nombreDificil = "Compañia robotizada hindu";
+	String atkInicialFacil = "1d4";
+	String atkInicialMedio = "1d6";
+	String atkInicialDificil = "1d8";
+	private boolean isFirstTime = true;
+	private boolean isSecondTime = true;
 
 	/**
 	 * Launch the application.
@@ -47,42 +57,101 @@ public class Continuar extends JFrame {
 		getContentPane().add(txtAtencinSiContinuas);
 		txtAtencinSiContinuas.setColumns(10);
 
-		JButton btnLeeroyJenkinsContinuar = new JButton("LEEROY JENKINS! CONTINUAR");
-		btnLeeroyJenkinsContinuar.addActionListener(new ActionListener() {
+		JButton btnLeeroyJenkinsContinuarFacil = new JButton("LEEROY JENKINS! CONTINUAR");
+		btnLeeroyJenkinsContinuarFacil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				DeleteBaseDeDatos();
-				AddBaseDeDatos(id, nombre, VidaTotal, atkInicial, VidaTotal);
+				AddBaseDeDatos(idFacil, nombreFacil, VidaTotalFacil, atkInicialFacil, VidaTotalFacil);
 				new Combate();
 				
-				Combate combateVisible = new Combate(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
-				combateVisible.setVisible(true);
+				Combate nwCombate = new Combate();
+				nwCombate.NewScreen();
 
-				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				close();
+				// contentPane.setVisible(false);
+				
+				Continuar esconderContinuar = new Continuar();
+				esconderContinuar.setVisible(false);
+			//	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); ///////////////////////////////
+			//	close();
+
+				new Combate();
+				Combate combateVisible = new Combate();
+				combateVisible.setVisible(true);
+				
+				//btnLeeroyJenkinsContinuarFacil.setVisible(false);
+				
 
 			}
 
 		});
-		btnLeeroyJenkinsContinuar.setBounds(10, 79, 181, 23);
-		getContentPane().add(btnLeeroyJenkinsContinuar);
+		btnLeeroyJenkinsContinuarFacil.setBounds(10, 79, 181, 23);
+		getContentPane().add(btnLeeroyJenkinsContinuarFacil);
+		
+		
+
+		
 
 		JButton btnQuedarseEnLa = new JButton("QUEDARSE EN LA TIENDA");
 		btnQuedarseEnLa.setBounds(241, 79, 181, 23);
 		getContentPane().add(btnQuedarseEnLa);
 		btnQuedarseEnLa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new Tienda();
+				continuar();
+				/*new Tienda();
 				Tienda tiendaVisible = new Tienda(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
 				tiendaVisible.setVisible(true);
 
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				close();
+				close();*/
 
 			}
 
 		});
 
 	}
+	public void continuar() {
+		
+		    
+		        if (isFirstTime) {
+		        	DeleteBaseDeDatos();
+					AddBaseDeDatos(idFacil, nombreFacil, VidaTotalFacil, atkInicialFacil, VidaTotalFacil);
+					new Combate();
+					
+					Combate combateVisible = new Combate(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
+					combateVisible.setVisible(true);
+
+					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					close();
+		            isFirstTime = false;
+		        } else if (isSecondTime) {
+		        	DeleteBaseDeDatos();
+		    		AddBaseDeDatos(idMedio, nombreMedio, VidaTotalMedio, atkInicialMedio, VidaTotalMedio);
+		    		new Combate();
+		    		
+		    		Combate combateVisible = new Combate(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
+		    		combateVisible.setVisible(true);
+
+		    		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		    		close();
+		        } else {
+		        	DeleteBaseDeDatos();
+		    		AddBaseDeDatos(idDificil, nombreDificil, VidaTotalDificil, atkInicialDificil, VidaTotalDificil);
+		    		new Combate();
+		    		
+		    		Combate combateVisible = new Combate(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
+		    		combateVisible.setVisible(true);
+
+		    		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		    		close();
+		        	
+		        }
+		    }
+		
+		
+		
+		
+	
+
 
 	/**
 	 * Initialize the contents of the frame.

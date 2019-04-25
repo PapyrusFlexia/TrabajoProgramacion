@@ -69,8 +69,8 @@ public class turnoJugador extends JFrame {
 
 		if (vidaActual < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "Has matado al JEFE, encuentras una tienda cercana");
-			Tienda nwTienda = new Tienda();
-			nwTienda.NewScreen();
+			Combate nwCombate = new Combate();
+			nwCombate.NewScreen();
 
 			// contentPane.setVisible(false);
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
