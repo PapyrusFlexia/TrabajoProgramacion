@@ -60,7 +60,9 @@ public class Pantano extends JFrame {
 		// topPanel.add(label); //
 		// frame.setVisible(true); //
 
+
 		int tirada = Dado.tirarDado(20) + 1;
+
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -89,9 +91,11 @@ public class Pantano extends JFrame {
 					Tienda tiendaVisible = new Tienda();
 					tiendaVisible.setVisible(true);
 				} else {
+
 					DeleteBaseDeDatos();
 					AddBaseDeDatos(id, nombre, VidaTotal, atkInicial, VidaTotal);
 					
+
 					Combate nwCombate = new Combate();
 					nwCombate.NewScreen();
 

@@ -3,6 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+
 import BBDD.Conexion;
 
 import java.awt.event.*;
@@ -177,5 +178,5 @@ public class Continuar extends JFrame {
 	public static void DeleteBaseDeDatos() {
 		Conexion.conectar();
 		Conexion.EjecutarUpdate("DELETE FROM jefespantano LIMIT 1");
-	}
+}
 }

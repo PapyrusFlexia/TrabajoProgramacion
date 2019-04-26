@@ -10,6 +10,7 @@ import java.awt.event.*;
 public class turnoJugador extends JFrame {
 
 	private JFrame frame;
+
 	static int tirada;
 	int vidaActual;
 	int id_jugador;

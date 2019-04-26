@@ -11,7 +11,9 @@ public class CreacionPersonajes extends JFrame {
 
 	private JFrame frame;
 	private JTextField textField;
+
 	private JTextField textFieldid;
+
 	private JTextField vidatotalfield;
 	int VidaTotal = Dado.tirarDado(8);
 	String atkInicial = "1d4";
@@ -47,11 +49,13 @@ public class CreacionPersonajes extends JFrame {
 		textField.setBounds(193, 179, 86, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+
 		
 		textFieldid = new JTextField();
 		textFieldid.setBounds(193, 124, 86, 20);
 		getContentPane().add(textFieldid);
 		textFieldid.setColumns(10);
+
 
 		JLabel lblid = new JLabel("id");
 		lblid.setBounds(56, 127, 46, 14);
@@ -106,13 +110,16 @@ public class CreacionPersonajes extends JFrame {
 		JButton btnCrear = new JButton("CREAR");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 				AddBaseDeDatos(textFieldid.getText(), textField.getText(), VidaTotal, atkInicial, VidaTotal); // RELLENAR
+
 
 			}
 
 		});
 		btnCrear.setBounds(244, 399, 89, 23);
 		getContentPane().add(btnCrear);
+
 
 		JButton btndParaTu = new JButton("1d8 para tu vida");
 		// int VidaActual = VidaTotal;
@@ -131,6 +138,7 @@ public class CreacionPersonajes extends JFrame {
 		});
 
 		btndParaTu.setBounds(21, 80, 144, 23);
+
 		getContentPane().add(btndParaTu);
 
 		JButton btnVolver = new JButton("VOLVER");
@@ -173,10 +181,10 @@ public class CreacionPersonajes extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
+
 	public static void AddBaseDeDatos(String id, String nombre, int vida, String ataque, int vida_total) {
 		Conexion.conectar();
-		Conexion.EjecutarUpdate("INSERT INTO jugadores VALUES (\"" + id + "\",\"" + nombre + "\",\"" + vida + "\",\"" + ataque
-				+ "\",\"" + vida_total + "\")");
+		Conexion.EjecutarUpdate("INSERT INTO jugadores VALUES (\"" + id + "\",\"" + nombre + "\",\"" + vida + "\",\"" + ataque+ "\",\"" + vida_total + "\")");
 
 	}
 }

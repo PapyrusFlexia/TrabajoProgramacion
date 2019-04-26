@@ -11,6 +11,7 @@ public class JefeFacil extends JFrame {
 
 	private JFrame frame;
 	private JTextField textField;
+
 	private JTextField textFieldid;
 	private JTextField vidatotalfield;
 	int VidaFacil = Dado.tirarDado(19) + 1;
@@ -176,8 +177,7 @@ public class JefeFacil extends JFrame {
 
 	public static void AddBaseDeDatos(String id, String nombre, int vida, String ataque, int vida_total) {
 		Conexion.conectar();
-		Conexion.EjecutarUpdate("INSERT INTO jefespantano VALUES (\"" + id + "\",\""+ nombre + "\",\"" + vida + "\",\"" + ataque
-				+ "\",\"" + vida_total + "\")");
+		Conexion.EjecutarUpdate("INSERT INTO jefespantano VALUES (\"" + id + "\",\""+ nombre + "\",\"" + vida + "\",\"" + ataque+ "\",\"" + vida_total + "\")");
 
 	}
 }

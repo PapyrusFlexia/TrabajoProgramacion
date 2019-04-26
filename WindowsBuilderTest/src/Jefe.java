@@ -10,29 +10,24 @@ import java.awt.event.*;
 public class Jefe extends JFrame {
 
 	private JFrame frame;
+
 	static int tirada = Dado.tirarDado(3) + 1;
 	int vidaActual;
 	int id_jugador;
 	int cogerId;
 	ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM jugadores LIMIT 1");
-	
 
 	/**
 	 * Launch the application.
 	 */
-/*	public static void NewScreen() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Jefe windowJ = new Jefe();
-					// window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-		});
-	}*/
+	/*
+	 * public static void NewScreen() { EventQueue.invokeLater(new Runnable() {
+	 * public void run() { try { Jefe windowJ = new Jefe(); //
+	 * window.frame.setVisible(true); } catch (Exception e) { e.printStackTrace(); }
+	 * }
+	 * 
+	 * }); }
+	 */
 
 	/**
 	 * Create the frame.
@@ -40,36 +35,38 @@ public class Jefe extends JFrame {
 
 	public Jefe() {
 		final JFrame dado = new JFrame();
-		
+
 		int dmgJefe = tirarJefe();
-		//this.combate = combate;
+		// this.combate = combate;
 
 		// Dado Tirada = new Dado();//
 		// Tirada.tirarDado(6);//
-		JOptionPane.showMessageDialog(dado.getComponent(0),"El jefe ha sacado " + dmgJefe + " , pierdes " + dmgJefe + " de vida");
+		JOptionPane.showMessageDialog(dado.getComponent(0),
+				"El jefe ha sacado " + dmgJefe + " , pierdes " + dmgJefe + " de vida");
 
 		try {
 
-			//ResultSet rs = Conexion.EjecutarSentencia("SELECT vida FROM jugadores WHERE nombre = \"manolo\"");
-			//ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM jugadores ORDER BY RAND() LIMIT 1");
-			//id_jugador= rs.getInt("id");
-			
+			// ResultSet rs = Conexion.EjecutarSentencia("SELECT vida FROM jugadores WHERE
+			// nombre = \"manolo\"");
+			// ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM jugadores ORDER BY
+			// RAND() LIMIT 1");
+			// id_jugador= rs.getInt("id");
+
 			// System.out.println(Conexion.EjecutarSentencia(query));
 			while (rs.next()) {
-				
-				
+
 				vidaActual = rs.getInt("vida");
-				id_jugador= rs.getInt("id");
-				//cogerId = rs.getInt("id");
+				id_jugador = rs.getInt("id");
+				// cogerId = rs.getInt("id");
+
 			}
 
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
-			
+
 		}
-		
-	
+
 		vidaActual = vidaActual - dmgJefe;
 		AddBaseDeDatos(vidaActual);
 
@@ -82,17 +79,12 @@ public class Jefe extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 		}
-		
-	
-	    
 
 	}
 
-	
-	public int tirarJefe(){
-		 return tirada = Dado.tirarDado(3)+ 1;
+	public int tirarJefe() {
+		return tirada = Dado.tirarDado(3) + 1;
 	}
-
 
 	/**
 	 * Initialize the contents of the frame.
@@ -109,11 +101,12 @@ public class Jefe extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public  void AddBaseDeDatos(int vidaJugador) {
+	public void AddBaseDeDatos(int vidaJugador) {
 		Conexion.conectar();
 		// Conexion.EjecutarUpdate("UPDATE jugadores SET vida = \""+ vidaJugador +
 		// "\"");
-		//Conexion.EjecutarUpdate("UPDATE jugadores SET vida = " + vidaJugador + " WHERE nombre = " + "\"manolo\""); 
+		// Conexion.EjecutarUpdate("UPDATE jugadores SET vida = " + vidaJugador + "
+		// WHERE nombre = " + "\"manolo\"");
 		Conexion.EjecutarUpdate("UPDATE jugadores SET vida =" + vidaJugador + " WHERE id =" + id_jugador + "");
 
 	}
