@@ -9,7 +9,7 @@ import java.awt.event.*;
 
 public class Continuar extends JFrame {
 
-	private JFrame frame;
+	public JFrame frame;
 	private JTextField txtAtencinSiContinuas;
 	int VidaTotalFacil = Dado.tirarDado(4);
 	int VidaTotalMedio = Dado.tirarDado(6);
@@ -70,8 +70,10 @@ public class Continuar extends JFrame {
 				// contentPane.setVisible(false);
 				
 				Continuar esconderContinuar = new Continuar();
-				esconderContinuar.setVisible(false);
-			//	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); ///////////////////////////////
+				//esconderContinuar.setVisible(false);
+				
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); ///////////////////////////////
+				frame.setVisible(false);
 			//	close();
 
 				new Combate();
