@@ -57,7 +57,7 @@ public class Continuar extends JFrame {
 		getContentPane().add(txtAtencinSiContinuas);
 		txtAtencinSiContinuas.setColumns(10);
 
-		JButton btnLeeroyJenkinsContinuarFacil = new JButton("LEEROY JENKINS! CONTINUAR.");
+		JButton btnLeeroyJenkinsContinuarFacil = new JButton("LEEROY JENKINS! CONTINUAR");
 		btnLeeroyJenkinsContinuarFacil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				DeleteBaseDeDatos();
