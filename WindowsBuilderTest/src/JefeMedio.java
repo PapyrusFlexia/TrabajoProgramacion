@@ -11,7 +11,6 @@ public class JefeMedio extends JFrame {
 
 	private JFrame frame;
 	private JTextField textField;
-
 	private JTextField textFieldid;
 	private JTextField vidatotalfield;
 	int VidaMedio = Dado.tirarDado(11) + 1;
@@ -179,7 +178,8 @@ public class JefeMedio extends JFrame {
 
 	public static void AddBaseDeDatos(String id, String nombre, int vida, String ataque, int vida_total) {
 		Conexion.conectar();
-		Conexion.EjecutarUpdate("INSERT INTO jefespantano VALUES (\"" + id + "\",\""+ nombre + "\",\"" + vida + "\",\"" + ataque+ "\",\"" + vida_total + "\")");
+		Conexion.EjecutarUpdate("INSERT INTO jefespantano VALUES (\"" + id + "\",\""+ nombre + "\",\"" + vida + "\",\"" + ataque
+				+ "\",\"" + vida_total + "\")");
 
 	}
 }

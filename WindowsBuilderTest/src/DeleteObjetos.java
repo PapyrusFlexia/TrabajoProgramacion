@@ -56,7 +56,7 @@ public class DeleteObjetos extends JFrame {
 		JButton btnAadir = new JButton("BORRAR");
 		btnAadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DeleteBaseDeDatos(textField.getText());
+				AddBaseDeDatos(textField.getText());
 
 			}
 
@@ -96,7 +96,7 @@ public class DeleteObjetos extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public static void DeleteBaseDeDatos(String nombre) {
+	public static void AddBaseDeDatos(String nombre) {
 		Conexion.conectar();
 		Conexion.EjecutarUpdate("DELETE FROM items WHERE nombre = \"" + nombre + "\"");
 	}

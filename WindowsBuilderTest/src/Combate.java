@@ -150,9 +150,6 @@ public class Combate extends JFrame {
 			accionJefe = new Jefe();
 			accionJugador = new turnoJugador();
 		}
-
-
-
 	}
 
 	/**

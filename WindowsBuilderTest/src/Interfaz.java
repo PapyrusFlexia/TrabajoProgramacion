@@ -102,7 +102,6 @@ public class Interfaz extends JFrame {
 		contentPane.add(btnCrearNuevoPj);
 		
 		JButton btnCrearNuevoJefe = new JButton("CREAR NUEVO JEFE");
-
 		btnCrearNuevoJefe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CreacionJefes nwCreacionJefes = new CreacionJefes();

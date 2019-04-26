@@ -10,12 +10,11 @@ import java.awt.event.*;
 public class turnoJugador extends JFrame {
 
 	private JFrame frame;
-
 	static int tirada;
 	int vidaActual;
 	int id_jugador;
 	int cogerId;
-	ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM jefespantano LIMIT 1");
+	ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM jefes ORDER BY RAND() LIMIT 1");
 
 	/**
 	 * Launch the application.
@@ -69,17 +68,13 @@ public class turnoJugador extends JFrame {
 		AddBaseDeDatos(vidaActual);
 
 		if (vidaActual < 1) {
-			JOptionPane.showMessageDialog(dado.getComponent(0), "Has matado al JEFE, encuentras una tienda cercana");
-			Combate nwCombate = new Combate();
-			nwCombate.NewScreen();
+			JOptionPane.showMessageDialog(dado.getComponent(0), "Has matado al JEFE");
+			new Muerte();
+			Muerte muerteVisible = new Muerte(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
+			muerteVisible.setVisible(true);
 
-			// contentPane.setVisible(false);
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
-
-			new Tienda();
-			Tienda tiendaVisible = new Tienda();
-			tiendaVisible.setVisible(true);
 		}
 		
 	
@@ -110,7 +105,7 @@ public class turnoJugador extends JFrame {
 		Conexion.conectar();
 		// Conexion.EjecutarUpdate("UPDATE jugadores SET vida = \""+ vidaJugador +
 		// "\"");
-		Conexion.EjecutarUpdate("UPDATE jefespantano SET vida =" + vidaJefe + " WHERE id =" + id_jugador + ""); //////////////// FALTA WHERE
+		Conexion.EjecutarUpdate("UPDATE jefes SET vida =" + vidaJefe + " WHERE id =" + id_jugador + ""); //////////////// FALTA WHERE
 
 	}
 }

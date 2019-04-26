@@ -161,23 +161,16 @@ public class Tienda extends JFrame {
 		JButton btnContinuar = new JButton("CONTINUAR");
 		btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				//Continuar nwContinuar = new Continuar();
-				//nwContinuar.NewScreen();
-
+				Continuar nwContinuar = new Continuar();
+				nwContinuar.NewScreen();
 
 				// contentPane.setVisible(false);
-				//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //////////////////////////////////////////////////
-				//close();
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
 
-
-				//new Continuar();
-				//Continuar continuar = new Continuar();
-				//continuar.setVisible(true);
-				
-				Continuar esconderContinuar = new Continuar();
-				esconderContinuar.setVisible(true);
-
+				new Continuar();
+				Continuar continuar = new Continuar();
+				continuar.setVisible(true);
 			}
 
 		});
