@@ -179,4 +179,4 @@ public class CreacionPersonajes extends JFrame {
 				+ "\",\"" + vida_total + "\")");
 
 	}
-}
+} 

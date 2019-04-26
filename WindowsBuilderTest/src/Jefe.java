@@ -16,7 +16,8 @@ public class Jefe extends JFrame {
 	int id_jugador;
 	int cogerId;
 	ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM jugadores ORDER BY RAND() LIMIT 1");
-	List<String> results = new ArrayList<String>();
+	//String[] meterRS = new String[3];
+	ArrayList<String> meterRS = new ArrayList<String>();
 
 	/**
 	 * Launch the application.
@@ -57,7 +58,8 @@ public class Jefe extends JFrame {
 			
 			// System.out.println(Conexion.EjecutarSentencia(query));
 			while (rs.next()) {
-				 results.add(rs.getString(1));
+				 meterRS.add(rs.getString(1));
+			
 				
 				
 				vidaActual = rs.getInt("vida");

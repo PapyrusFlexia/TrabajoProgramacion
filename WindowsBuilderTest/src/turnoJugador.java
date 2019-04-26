@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,6 +16,7 @@ public class turnoJugador extends JFrame {
 	int id_jugador;
 	int cogerId;
 	ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM jefes ORDER BY RAND() LIMIT 1");
+	ArrayList<String> meterRS = new ArrayList<String>();
 
 	/**
 	 * Launch the application.
@@ -52,6 +54,8 @@ public class turnoJugador extends JFrame {
 			//  id_jugador = rs.getInt("id");
 			// System.out.println(Conexion.EjecutarSentencia(query));
 			while (rs.next()) {
+			 meterRS.add(rs.getString(1));
+			 
 				vidaActual = rs.getInt("vida");
 				
 				id_jugador = rs.getInt("id");
