@@ -111,7 +111,7 @@ public class Combate extends JFrame {
 				// accionJugador = new turnoJugador();
 				pasarTurno();
 
-				turno++;
+				turno++; //esto no funciona
 			
 				//pasarTurno();
 				
