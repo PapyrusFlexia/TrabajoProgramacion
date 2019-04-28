@@ -15,6 +15,7 @@ public class Jefe extends JFrame {
 	int vidaActual;
 	int id_jugador;
 	int cogerId;
+
 	Combate elTurno = new Combate();
 	int turnoActual = elTurno.getTurno();
 	
@@ -34,6 +35,7 @@ public class Jefe extends JFrame {
 	JefeGetSet objetoJefe = new JefeGetSet(0, 0);
 	//JefeGetSet k = new JefeGetSet(vidaActual, id_jugador);
 	
+
 
 	/**
 	 * Launch the application.
@@ -75,6 +77,7 @@ public class Jefe extends JFrame {
 			
 			// System.out.println(Conexion.EjecutarSentencia(query));
 			while (rs.next()) {
+
 				 
 				//meterRS.add(rs.getString(1));
 				vidaActual = rs.getInt("vida");
@@ -84,6 +87,7 @@ public class Jefe extends JFrame {
 				JefeGetSet k = new JefeGetSet(vidaActual, id_jugador);
 				
 				meterRS.add(k);
+
 			}
 			System.out.println(meterRS);
 			System.out.println(((JefeGetSet) meterRS.get(0)).getVida());
@@ -124,6 +128,7 @@ public class Jefe extends JFrame {
 			
 		}
 		
+
 		
 	
 		//for(int x=0;x<sizeRSjefe;x++) {
@@ -132,6 +137,7 @@ public class Jefe extends JFrame {
 		//meterRS.get(x) = meterRS.get(x) - dmgJefe;
 		//AddBaseDeDatos(vidaActual);
 		//}
+
 
 		if (vidaActual < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "Has muerto");

@@ -18,7 +18,9 @@ public class Combate extends JFrame {
 	int min = 1;
 	int max = 10;
 	int counterInicio = ThreadLocalRandom.current().nextInt(min, max + 1);
+
 	public int turno = 0;
+
 	// int counterInicio = (int)Math.random();
 
 	/**
@@ -108,10 +110,12 @@ public class Combate extends JFrame {
 				// accionJefe = new Jefe();
 				// accionJugador = new turnoJugador();
 				pasarTurno();
+
 				turno++;
 			
 				//pasarTurno();
 				
+
 				
 				
 				/*if (counterInicio % 2 == 0) {
@@ -169,6 +173,7 @@ public class Combate extends JFrame {
 	}
 	
 	
+
 
 	/**
 	 * Initialize the contents of the frame.
