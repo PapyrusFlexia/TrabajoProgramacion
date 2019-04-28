@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -10,9 +11,12 @@ import java.awt.event.*;
 public class turnoJugador extends JFrame {
 
 	private JFrame frame;
-	static int tirada = Dado.tirarDado(4);
+	static int tirada;
 	int vidaActual;
-	
+	int id_jugador;
+	int cogerId;
+	ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM jefes ORDER BY RAND() LIMIT 1");
+	ArrayList<String> meterRS = new ArrayList<String>();
 
 	/**
 	 * Launch the application.
@@ -41,15 +45,20 @@ public class turnoJugador extends JFrame {
 
 		// Dado Tirada = new Dado();//
 		// Tirada.tirarDado(6);//
-		JOptionPane.showMessageDialog(dado.getComponent(0),"Has sacado " + tirada + " , el jefe pierde " + tirada + " de vida");
+		int dmgJugador = tirarJugador();
+		JOptionPane.showMessageDialog(dado.getComponent(0),"Has sacado " + dmgJugador + " , el jefe pierde " + dmgJugador + " de vida");
 
 		try {
 
-			ResultSet rs = Conexion.EjecutarSentencia("SELECT vida FROM jefes WHERE nombre = \"Sans\"");
+			//ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM jefes ORDER BY RAND() LIMIT 1");
+			//  id_jugador = rs.getInt("id");
 			// System.out.println(Conexion.EjecutarSentencia(query));
 			while (rs.next()) {
-
-				vidaActual = rs.getInt(1);
+			 meterRS.add(rs.getString(1));
+			 
+				vidaActual = rs.getInt("vida");
+				
+				id_jugador = rs.getInt("id");
 			}
 
 		} catch (SQLException e) {
@@ -59,7 +68,7 @@ public class turnoJugador extends JFrame {
 		}
 		
 
-		vidaActual = vidaActual - tirada;
+		vidaActual = vidaActual - dmgJugador;
 		AddBaseDeDatos(vidaActual);
 
 		if (vidaActual < 1) {
@@ -77,8 +86,9 @@ public class turnoJugador extends JFrame {
 
 	}
 
-	
-	
+	public int tirarJugador(){
+		 return tirada = Dado.tirarDado(3)+ 1;
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -95,11 +105,11 @@ public class turnoJugador extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public static void AddBaseDeDatos(int vidaJefe) {
+	public void AddBaseDeDatos(int vidaJefe) {
 		Conexion.conectar();
 		// Conexion.EjecutarUpdate("UPDATE jugadores SET vida = \""+ vidaJugador +
 		// "\"");
-		Conexion.EjecutarUpdate("UPDATE jefes SET vida = " + vidaJefe + " WHERE nombre = " + "\"Sans\""); //////////////// FALTA WHERE
+		Conexion.EjecutarUpdate("UPDATE jefes SET vida =" + vidaJefe + " WHERE id =" + id_jugador + ""); //////////////// FALTA WHERE
 
 	}
 }

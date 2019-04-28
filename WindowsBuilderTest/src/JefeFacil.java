@@ -11,8 +11,9 @@ public class JefeFacil extends JFrame {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JTextField textFieldid;
 	private JTextField vidatotalfield;
-	int VidaFacil = Dado.tirarDado(8);
+	int VidaFacil = Dado.tirarDado(19) + 1;
 	String atkInicial = "1d6";
 
 	/**
@@ -22,7 +23,7 @@ public class JefeFacil extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CreacionPersonajes window = new CreacionPersonajes(); ////////////////////////////////////////////////////
+					JefeFacil windowjF = new JefeFacil(); ////////////////////////////////////////////////////
 					// window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,9 +44,18 @@ public class JefeFacil extends JFrame {
 		getContentPane().setLayout(null);
 
 		textField = new JTextField();
-		textField.setBounds(193, 179, 86, 20);
+		textField.setBounds(193, 176, 86, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		textFieldid = new JTextField();
+		textFieldid.setBounds(193, 127, 86, 20);
+		getContentPane().add(textFieldid);
+		textFieldid.setColumns(10);
+
+		JLabel lblid = new JLabel("id");
+		lblid.setBounds(56, 130, 46, 14);
+		getContentPane().add(lblid);
 
 		JLabel lblNombre = new JLabel("nombre");
 		lblNombre.setBounds(56, 182, 46, 14);
@@ -90,13 +100,13 @@ public class JefeFacil extends JFrame {
 
 		final JFrame dado = new JFrame();
 		JLabel lblBienvenido = new JLabel("BIENVENIDO A LA CREACION DE JEFES");
-		lblBienvenido.setBounds(180, 100, 238, 14);
+		lblBienvenido.setBounds(177, 39, 238, 14);
 		getContentPane().add(lblBienvenido);
 
 		JButton btnCrear = new JButton("CREAR");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddBaseDeDatos(textField.getText(), VidaFacil, atkInicial, VidaFacil); // RELLENAR
+				AddBaseDeDatos(textFieldid.getText(), textField.getText(), VidaFacil, atkInicial, VidaFacil); // RELLENAR
 
 			}
 
@@ -120,7 +130,7 @@ public class JefeFacil extends JFrame {
 			}
 		});
 
-		btndParaTu.setBounds(22, 145, 177, 23);
+		btndParaTu.setBounds(10, 80, 177, 23);
 		getContentPane().add(btndParaTu);
 		
 		
@@ -164,9 +174,9 @@ public class JefeFacil extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public static void AddBaseDeDatos(String nombre, int vida, String ataque, int vida_total) {
+	public static void AddBaseDeDatos(String id, String nombre, int vida, String ataque, int vida_total) {
 		Conexion.conectar();
-		Conexion.EjecutarUpdate("INSERT INTO jefes VALUES (\"" + nombre + "\",\"" + vida + "\",\"" + ataque
+		Conexion.EjecutarUpdate("INSERT INTO jefes VALUES (\"" + id + "\",\""+ nombre + "\",\"" + vida + "\",\"" + ataque
 				+ "\",\"" + vida_total + "\")");
 
 	}

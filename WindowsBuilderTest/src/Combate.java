@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -13,8 +14,12 @@ public class Combate extends JFrame {
 	private Jefe accionJefe;
 	private turnoJugador accionJugador;
 	int vidaActual;
-	
-	   
+	int counterTurnos = 0;
+	int min = 1;
+	int max = 10;
+	int counterInicio = ThreadLocalRandom.current().nextInt(min, max + 1);
+	public int turno = 0;
+	// int counterInicio = (int)Math.random();
 
 	/**
 	 * Launch the application.
@@ -32,19 +37,16 @@ public class Combate extends JFrame {
 
 		});
 	}
-	
-	
 
 	/**
 	 * Create the frame.
 	 */
 	public Combate() {
-		
-		 
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 596, 795);
 		getContentPane().setLayout(null);
-		
+
 		JButton btnPruebaJugador = new JButton("IR A JUGADOR (PRUEBA)");
 		btnPruebaJugador.setBounds(168, 301, 222, 23);
 		getContentPane().add(btnPruebaJugador);
@@ -61,27 +63,71 @@ public class Combate extends JFrame {
 
 		});
 
-		JButton pasarTurno = new JButton("COMENZAR COMBATE");
-		getContentPane().add(pasarTurno);
-		pasarTurno.addActionListener(new ActionListener() {
+		JButton comenzarCombate = new JButton("COMENZAR COMBATE");
+		getContentPane().add(comenzarCombate);
+		comenzarCombate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				accionJefe = new Jefe();
-				//accionJugador = new turnoJugador();
-				
-				/*do {
- 
-					accionJefe = new Jefe(); 
-					
-					accionJugador = new turnoJugador();
-				} while (vidaActual > 0);*/
-				 
-				
+				// accionJefe = new Jefe();
+				// accionJugador = new turnoJugador();
+
+				do {
+					if (counterInicio % 2 == 0) {
+						if (counterTurnos % 2 == 0) {
+							counterTurnos++;
+							accionJefe = new Jefe();
+						} else if (counterTurnos % 2 == 1) {
+							counterTurnos--;
+							accionJugador = new turnoJugador();
+						}
+					} else if (counterInicio % 2 != 0) {
+						if (counterTurnos % 2 == 0) {
+							counterTurnos++;
+							accionJugador = new turnoJugador();
+						} else if (counterTurnos % 2 == 1) {
+							counterTurnos--;
+							accionJefe = new Jefe();
+						}
+
+					}
+
+				} while (vidaActual > 0);
+
+				comenzarCombate.setVisible(false);
+
 			}
 
 		});
 
-		pasarTurno.setBounds(197, 133, 145, 23);
-		getContentPane().add(pasarTurno);
+		comenzarCombate.setBounds(185, 133, 178, 23);
+		getContentPane().add(comenzarCombate);
+
+		JButton btnpasarTurno = new JButton("PASAR TURNO");
+		getContentPane().add(btnpasarTurno);
+		btnpasarTurno.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// accionJefe = new Jefe();
+				// accionJugador = new turnoJugador();
+				pasarTurno();
+				turno++;
+			
+				//pasarTurno();
+				
+				
+				
+				/*if (counterInicio % 2 == 0) {
+					accionJugador = new turnoJugador();
+					accionJefe = new Jefe();
+				} else if (counterInicio % 2 != 0) {
+					accionJefe = new Jefe();
+					accionJugador = new turnoJugador();
+				}*/
+
+			}
+
+		});
+
+		btnpasarTurno.setBounds(185, 133, 178, 23);
+		getContentPane().add(btnpasarTurno);
 
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.setBounds(481, 11, 89, 23);
@@ -98,9 +144,31 @@ public class Combate extends JFrame {
 			}
 
 		});
-		
 
 	}
+	
+
+	public int getTurno() {
+		return turno;
+	}
+
+	public void setTurno(int turno) {
+		this.turno = turno;
+	}
+
+	public void pasarTurno() {
+		if (counterInicio % 2 == 0) {
+			accionJugador = new turnoJugador();
+			accionJefe = new Jefe();
+			
+		} else if (counterInicio % 2 != 0) {
+			accionJefe = new Jefe();
+			accionJugador = new turnoJugador();
+			
+		}
+	}
+	
+	
 
 	/**
 	 * Initialize the contents of the frame.

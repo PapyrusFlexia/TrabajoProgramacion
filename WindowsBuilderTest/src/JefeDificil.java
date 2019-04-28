@@ -11,8 +11,9 @@ public class JefeDificil extends JFrame {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JTextField textFieldid;
 	private JTextField vidatotalfield;
-	int VidaDificil = Dado.tirarDado(20);
+	int VidaDificil = Dado.tirarDado(19) + 1;
 	String atkInicial = "1d16";
 
 	/**
@@ -22,7 +23,7 @@ public class JefeDificil extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CreacionPersonajes window = new CreacionPersonajes(); ////////////////////////////////////////////////////
+					JefeDificil windojD = new JefeDificil(); ////////////////////////////////////////////////////
 					// window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,11 +42,20 @@ public class JefeDificil extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 596, 795);
 		getContentPane().setLayout(null);
-
+		
 		textField = new JTextField();
 		textField.setBounds(193, 179, 86, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		textFieldid = new JTextField();
+		textFieldid.setBounds(193, 128, 86, 20);
+		getContentPane().add(textFieldid);
+		textFieldid.setColumns(10);
+
+		JLabel lblid = new JLabel("id");
+		lblid.setBounds(56, 131, 46, 14);
+		getContentPane().add(lblid);
 
 		JLabel lblNombre = new JLabel("nombre");
 		lblNombre.setBounds(56, 182, 46, 14);
@@ -90,13 +100,13 @@ public class JefeDificil extends JFrame {
 
 		final JFrame dado = new JFrame();
 		JLabel lblBienvenido = new JLabel("BIENVENIDO A LA CREACION DE JEFES");
-		lblBienvenido.setBounds(180, 100, 238, 14);
+		lblBienvenido.setBounds(173, 32, 238, 14);
 		getContentPane().add(lblBienvenido);
 
 		JButton btnCrear = new JButton("CREAR");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddBaseDeDatos(textField.getText(), VidaDificil, atkInicial, VidaDificil); // RELLENAR
+				AddBaseDeDatos(textFieldid.getText(), textField.getText(), VidaDificil, atkInicial, VidaDificil); // RELLENAR
 
 			}
 
@@ -122,7 +132,7 @@ public class JefeDificil extends JFrame {
 			}
 		});
 
-		btndD20.setBounds(47, 125, 177, 23);
+		btndD20.setBounds(22, 80, 177, 23);
 		getContentPane().add(btndD20);
 
 		JButton btnVolver = new JButton("VOLVER");
@@ -165,10 +175,11 @@ public class JefeDificil extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public static void AddBaseDeDatos(String nombre, int vida, String ataque, int vida_total) {
+	public static void AddBaseDeDatos(String id, String nombre, int vida, String ataque, int vida_total) {
 		Conexion.conectar();
-		Conexion.EjecutarUpdate("INSERT INTO jefes VALUES (\"" + nombre + "\",\"" + vida + "\",\"" + ataque
+		Conexion.EjecutarUpdate("INSERT INTO jefes VALUES (\"" + id + "\",\""+ nombre + "\",\"" + vida + "\",\"" + ataque
 				+ "\",\"" + vida_total + "\")");
 
 	}
+
 }

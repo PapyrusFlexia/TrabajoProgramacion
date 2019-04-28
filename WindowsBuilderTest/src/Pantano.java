@@ -44,7 +44,7 @@ public class Pantano extends JFrame {
 
 		JPanel topPanel = new JPanel();
 
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("PRUEBA");
 		// final JLabel label = new JLabel("Hello World"); //
 
 		// label.setVisible(false); //
@@ -53,7 +53,7 @@ public class Pantano extends JFrame {
 		// topPanel.add(label); //
 		// frame.setVisible(true); //
 
-		int tirada = Dado.tirarDado(20);
+		int tirada = Dado.tirarDado(20) + 1;
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

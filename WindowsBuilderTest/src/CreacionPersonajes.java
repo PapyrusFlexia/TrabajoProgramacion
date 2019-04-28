@@ -11,6 +11,7 @@ public class CreacionPersonajes extends JFrame {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JTextField textFieldid;
 	private JTextField vidatotalfield;
 	int VidaTotal = Dado.tirarDado(8);
 	String atkInicial = "1d4";
@@ -46,7 +47,16 @@ public class CreacionPersonajes extends JFrame {
 		textField.setBounds(193, 179, 86, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		textFieldid = new JTextField();
+		textFieldid.setBounds(193, 124, 86, 20);
+		getContentPane().add(textFieldid);
+		textFieldid.setColumns(10);
 
+		JLabel lblid = new JLabel("id");
+		lblid.setBounds(56, 127, 46, 14);
+		getContentPane().add(lblid);
+		
 		JLabel lblNombre = new JLabel("nombre");
 		lblNombre.setBounds(56, 182, 46, 14);
 		getContentPane().add(lblNombre);
@@ -90,13 +100,13 @@ public class CreacionPersonajes extends JFrame {
 
 		final JFrame dado = new JFrame();
 		JLabel lblBienvenido = new JLabel("BIENVENIDO A LA CREACION DE PERSONAJES");
-		lblBienvenido.setBounds(180, 100, 238, 14);
+		lblBienvenido.setBounds(162, 42, 238, 14);
 		getContentPane().add(lblBienvenido);
 
 		JButton btnCrear = new JButton("CREAR");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddBaseDeDatos(textField.getText(), VidaTotal, atkInicial, VidaTotal); // RELLENAR
+				AddBaseDeDatos(textFieldid.getText(), textField.getText(), VidaTotal, atkInicial, VidaTotal); // RELLENAR
 
 			}
 
@@ -120,7 +130,7 @@ public class CreacionPersonajes extends JFrame {
 			}
 		});
 
-		btndParaTu.setBounds(21, 140, 144, 23);
+		btndParaTu.setBounds(21, 80, 144, 23);
 		getContentPane().add(btndParaTu);
 
 		JButton btnVolver = new JButton("VOLVER");
@@ -163,10 +173,10 @@ public class CreacionPersonajes extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public static void AddBaseDeDatos(String nombre, int vida, String ataque, int vida_total) {
+	public static void AddBaseDeDatos(String id, String nombre, int vida, String ataque, int vida_total) {
 		Conexion.conectar();
-		Conexion.EjecutarUpdate("INSERT INTO jugadores VALUES (\"" + nombre + "\",\"" + vida + "\",\"" + ataque
+		Conexion.EjecutarUpdate("INSERT INTO jugadores VALUES (\"" + id + "\",\"" + nombre + "\",\"" + vida + "\",\"" + ataque
 				+ "\",\"" + vida_total + "\")");
 
 	}
-}
+} 
