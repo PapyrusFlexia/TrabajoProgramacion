@@ -29,9 +29,9 @@ public class turnoJugador extends JFrame {
 	ResultSet rs = Conexion.EjecutarSentencia(consulta);
 
 	// String[] meterRS = new String[3];
-	ArrayList<JefeGetSet> meterRS = new ArrayList<JefeGetSet>();
-	int sizeRSjefe = meterRS.size();
-	JefeGetSet objetoJefe = new JefeGetSet(0, 0);
+	ArrayList<turnoJugadorGetSet> meterRSjugador = new ArrayList<turnoJugadorGetSet>();
+	int sizeRSjugador = meterRSjugador.size();
+	turnoJugadorGetSet objetoturnoJefe = new turnoJugadorGetSet(0, 0);
 	// JefeGetSet k = new JefeGetSet(vidaActual, id_jugador);
 
 	/**
@@ -80,16 +80,16 @@ public class turnoJugador extends JFrame {
 				id_jefe = rs.getInt("id");
 				// cogerId = rs.getInt("id");
 
-				JefeGetSet kFacil = new JefeGetSet(vidaActualFacil, id_jefe);
-				JefeGetSet kMedio = new JefeGetSet(vidaActualMedio, id_jefe);
-				JefeGetSet kDificil = new JefeGetSet(vidaActualDificil, id_jefe);
+				turnoJugadorGetSet kFacil = new turnoJugadorGetSet(vidaActualFacil, id_jefe);
+				turnoJugadorGetSet kMedio = new turnoJugadorGetSet(vidaActualMedio, id_jefe);
+				turnoJugadorGetSet kDificil = new turnoJugadorGetSet(vidaActualDificil, id_jefe);
 
-				meterRS.add(kFacil);
-				meterRS.add(kMedio);
-				meterRS.add(kDificil);
+				meterRSjugador.add(kFacil);
+				meterRSjugador.add(kMedio);
+				meterRSjugador.add(kDificil);
 
 			}
-			System.out.println(meterRS);
+			System.out.println(meterRSjugador);
 			//System.out.println(((JefeGetSet) meterRS.get(0)).getVida());
 			// System.out.println("id " +((JefeGetSet) meterRS.get(0)).getId());
 			// objetoJefe.setVida() =
@@ -99,7 +99,7 @@ public class turnoJugador extends JFrame {
 				if (id_jefe == 1) {
 
 					System.out.println("id " + id_jefe);
-					vidaActualFacil = (Integer) meterRS.get(0).getVida();
+					vidaActualFacil = (Integer) meterRSjugador.get(0).getVida();
 
 					vidaActualFacil = vidaActualFacil - dmgJugador;
 					if (vidaActualFacil < 1) {
@@ -120,7 +120,7 @@ public class turnoJugador extends JFrame {
 				if (id_jefe == 2) {
 
 					System.out.println("id " + id_jefe);
-					vidaActualMedio = (Integer) meterRS.get(0).getVida();
+					vidaActualMedio = (Integer) meterRSjugador.get(0).getVida();
 
 					vidaActualMedio = vidaActualMedio - dmgJugador;
 					if (vidaActualMedio < 1) {
@@ -142,7 +142,7 @@ public class turnoJugador extends JFrame {
 				if (id_jefe == 3) {
 
 					System.out.println("id " + id_jefe);
-					vidaActualDificil = (Integer) meterRS.get(0).getVida();
+					vidaActualDificil = (Integer) meterRSjugador.get(0).getVida();
 
 					vidaActualDificil = vidaActualDificil - dmgJugador;
 					if (vidaActualMedio < 1) {
