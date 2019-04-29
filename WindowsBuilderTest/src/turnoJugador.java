@@ -11,6 +11,7 @@ import java.awt.event.*;
 public class turnoJugador extends JFrame {
 
 	private JFrame frame;
+	final JFrame dado = new JFrame();
 	static int tirada = Dado.tirarDado(3) + 1;
 
 	int vidaActualUno;
@@ -21,9 +22,7 @@ public class turnoJugador extends JFrame {
 	int idJefeUno, idJefeDos;
 
 	int cogerId;
-
-	Combate elTurno = new Combate();
-	int turnoActual = elTurno.getTurno();
+	int dmgJugador = tirarJugador();
 
 	String consulta = "SELECT * FROM jefes WHERE id= 1";
 
@@ -55,10 +54,9 @@ public class turnoJugador extends JFrame {
 	 */
 
 	public turnoJugador() {
-		System.out.println("turno " + turnoActual);
-		final JFrame dado = new JFrame();
 
-		int dmgJugador = tirarJugador();
+		// final JFrame dado = new JFrame();
+
 		// this.combate = combate;
 
 		// Dado Tirada = new Dado();//
@@ -106,49 +104,36 @@ public class turnoJugador extends JFrame {
 			// objetoJefe.setVida() =
 
 			// idActual = (Integer) meterRS.get(1).getId();
-			if (vidaActualUno > 1) {
-				if (idJefeUno == 1) {
-
-					System.out.println("id " + idJefeUno);
-					System.out.println("dmg" + dmgJugador);
-					vidaActualUno = (Integer) meterRS.get(0).getVida();
-
-					vidaActualUno = vidaActualUno - dmgJugador;
-					AddBaseDeDatos(vidaActualUno, idJefeUno);
-					if (vidaActualUno < 1) {
-						JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
-						new Tienda();
-						Tienda tiendaVisible = new Tienda(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
-						tiendaVisible.setVisible(true);
-
-						setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						close();
-
-					}
-				} else {
-					System.out.println("Has fallado");
-				}
-			} else {
-				if (idJefeDos == 2) {
-					System.out.println("id " + idJefeDos);
-					System.out.println("dmg" + dmgJugador);
-					vidaActualDos = (Integer) meterRS.get(0).getVida();
-
-					vidaActualDos = vidaActualDos - dmgJugador;
-					AddBaseDeDatos(vidaActualDos, idJefeDos);
-					if (vidaActualDos < 1) {
-						JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
-						new Tienda();
-						Tienda tiendaVisible = new Tienda(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
-						tiendaVisible.setVisible(true);
-
-						setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						close();
-					}
-
-				}
-
-			}
+			/*
+			 * if (vidaActualUno > 0) { if (idJefeUno == 1) {
+			 * 
+			 * System.out.println("id " + idJefeUno); System.out.println("dmg" +
+			 * dmgJugador); // vidaActualUno = (Integer) meterRS.get(0).getVida();
+			 * 
+			 * vidaActualUno = vidaActualUno - dmgJugador; AddBaseDeDatos(vidaActualUno,
+			 * idJefeUno); if (vidaActualUno < 1) {
+			 * JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto"); new
+			 * Tienda(); Tienda tiendaVisible = new Tienda(); // QUITAR CUANDO SE TERMINE EL
+			 * PROGRAMA tiendaVisible.setVisible(true);
+			 * 
+			 * setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); close();
+			 * 
+			 * } } else { System.out.println("Has fallado"); } } else { if (idJefeDos == 2)
+			 * { System.out.println("id " + idJefeDos); System.out.println("dmg" +
+			 * dmgJugador); // vidaActualDos = (Integer) meterRS.get(0).getVida();
+			 * 
+			 * vidaActualDos = vidaActualDos - dmgJugador; AddBaseDeDatos(vidaActualDos,
+			 * idJefeDos); if (vidaActualDos < 1) {
+			 * JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto"); new
+			 * Tienda(); Tienda tiendaVisible = new Tienda(); // QUITAR CUANDO SE TERMINE EL
+			 * PROGRAMA tiendaVisible.setVisible(true);
+			 * 
+			 * setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); close(); }
+			 * 
+			 * }
+			 * 
+			 * }
+			 */
 
 			/*
 			 * System.out.println(k.getVida());
@@ -194,6 +179,52 @@ public class turnoJugador extends JFrame {
 		 * setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); close(); }
 		 */
 
+	}
+
+	public void turno() {
+		if (vidaActualUno > 0) {
+			if (idJefeUno == 1) {
+
+				System.out.println("id " + idJefeUno);
+				System.out.println("dmg" + dmgJugador);
+				// vidaActualUno = (Integer) meterRS.get(0).getVida();
+
+				vidaActualUno = vidaActualUno - dmgJugador;
+				AddBaseDeDatos(vidaActualUno, idJefeUno);
+				if (vidaActualUno < 1) {
+					JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
+					new Tienda();
+					Tienda tiendaVisible = new Tienda(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
+					tiendaVisible.setVisible(true);
+
+					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					close();
+
+				}
+			} else {
+				System.out.println("Has fallado");
+			}
+		} else {
+			if (idJefeDos == 2) {
+				System.out.println("id " + idJefeDos);
+				System.out.println("dmg" + dmgJugador);
+				// vidaActualDos = (Integer) meterRS.get(0).getVida();
+
+				vidaActualDos = vidaActualDos - dmgJugador;
+				AddBaseDeDatos(vidaActualDos, idJefeDos);
+				if (vidaActualDos < 1) {
+					JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
+					new Tienda();
+					Tienda tiendaVisible = new Tienda(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
+					tiendaVisible.setVisible(true);
+
+					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					close();
+				}
+
+			}
+
+		}
 	}
 
 	public int tirarJugador() {

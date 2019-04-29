@@ -17,8 +17,6 @@ public class Jefe extends JFrame {
 	int id_jugador;
 	int cogerId;
 
-	Combate elTurno = new Combate();
-	int turnoActual = elTurno.getTurno();
 	
 	String consulta = "SELECT * FROM jugadores ORDER BY RAND() LIMIT 1";
 	
@@ -60,7 +58,7 @@ public class Jefe extends JFrame {
 	 */
 
 	public Jefe() {
-		System.out.println("turno " + turnoActual);
+		
 		final JFrame dado = new JFrame();
 		
 		int dmgJefe = tirarJefe();
