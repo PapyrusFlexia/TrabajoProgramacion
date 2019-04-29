@@ -13,6 +13,7 @@ public class Jefe extends JFrame {
 	private JFrame frame;
 	static int tirada = Dado.tirarDado(3) + 1;
 	int vidaActual;
+	int idActual;
 	int id_jugador;
 	int cogerId;
 
@@ -91,10 +92,31 @@ public class Jefe extends JFrame {
 			}
 			System.out.println(meterRS);
 			System.out.println(((JefeGetSet) meterRS.get(0)).getVida());
-			//objetoJefe.setVida() = 
+			//System.out.println("id " +((JefeGetSet) meterRS.get(0)).getId());
+			//objetoJefe.setVida() =
 			
+			//idActual = (Integer) meterRS.get(1).getId();
+			if (id_jugador == 1) {
+			
+			System.out.println("id " + id_jugador);
 			vidaActual = (Integer) meterRS.get(0).getVida();
+		
 			vidaActual = vidaActual  - dmgJefe;
+			if (vidaActual < 1) {
+				JOptionPane.showMessageDialog(dado.getComponent(0), "Has muerto");
+				new Muerte();
+				Muerte muerteVisible = new Muerte(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
+				muerteVisible.setVisible(true);
+
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
+			  }
+			} else {
+				System.out.println("El JEFE ha fallado");
+			}
+		
+				
+			
 			
 			System.out.println(vidaActual);
 			
@@ -139,7 +161,7 @@ public class Jefe extends JFrame {
 		//}
 
 
-		if (vidaActual < 1) {
+		/*if (vidaActual < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "Has muerto");
 			new Muerte();
 			Muerte muerteVisible = new Muerte(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
@@ -147,7 +169,7 @@ public class Jefe extends JFrame {
 
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
-		}
+		}*/
 		
 	
 	    

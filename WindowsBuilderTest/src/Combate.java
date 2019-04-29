@@ -102,6 +102,7 @@ public class Combate extends JFrame {
 
 		comenzarCombate.setBounds(185, 133, 178, 23);
 		getContentPane().add(comenzarCombate);
+		
 
 		JButton btnpasarTurno = new JButton("PASAR TURNO");
 		getContentPane().add(btnpasarTurno);
@@ -132,6 +133,7 @@ public class Combate extends JFrame {
 
 		btnpasarTurno.setBounds(185, 133, 178, 23);
 		getContentPane().add(btnpasarTurno);
+		
 
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.setBounds(481, 11, 89, 23);
@@ -153,7 +155,11 @@ public class Combate extends JFrame {
 	
 
 	public int getTurno() {
+		turno++; 
+		
 		return turno;
+		
+		
 	}
 
 	public void setTurno(int turno) {
