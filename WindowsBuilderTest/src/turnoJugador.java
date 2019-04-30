@@ -91,7 +91,7 @@ public class turnoJugador extends JFrame {
 					rsUno.close();
 			} catch (Exception e) {
 			}
-			;
+
 		}
 	}
 
