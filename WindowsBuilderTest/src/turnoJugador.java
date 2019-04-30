@@ -56,6 +56,7 @@ public class turnoJugador extends JFrame {
 				turnoJugadorGetSet kUno = new turnoJugadorGetSet(vidaActualUno, idJefeUno);
 
 				meterRS.add(kUno);
+				// rsUno.close();
 			}
 			while (rsDos.next()) {
 
@@ -68,6 +69,7 @@ public class turnoJugador extends JFrame {
 				turnoJugadorGetSet kDos = new turnoJugadorGetSet(vidaActualDos, idJefeDos);
 
 				meterRS.add(kDos);
+				// rsDos.close();
 			}
 			while (rsTres.next()) {
 
@@ -79,18 +81,12 @@ public class turnoJugador extends JFrame {
 				turnoJugadorGetSet kTres = new turnoJugadorGetSet(vidaActualTres, idJefeTres);
 
 				meterRS.add(kTres);
+				// rsTres.close();
 			}
 
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-
-		} finally {
-			try {
-				if (rsUno != null)
-					rsUno.close();
-			} catch (Exception e) {
-			}
 
 		}
 	}
