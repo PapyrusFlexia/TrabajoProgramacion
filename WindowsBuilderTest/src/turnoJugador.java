@@ -19,6 +19,7 @@ public class turnoJugador extends JFrame {
 	int vidaActualTres;
 
 	int idActual;
+
 	int idJefeUno, idJefeDos, idJefeTres;
 
 	int cogerId;
@@ -39,10 +40,10 @@ public class turnoJugador extends JFrame {
 
 	public turnoJugador() {
 
-		JOptionPane.showMessageDialog(dado.getComponent(0),"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+		JOptionPane.showMessageDialog(dado.getComponent(0),
+				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
 		try {
-			
 
 			while (rsUno.next()) {
 
@@ -85,7 +86,12 @@ public class turnoJugador extends JFrame {
 			e.printStackTrace();
 
 		} finally {
-		    try { if (rsUno != null) rsUno.close(); } catch (Exception e) {};
+			try {
+				if (rsUno != null)
+					rsUno.close();
+			} catch (Exception e) {
+			}
+			;
 		}
 	}
 
@@ -106,6 +112,7 @@ public class turnoJugador extends JFrame {
 
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
+
 		}
 	}
 
@@ -125,6 +132,7 @@ public class turnoJugador extends JFrame {
 	}
 
 	public void AddBaseDeDatosUno(int vidaJugador, int idJefe) {
+
 		Conexion.conectar();
 
 		Conexion.EjecutarUpdate("UPDATE jefes SET vida =" + vidaJugador + " WHERE id =" + idJefe + "");

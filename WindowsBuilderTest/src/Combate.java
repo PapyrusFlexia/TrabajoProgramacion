@@ -80,12 +80,15 @@ public class Combate extends JFrame {
 						} else if (counterTurnos % 2 == 1) {
 							counterTurnos--;
 							accionJugador = new turnoJugador();
+
 							accionJugador.segundoJefePantano();
+
 						}
 					} else if (counterInicio % 2 != 0) {
 						if (counterTurnos % 2 == 0) {
 							counterTurnos++;
 							accionJugador = new turnoJugador();
+
 							accionJugador.segundoJefePantano();
 						} else if (counterTurnos % 2 == 1) {
 							counterTurnos--;
@@ -169,17 +172,29 @@ public class Combate extends JFrame {
 
 	
 
+
 	/*public void pasarTurno() {
+=======
+	public void pasarTurno() {
+>>>>>>> branch 'master' of https://github.com/PapyrusFlexia/TrabajoProgramacion.git
 		if (counterInicio % 2 == 0) {
 			accionJugador = new turnoJugador();
+<<<<<<< HEAD
 			accionJugador.segundoJefePantano();
+=======
+			accionJugador.turno();
+>>>>>>> branch 'master' of https://github.com/PapyrusFlexia/TrabajoProgramacion.git
 			accionJefe = new Jefe();
 			
 			
 		} else if (counterInicio % 2 != 0) {
 			accionJefe = new Jefe();
 			accionJugador = new turnoJugador();
+<<<<<<< HEAD
 			accionJugador.segundoJefePantano();
+=======
+			accionJugador.turno();
+>>>>>>> branch 'master' of https://github.com/PapyrusFlexia/TrabajoProgramacion.git
 			
 		}
 	}*/
