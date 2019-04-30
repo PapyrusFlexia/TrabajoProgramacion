@@ -19,7 +19,7 @@ public class Combate extends JFrame {
 	int max = 10;
 	int counterInicio = ThreadLocalRandom.current().nextInt(min, max + 1);
 
-	public int turno = 0;
+	
 
 	// int counterInicio = (int)Math.random();
 
@@ -80,11 +80,13 @@ public class Combate extends JFrame {
 						} else if (counterTurnos % 2 == 1) {
 							counterTurnos--;
 							accionJugador = new turnoJugador();
+							accionJugador.segundoJefePantano();
 						}
 					} else if (counterInicio % 2 != 0) {
 						if (counterTurnos % 2 == 0) {
 							counterTurnos++;
 							accionJugador = new turnoJugador();
+							accionJugador.segundoJefePantano();
 						} else if (counterTurnos % 2 == 1) {
 							counterTurnos--;
 							accionJefe = new Jefe();
@@ -110,9 +112,20 @@ public class Combate extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// accionJefe = new Jefe();
 				// accionJugador = new turnoJugador();
-				pasarTurno();
+				if (counterInicio % 2 == 0) {
+					accionJugador = new turnoJugador();
+					accionJugador.segundoJefePantano();
+					accionJefe = new Jefe();
+					
+					
+				} else if (counterInicio % 2 != 0) {
+					accionJefe = new Jefe();
+					accionJugador = new turnoJugador();
+					accionJugador.segundoJefePantano();
+					
+				}
 
-				turno++; //esto no funciona
+				 //esto no funciona
 			
 				//pasarTurno();
 				
@@ -154,29 +167,22 @@ public class Combate extends JFrame {
 	}
 	
 
-	public int getTurno() {
-		turno++; 
-		
-		return turno;
-		
-		
-	}
+	
 
-	public void setTurno(int turno) {
-		this.turno = turno;
-	}
-
-	public void pasarTurno() {
+	/*public void pasarTurno() {
 		if (counterInicio % 2 == 0) {
 			accionJugador = new turnoJugador();
+			accionJugador.segundoJefePantano();
 			accionJefe = new Jefe();
+			
 			
 		} else if (counterInicio % 2 != 0) {
 			accionJefe = new Jefe();
 			accionJugador = new turnoJugador();
+			accionJugador.segundoJefePantano();
 			
 		}
-	}
+	}*/
 	
 	
 
