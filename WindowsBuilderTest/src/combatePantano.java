@@ -42,58 +42,47 @@ public class combatePantano extends JFrame {
 	 * Create the frame.
 	 */
 	public combatePantano() {
-		
-		 JFrame jframe = new JFrame("combatePantano");
-		 jframe.setTitle("combatePantano");
+
+		JFrame jframe = new JFrame("combatePantano");
+		jframe.setTitle("combatePantano");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 596, 795);
 		getContentPane().setLayout(null);
-		
+
 		System.out.println("combate en el pantano");
-		
 
-		/*JButton comenzarCombate = new JButton("COMENZAR COMBATE");
-		getContentPane().add(comenzarCombate);
-		comenzarCombate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// accionJefe = new Jefe();
-				// accionJugador = new turnoJugador();
-
-				do {
-					if (counterInicio % 2 == 0) {
-						if (counterTurnos % 2 == 0) { ///////////////////////////////////////////////////////////////
-							counterTurnos++;
-							accionJefe = new Jefe();
-						} else if (counterTurnos % 2 == 1) {
-							counterTurnos--;
-							accionJugador = new turnoJugador();
-							accionJugador.primerJefePantano();
-
-						}
-					} else if (counterInicio % 2 != 0) {
-						if (counterTurnos % 2 == 0) {
-							counterTurnos++;
-							accionJugador = new turnoJugador();
-
-							accionJugador.primerJefePantano();
-						} else if (counterTurnos % 2 == 1) {
-							counterTurnos--;
-							accionJefe = new Jefe();
-						}
-
-					}
-
-				} while (vidaActual > 0);
-
-				comenzarCombate.setVisible(false);
-
-			}
-
-		});
-
-		comenzarCombate.setBounds(185, 133, 178, 23);
-		getContentPane().add(comenzarCombate);*/
+		/*
+		 * JButton comenzarCombate = new JButton("COMENZAR COMBATE");
+		 * getContentPane().add(comenzarCombate); comenzarCombate.addActionListener(new
+		 * ActionListener() { public void actionPerformed(ActionEvent arg0) { //
+		 * accionJefe = new Jefe(); // accionJugador = new turnoJugador();
+		 * 
+		 * do { if (counterInicio % 2 == 0) { if (counterTurnos % 2 == 0) {
+		 * ///////////////////////////////////////////////////////////////
+		 * counterTurnos++; accionJefe = new Jefe(); } else if (counterTurnos % 2 == 1)
+		 * { counterTurnos--; accionJugador = new turnoJugador();
+		 * accionJugador.primerJefePantano();
+		 * 
+		 * } } else if (counterInicio % 2 != 0) { if (counterTurnos % 2 == 0) {
+		 * counterTurnos++; accionJugador = new turnoJugador();
+		 * 
+		 * accionJugador.primerJefePantano(); } else if (counterTurnos % 2 == 1) {
+		 * counterTurnos--; accionJefe = new Jefe(); }
+		 * 
+		 * }
+		 * 
+		 * } while (vidaActual > 0);
+		 * 
+		 * comenzarCombate.setVisible(false);
+		 * 
+		 * }
+		 * 
+		 * });
+		 * 
+		 * comenzarCombate.setBounds(185, 133, 178, 23);
+		 * getContentPane().add(comenzarCombate);
+		 */
 
 		JButton btnpasarTurno = new JButton("PASAR TURNO");
 		getContentPane().add(btnpasarTurno);
@@ -102,48 +91,61 @@ public class combatePantano extends JFrame {
 				turnoJugador vidas = new turnoJugador();
 				// accionJefe = new Jefe();
 				// accionJugador = new turnoJugador(); ////////////////////////////////
-				//if (counterInicio % 2 == 0) {
+				// if (counterInicio % 2 == 0) {
 				accionJugador = new turnoJugador();
-					if (vidas.getVidaActualUno() >= 1) {
-						accionJugador.primerJefePantano();
-						//if (vidas.getVidaActualUno() < 1){
-						//frame.setVisible(false);
-						//}
-					} else if (vidas.getVidaActualDos() >= 1) {
-						accionJugador.segundoJefePantano();
-						
-					} else if (vidas.getVidaActualTres() >= 1) {
-						accionJugador.tercerJefePantano();
-					
-						System.out.println("FELICIDADES has superado el PANTANO");
-					
-					} else if (vidas.getVidaActualCuatro() >= 1) {
-						accionJugador.cuartoJefePantano();
-						System.out.println("luchas contra el 4 jefe");
-						System.out.println(vidas.getVidaActualCuatro());
-					} else if (vidas.getVidaActualCinco() >= 1) {
-						accionJugador.quintoJefePantano();
-						System.out.println("luchas contra el 5 jefe");
-					} else if (vidas.getVidaActualSeis() >= 1) {
-						accionJugador.sextoJefePantano();
-						System.out.println("FELICIDADES has superado la MONTAÑA");
-					}
-					
+				if (vidas.getVidaActualUno() >= 1) {
+					accionJugador.primerJefePantano();
+					// if (vidas.getVidaActualUno() < 1){
+					// frame.setVisible(false);
+					// }
+				} else if (vidas.getVidaActualDos() >= 1) {
+					accionJugador.segundoJefePantano();
 
+				} else if (vidas.getVidaActualTres() >= 1) {
+					accionJugador.tercerJefePantano();
+					System.out.println("FELICIDADES has superado el PANTANO");
 
-				/*} else if (counterInicio % 2 != 0) {
-					accionJefe = new Jefe();
-					//accionJugador = new turnoJugador(); &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-					if (vidas.getVidaActualUno() > 1) {
-						accionJugador.primerJefePantano();
-					} else if (vidas.getVidaActualDos() > 1) {
-						accionJugador.segundoJefePantano();
-					} else if (vidas.getVidaActualTres() > 1) {
-						accionJugador.tercerJefePantano();
-						System.out.println("FELICIDADES has superado el PANTANO");
-					}
+				} else if (vidas.getVidaActualCuatro() >= 1) {
+					accionJugador.cuartoJefePantano();
 
-				}*/
+				} else if (vidas.getVidaActualCinco() >= 1) {
+					accionJugador.quintoJefePantano();
+
+				} else if (vidas.getVidaActualSeis() >= 1) {
+					accionJugador.sextoJefePantano();
+					System.out.println("FELICIDADES has superado el DESIERTO");
+
+				} else if (vidas.getVidaActualSiete() >= 1) {
+					accionJugador.septimoJefePantano();
+
+				} else if (vidas.getVidaActualOcho() >= 1) {
+					accionJugador.octavoJefePantano();
+
+				} else if (vidas.getVidaActualNueve() >= 1) {
+					accionJugador.novenoJefePantano();
+					System.out.println("FELICIDADES has superado la MONTAÑA");
+
+				} else if (vidas.getVidaActualDiez() >= 1) {
+					accionJugador.decimoJefePantano();
+
+				} else if (vidas.getVidaActualOnce() >= 1) {
+					accionJugador.undecimoJefePantano();
+
+				} else if (vidas.getVidaActualDoce() >= 1) {
+					accionJugador.duodecimoJefePantano();
+					System.out.println("FELICIDADES has superado el VOLCÁN");
+				}
+
+				/*
+				 * } else if (counterInicio % 2 != 0) { accionJefe = new Jefe(); //accionJugador
+				 * = new turnoJugador(); &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& if
+				 * (vidas.getVidaActualUno() > 1) { accionJugador.primerJefePantano(); } else if
+				 * (vidas.getVidaActualDos() > 1) { accionJugador.segundoJefePantano(); } else
+				 * if (vidas.getVidaActualTres() > 1) { accionJugador.tercerJefePantano();
+				 * System.out.println("FELICIDADES has superado el PANTANO"); }
+				 * 
+				 * }
+				 */
 
 				// esto no funciona
 
@@ -179,6 +181,7 @@ public class combatePantano extends JFrame {
 		});
 
 	}
+
 	public JFrame getFrame() {
 		return frame;
 	}

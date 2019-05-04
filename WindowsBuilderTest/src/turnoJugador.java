@@ -20,11 +20,16 @@ public class turnoJugador extends JFrame {
 	int vidaActualCuatro;
 	int vidaActualCinco;
 	int vidaActualSeis;
+	int vidaActualSiete;
+	int vidaActualOcho;
+	int vidaActualNueve;
+	int vidaActualDiez;
+	int vidaActualOnce;
+	int vidaActualDoce;
 
+	int idJefeUno, idJefeDos, idJefeTres, idJefeCuatro, idJefeCinco, idJefeSeis, idJefeSiete, idJefeOcho, idJefeNueve,
+			idJefeDiez, idJefeOnce, idJefeDoce;
 
-	int idJefeUno, idJefeDos, idJefeTres, idJefeCuatro, idJefeCinco, idJefeSeis;
-
-	
 	int dmgJugador = tirarJugador();
 
 	int cogerIdMontana;
@@ -35,6 +40,12 @@ public class turnoJugador extends JFrame {
 	String consultaJefeCuatro = "SELECT * FROM jefes WHERE id= 4";
 	String consultaJefeCinco = "SELECT * FROM jefes WHERE id= 5";
 	String consultaJefeSeis = "SELECT * FROM jefes WHERE id= 6";
+	String consultaJefeSiete = "SELECT * FROM jefes WHERE id= 7";
+	String consultaJefeOcho = "SELECT * FROM jefes WHERE id= 8";
+	String consultaJefeNueve = "SELECT * FROM jefes WHERE id= 9";
+	String consultaJefeDiez = "SELECT * FROM jefes WHERE id= 10";
+	String consultaJefeOnce = "SELECT * FROM jefes WHERE id= 11";
+	String consultaJefeDoce = "SELECT * FROM jefes WHERE id= 12";
 
 	// ResultSet rsUno = Conexion.EjecutarSentencia(consultaJefeUno);
 	// ResultSet rsDos = Conexion.EjecutarSentencia(consultaJefeDos);
@@ -43,12 +54,12 @@ public class turnoJugador extends JFrame {
 	ArrayList<turnoJugadorGetSet> meterRS = new ArrayList<turnoJugadorGetSet>();
 	int sizeRSjefe = meterRS.size();
 	turnoJugadorGetSet objetoJefe = new turnoJugadorGetSet(0, 0);
-	
 
 	public turnoJugador() {
 
-		//JOptionPane.showMessageDialog(dado.getComponent(0),
-			//	"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+		// JOptionPane.showMessageDialog(dado.getComponent(0),
+		// "Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de
+		// vida");
 
 		ResultSet rsUno = Conexion.EjecutarSentencia(consultaJefeUno);
 		try {
@@ -113,7 +124,7 @@ public class turnoJugador extends JFrame {
 			e.printStackTrace();
 
 		}
-	
+
 		ResultSet rsCuatro = Conexion.EjecutarSentencia(consultaJefeCuatro);
 		try {
 			while (rsCuatro.next()) {
@@ -174,7 +185,131 @@ public class turnoJugador extends JFrame {
 			e.printStackTrace();
 
 		}
-}
+		ResultSet rsSiete = Conexion.EjecutarSentencia(consultaJefeSiete);
+		try {
+
+			while (rsSiete.next()) {
+
+				vidaActualSiete = rsSiete.getInt("vida");
+
+				if (rsSiete.getInt("id") == 7) {
+					idJefeSiete = rsSiete.getInt("id");
+
+				}
+				turnoJugadorGetSet kSiete = new turnoJugadorGetSet(vidaActualSiete, idJefeSiete);
+
+				meterRS.add(kSiete);
+				// rsUno.close();
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		ResultSet rsOcho = Conexion.EjecutarSentencia(consultaJefeOcho);
+		try {
+			while (rsOcho.next()) {
+
+				vidaActualOcho = rsOcho.getInt("vida");
+
+				if (rsOcho.getInt("id") == 8) {
+					idJefeOcho = rsOcho.getInt("id");
+
+				}
+				turnoJugadorGetSet kOcho = new turnoJugadorGetSet(vidaActualOcho, idJefeOcho);
+
+				meterRS.add(kOcho);
+				// rsDos.close();
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		ResultSet rsNueve = Conexion.EjecutarSentencia(consultaJefeNueve);
+		try {
+			while (rsNueve.next()) {
+
+				vidaActualNueve = rsNueve.getInt("vida");
+
+				if (rsNueve.getInt("id") == 9) {
+					idJefeNueve = rsNueve.getInt("id");
+				}
+				turnoJugadorGetSet kNueve = new turnoJugadorGetSet(vidaActualNueve, idJefeNueve);
+
+				meterRS.add(kNueve);
+				// rsTres.close();
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		}
+
+		ResultSet rsDiez = Conexion.EjecutarSentencia(consultaJefeDiez);
+		try {
+			while (rsDiez.next()) {
+
+				vidaActualDiez = rsDiez.getInt("vida");
+
+				if (rsDiez.getInt("id") == 10) {
+					idJefeDiez = rsDiez.getInt("id");
+				}
+				turnoJugadorGetSet kDiez = new turnoJugadorGetSet(vidaActualDiez, idJefeDiez);
+
+				meterRS.add(kDiez);
+				// rsTres.close();
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		}
+		ResultSet rsOnce = Conexion.EjecutarSentencia(consultaJefeOnce);
+		try {
+			while (rsOnce.next()) {
+
+				vidaActualOnce = rsOnce.getInt("vida");
+
+				if (rsOnce.getInt("id") == 11) {
+					idJefeOnce = rsOnce.getInt("id");
+				}
+				turnoJugadorGetSet kOnce = new turnoJugadorGetSet(vidaActualOnce, idJefeOnce);
+
+				meterRS.add(kOnce);
+				// rsTres.close();
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		}
+		ResultSet rsDoce = Conexion.EjecutarSentencia(consultaJefeDoce);
+		try {
+			while (rsDoce.next()) {
+
+				vidaActualDoce = rsDoce.getInt("vida");
+
+				if (rsDoce.getInt("id") == 12) {
+					idJefeDoce = rsDoce.getInt("id");
+				}
+				turnoJugadorGetSet kDoce = new turnoJugadorGetSet(vidaActualDoce, idJefeDoce);
+
+				meterRS.add(kDoce);
+				// rsTres.close();
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		}
+	}
 
 	public int getVidaActualUno() {
 		return vidaActualUno;
@@ -224,13 +359,60 @@ public class turnoJugador extends JFrame {
 		this.vidaActualSeis = vidaActualSeis;
 	}
 
+	public int getVidaActualSiete() {
+		return vidaActualSiete;
+	}
+
+	public void setVidaActualSiete(int vidaActualSiete) {
+		this.vidaActualSiete = vidaActualSiete;
+	}
+
+	public int getVidaActualOcho() {
+		return vidaActualOcho;
+	}
+
+	public void setVidaActualOcho(int vidaActualOcho) {
+		this.vidaActualOcho = vidaActualOcho;
+	}
+
+	public int getVidaActualNueve() {
+		return vidaActualNueve;
+	}
+
+	public void setVidaActualNueve(int vidaActualNueve) {
+		this.vidaActualNueve = vidaActualNueve;
+	}
+
+	public int getVidaActualDiez() {
+		return vidaActualDiez;
+	}
+
+	public void setVidaActualDiez(int vidaActualDiez) {
+		this.vidaActualDiez = vidaActualDiez;
+	}
+
+	public int getVidaActualOnce() {
+		return vidaActualOnce;
+	}
+
+	public void setVidaActualOnce(int vidaActualOnce) {
+		this.vidaActualOnce = vidaActualOnce;
+	}
+
+	public int getVidaActualDoce() {
+		return vidaActualDoce;
+	}
+
+	public void setVidaActualDoce(int vidaActualDoce) {
+		this.vidaActualDoce = vidaActualDoce;
+	}
+
 	public void primerJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 		vidaActualUno = vidaActualUno - dmgJugador;
 		AddBaseDeDatos(vidaActualUno, idJefeUno);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
-
 
 		if (vidaActualUno < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -256,7 +438,6 @@ public class turnoJugador extends JFrame {
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
-
 		if (vidaActualDos < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
 			new Tienda();
@@ -274,13 +455,11 @@ public class turnoJugador extends JFrame {
 
 	public void tercerJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
-		
+
 		vidaActualTres = vidaActualTres - dmgJugador;
-		System.out.println("vida 3 :" + vidaActualTres);
 		AddBaseDeDatos(vidaActualTres, idJefeTres);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
-
 
 		if (vidaActualTres < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -296,15 +475,14 @@ public class turnoJugador extends JFrame {
 		}
 
 	}
+
 	public void cuartoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
-	
+
 		vidaActualCuatro = vidaActualCuatro - dmgJugador;
-		System.out.println("vida 4 :" +vidaActualCuatro);
 		AddBaseDeDatos(vidaActualCuatro, idJefeCuatro);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
-
 
 		if (vidaActualCuatro < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -320,13 +498,13 @@ public class turnoJugador extends JFrame {
 		}
 
 	}
+
 	public void quintoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 		vidaActualCinco = vidaActualCinco - dmgJugador;
 		AddBaseDeDatos(vidaActualCinco, idJefeCinco);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
-
 
 		if (vidaActualCinco < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -342,13 +520,13 @@ public class turnoJugador extends JFrame {
 		}
 
 	}
+
 	public void sextoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 		vidaActualSeis = vidaActualSeis - dmgJugador;
 		AddBaseDeDatos(vidaActualSeis, idJefeSeis);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
-
 
 		if (vidaActualSeis < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -365,7 +543,141 @@ public class turnoJugador extends JFrame {
 
 	}
 
-	
+	public void septimoJefePantano() {
+		// vidaActualUno = (Integer) meterRS.get(0).getVida();
+		vidaActualSiete = vidaActualSiete - dmgJugador;
+		AddBaseDeDatos(vidaActualSiete, idJefeSiete);
+		JOptionPane.showMessageDialog(dado.getComponent(0),
+				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+
+		if (vidaActualSiete < 1) {
+			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
+			new Tienda();
+			Tienda tiendaVisible = new Tienda();
+			tiendaVisible.setVisible(true);
+
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			close();
+
+			combatePantano cerrarPantano = new combatePantano();
+			cerrarPantano.dispose();
+		}
+
+	}
+
+	public void octavoJefePantano() {
+		// vidaActualUno = (Integer) meterRS.get(0).getVida();
+		vidaActualOcho = vidaActualOcho - dmgJugador;
+		AddBaseDeDatos(vidaActualOcho, idJefeOcho);
+		JOptionPane.showMessageDialog(dado.getComponent(0),
+				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+
+		if (vidaActualOcho < 1) {
+			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
+			new Tienda();
+			Tienda tiendaVisible = new Tienda();
+			tiendaVisible.setVisible(true);
+
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			close();
+
+			combatePantano cerrarPantano = new combatePantano();
+			cerrarPantano.dispose();
+		}
+
+	}
+
+	public void novenoJefePantano() {
+
+		// vidaActualDos = (Integer) meterRS.get(0).getVida();
+
+		vidaActualNueve = vidaActualNueve - dmgJugador;
+		AddBaseDeDatos(vidaActualNueve, idJefeNueve);
+		JOptionPane.showMessageDialog(dado.getComponent(0),
+				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+
+		if (vidaActualNueve < 1) {
+			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
+			new Tienda();
+			Tienda tiendaVisible = new Tienda();
+			tiendaVisible.setVisible(true);
+
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			close();
+
+			combatePantano cerrarPantano = new combatePantano();
+			cerrarPantano.dispose();
+
+		}
+	}
+
+	public void decimoJefePantano() {
+		// vidaActualUno = (Integer) meterRS.get(0).getVida();
+
+		vidaActualDiez = vidaActualDiez - dmgJugador;
+		AddBaseDeDatos(vidaActualDiez, idJefeDiez);
+		JOptionPane.showMessageDialog(dado.getComponent(0),
+				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+
+		if (vidaActualDiez < 1) {
+			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
+			new Tienda();
+			Tienda tiendaVisible = new Tienda();
+			tiendaVisible.setVisible(true);
+
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			close();
+
+			combatePantano cerrarPantano = new combatePantano();
+			cerrarPantano.dispose();
+		}
+
+	}
+
+	public void undecimoJefePantano() {
+		// vidaActualUno = (Integer) meterRS.get(0).getVida();
+
+		vidaActualOnce = vidaActualOnce - dmgJugador;
+		AddBaseDeDatos(vidaActualOnce, idJefeOnce);
+		JOptionPane.showMessageDialog(dado.getComponent(0),
+				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+
+		if (vidaActualOnce < 1) {
+			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
+			new Tienda();
+			Tienda tiendaVisible = new Tienda();
+			tiendaVisible.setVisible(true);
+
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			close();
+
+			combatePantano cerrarPantano = new combatePantano();
+			cerrarPantano.dispose();
+		}
+
+	}
+
+	public void duodecimoJefePantano() {
+		// vidaActualUno = (Integer) meterRS.get(0).getVida();
+		vidaActualDoce = vidaActualDoce - dmgJugador;
+		AddBaseDeDatos(vidaActualDoce, idJefeDoce);
+		JOptionPane.showMessageDialog(dado.getComponent(0),
+				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+
+		if (vidaActualDoce < 1) {
+			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
+			new Tienda();
+			Tienda tiendaVisible = new Tienda();
+			tiendaVisible.setVisible(true);
+
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			close();
+
+			combatePantano cerrarPantano = new combatePantano();
+			cerrarPantano.dispose();
+		}
+
+	}
 
 	public int tirarJugador() {
 		return tirada = Dado.tirarDado(3) + 1;
@@ -389,6 +701,5 @@ public class turnoJugador extends JFrame {
 		Conexion.EjecutarUpdate("UPDATE jefes SET vida =" + vidaJugador + " WHERE id =" + idJefe + "");
 
 	}
-	
 
 }
