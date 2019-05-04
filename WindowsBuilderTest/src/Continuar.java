@@ -8,6 +8,7 @@ public class Continuar extends JFrame {
 
 	private JFrame frame;
 	private JTextField txtAtencinSiContinuas;
+	private turnoJugador accionJugador;
 
 	/**
 	 * Launch the application.
@@ -43,13 +44,29 @@ public class Continuar extends JFrame {
 		JButton btnLeeroyJenkinsContinuar = new JButton("LEEROY JENKINS! CONTINUAR");
 		btnLeeroyJenkinsContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new Combate();
-				Combate combateVisible = new Combate(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
-				combateVisible.setVisible(true);
+				turnoJugador vidasContinuar = new turnoJugador(); /////////////////////////////////////////////
+				if (vidasContinuar.getVidaActualTres() >= 1) {
+					//accionJugador.tercerJefePantano();
 
-				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				close();
+					combatePantano combatePantanoVisible = new combatePantano();
+					combatePantanoVisible.setVisible(true);
 
+					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					close();
+
+					dispose();
+
+				} else if  (vidasContinuar.getVidaActualSeis() >= 1){
+
+					combateMontana combateMontanaVisible = new combateMontana();
+					combateMontanaVisible.setVisible(true);
+
+					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					close();
+
+					dispose();
+
+				}
 			}
 
 		});
@@ -67,6 +84,10 @@ public class Continuar extends JFrame {
 
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				close();
+
+				new Tienda();
+				Tienda tienda = new Tienda();
+				tienda.setVisible(true);
 
 			}
 

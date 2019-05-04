@@ -113,7 +113,6 @@ public class JefeDificil extends JFrame {
 		});
 		btnCrear.setBounds(244, 399, 89, 23);
 		getContentPane().add(btnCrear);
-
 		
 		
 		JButton btndD20 = new JButton("1d20 para crear la vida de un JEFE difícil");
@@ -177,7 +176,7 @@ public class JefeDificil extends JFrame {
 
 	public static void AddBaseDeDatos(String id, String nombre, int vida, String ataque, int vida_total) {
 		Conexion.conectar();
-		Conexion.EjecutarUpdate("INSERT INTO jefes VALUES (\"" + id + "\",\""+ nombre + "\",\"" + vida + "\",\"" + ataque
+		Conexion.EjecutarUpdate("INSERT INTO jefesmontana VALUES (\"" + id + "\",\""+ nombre + "\",\"" + vida + "\",\"" + ataque
 				+ "\",\"" + vida_total + "\")");
 
 	}

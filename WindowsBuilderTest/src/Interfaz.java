@@ -10,6 +10,7 @@ import java.awt.event.*;
 public class Interfaz extends JFrame {
 
 	private JPanel contentPane;
+	int vidaActualTres;
 
 	/**
 	 * Launch the application.
@@ -26,25 +27,31 @@ public class Interfaz extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		 /////////////////////////////////////////////
+		
 		JButton buttonPantano = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cover1.png")));
 		buttonPantano.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+			
 				Conexion.conectar();
-				Pantano nw = new Pantano();
-				nw.NewScreen();
+				Pantano nwP = new Pantano();
+				nwP.NewScreen();
 				// contentPane.setVisible(false);
-				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				close();
+				//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				//close();
 
 				new Pantano();
 				Pantano pantanoVisible = new Pantano();
 				pantanoVisible.setVisible(true);
+			  
+				buttonPantano.setEnabled(false);
 
 			}
 		});
 
 		buttonPantano.setBounds(10, 93, 560, 155);
 		contentPane.add(buttonPantano);
+		
 
 		JButton buttonBosque = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cover3.png")));
 
@@ -70,6 +77,22 @@ public class Interfaz extends JFrame {
 		contentPane.add(buttonBosque);
 
 		JButton buttonMontana = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cover2.png")));
+		buttonMontana.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Montana nwM = new Montana();
+				nwM.NewScreen();
+				// contentPane.setVisible(false);
+				//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				//close();
+
+				new  Montana();
+				 Montana montanaVisible = new Montana();
+				 montanaVisible.setVisible(true);
+			  
+				buttonMontana.setEnabled(false);
+
+			}
+		});
 		buttonMontana.setBounds(10, 259, 560, 155);
 		contentPane.add(buttonMontana);
 
@@ -132,7 +155,6 @@ public class Interfaz extends JFrame {
 		contentPane.add(btnConectar);*/
 			
 			
-
 
 	}
 

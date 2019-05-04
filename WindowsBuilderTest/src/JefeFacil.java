@@ -176,7 +176,7 @@ public class JefeFacil extends JFrame {
 
 	public static void AddBaseDeDatos(String id, String nombre, int vida, String ataque, int vida_total) {
 		Conexion.conectar();
-		Conexion.EjecutarUpdate("INSERT INTO jefes VALUES (\"" + id + "\",\""+ nombre + "\",\"" + vida + "\",\"" + ataque
+		Conexion.EjecutarUpdate("INSERT INTO jefesmontana VALUES (\"" + id + "\",\""+ nombre + "\",\"" + vida + "\",\"" + ataque
 				+ "\",\"" + vida_total + "\")");
 
 	}

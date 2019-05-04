@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.*;
 
-public class Pantano extends JFrame {
+public class Montana extends JFrame {
 
 	private JFrame frame;
 
@@ -15,7 +15,7 @@ public class Pantano extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Pantano windowP = new Pantano();
+					Montana windowM = new Montana();
 					// windowP.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -28,7 +28,7 @@ public class Pantano extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Pantano() {
+	public Montana() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE); // EXIT
 		setBounds(100, 100, 596, 795);
 		getContentPane().setLayout(null);
@@ -82,16 +82,16 @@ public class Pantano extends JFrame {
 					Tienda tiendaVisible = new Tienda();
 					tiendaVisible.setVisible(true);
 				} else {
-					combatePantano nwcombatePantano = new combatePantano();
-					nwcombatePantano.NewScreen();
+					combateMontana nwcombateMontana = new combateMontana();
+					nwcombateMontana.NewScreen();
 
 					// contentPane.setVisible(false);
 					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					close();
 
-					new combatePantano();
-					combatePantano combatePantanoVisible = new combatePantano();
-					combatePantanoVisible.setVisible(true);
+					new combateMontana();
+					combateMontana combateMontanaVisible = new combateMontana();
+					combateMontanaVisible.setVisible(true);
 
 				}
 
