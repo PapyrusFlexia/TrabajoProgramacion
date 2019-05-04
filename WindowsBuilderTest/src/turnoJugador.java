@@ -21,21 +21,20 @@ public class turnoJugador extends JFrame {
 	int vidaActualCinco;
 	int vidaActualSeis;
 
-	int idActual;
 
 	int idJefeUno, idJefeDos, idJefeTres, idJefeCuatro, idJefeCinco, idJefeSeis;
 
-	int cogerId;
+	
 	int dmgJugador = tirarJugador();
 
 	int cogerIdMontana;
 
-	String consultaJefeUno = "SELECT * FROM jefespantano WHERE id= 1";
-	String consultaJefeDos = "SELECT * FROM jefespantano WHERE id= 2";
-	String consultaJefeTres = "SELECT * FROM jefespantano WHERE id= 3";
-	String consultaJefeCuatro = "SELECT * FROM jefesmontana WHERE id= 4";
-	String consultaJefeCinco = "SELECT * FROM jefesmontana WHERE id= 5";
-	String consultaJefeSeis = "SELECT * FROM jefesmontana WHERE id= 6";
+	String consultaJefeUno = "SELECT * FROM jefes WHERE id= 1";
+	String consultaJefeDos = "SELECT * FROM jefes WHERE id= 2";
+	String consultaJefeTres = "SELECT * FROM jefes WHERE id= 3";
+	String consultaJefeCuatro = "SELECT * FROM jefes WHERE id= 4";
+	String consultaJefeCinco = "SELECT * FROM jefes WHERE id= 5";
+	String consultaJefeSeis = "SELECT * FROM jefes WHERE id= 6";
 
 	// ResultSet rsUno = Conexion.EjecutarSentencia(consultaJefeUno);
 	// ResultSet rsDos = Conexion.EjecutarSentencia(consultaJefeDos);
@@ -44,7 +43,7 @@ public class turnoJugador extends JFrame {
 	ArrayList<turnoJugadorGetSet> meterRS = new ArrayList<turnoJugadorGetSet>();
 	int sizeRSjefe = meterRS.size();
 	turnoJugadorGetSet objetoJefe = new turnoJugadorGetSet(0, 0);
-	Conexion cerrarConexion = new Conexion();
+	
 
 	public turnoJugador() {
 
@@ -114,7 +113,8 @@ public class turnoJugador extends JFrame {
 			e.printStackTrace();
 
 		}
-		ResultSet rsCuatro = Conexion.EjecutarSentencia(consultaJefeCuatro);
+	}
+		/*ResultSet rsCuatro = Conexion.EjecutarSentencia(consultaJefeCuatro);
 		try {
 			while (rsCuatro.next()) {
 
@@ -174,7 +174,7 @@ public class turnoJugador extends JFrame {
 			e.printStackTrace();
 
 		}
-	}
+	}*/
 
 	public int getVidaActualUno() {
 		return vidaActualUno;
@@ -200,7 +200,7 @@ public class turnoJugador extends JFrame {
 		this.vidaActualTres = vidaActualTres;
 	}
 
-	public int getVidaActualCuatro() {
+	/*public int getVidaActualCuatro() {
 		return vidaActualCuatro;
 	}
 
@@ -222,12 +222,12 @@ public class turnoJugador extends JFrame {
 
 	public void setVidaActualSeis(int vidaActualSeis) {
 		this.vidaActualSeis = vidaActualSeis;
-	}
+	}*/
 
 	public void primerJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 		vidaActualUno = vidaActualUno - dmgJugador;
-		AddBaseDeDatosUno(vidaActualUno, idJefeUno);
+		AddBaseDeDatos(vidaActualUno, idJefeUno);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -252,7 +252,7 @@ public class turnoJugador extends JFrame {
 		// vidaActualDos = (Integer) meterRS.get(0).getVida();
 
 		vidaActualDos = vidaActualDos - dmgJugador;
-		AddBaseDeDatosUno(vidaActualDos, idJefeDos);
+		AddBaseDeDatos(vidaActualDos, idJefeDos);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -273,33 +273,35 @@ public class turnoJugador extends JFrame {
 	}
 
 	public void tercerJefePantano() {
-		// vidaActualTres = (Integer) meterRS.get(0).getVida();
+		// vidaActualUno = (Integer) meterRS.get(0).getVida();
+		
 		vidaActualTres = vidaActualTres - dmgJugador;
-		AddBaseDeDatosUno(vidaActualTres, idJefeTres);
+		System.out.println("vida 3 :" + vidaActualTres);
+		AddBaseDeDatos(vidaActualTres, idJefeTres);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
 
 		if (vidaActualTres < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
-			// new Interfaz();
-			// Interfaz interfazVisible = new Interfaz();
-			// interfazVisible.setVisible(true);
+			new Tienda();
+			Tienda tiendaVisible = new Tienda();
+			tiendaVisible.setVisible(true);
 
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			// new Interfaz();
-			// Interfaz Interfaz = new Interfaz();
-			// Interfaz.setVisible(true);
-			dispose();
-
+			combatePantano cerrarPantano = new combatePantano();
+			cerrarPantano.dispose();
 		}
+
 	}
-	public void cuartoJefeMontana() {
+	/*public void cuartoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
+	
 		vidaActualCuatro = vidaActualCuatro - dmgJugador;
-		AddBaseDeDatosDos(vidaActualCuatro, idJefeCuatro);
+		System.out.println("vida 4 :" +vidaActualCuatro);
+		AddBaseDeDatos(vidaActualCuatro, idJefeCuatro);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -313,15 +315,15 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combateMontana cerrarMontana = new combateMontana();
-			cerrarMontana.dispose();
+			combatePantano cerrarPantano = new combatePantano();
+			cerrarPantano.dispose();
 		}
 
 	}
-	public void quintoJefeMontana() {
+	public void quintoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 		vidaActualCinco = vidaActualCinco - dmgJugador;
-		AddBaseDeDatosDos(vidaActualCinco, idJefeCinco);
+		AddBaseDeDatos(vidaActualCinco, idJefeCinco);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -335,15 +337,15 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combateMontana cerrarMontana = new combateMontana();
-			cerrarMontana.dispose();
+			combatePantano cerrarPantano = new combatePantano();
+			cerrarPantano.dispose();
 		}
 
 	}
-	public void sextoJefeMontana() {
+	public void sextoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 		vidaActualSeis = vidaActualSeis - dmgJugador;
-		AddBaseDeDatosDos(vidaActualSeis, idJefeSeis);
+		AddBaseDeDatos(vidaActualSeis, idJefeSeis);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -357,11 +359,11 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combateMontana cerrarMontana = new combateMontana();
-			cerrarMontana.dispose();
+			combatePantano cerrarPantano = new combatePantano();
+			cerrarPantano.dispose();
 		}
 
-	}
+	}*/
 
 	
 
@@ -380,19 +382,13 @@ public class turnoJugador extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public void AddBaseDeDatosUno(int vidaJugador, int idJefe) {
+	public void AddBaseDeDatos(int vidaJugador, int idJefe) {
 
 		Conexion.conectar();
 
-		Conexion.EjecutarUpdate("UPDATE jefespantano SET vida =" + vidaJugador + " WHERE id =" + idJefe + "");
+		Conexion.EjecutarUpdate("UPDATE jefes SET vida =" + vidaJugador + " WHERE id =" + idJefe + "");
 
 	}
-	public void AddBaseDeDatosDos(int vidaJugador, int idJefe) {
-
-		Conexion.conectar();
-
-		Conexion.EjecutarUpdate("UPDATE jefesmontana SET vida =" + vidaJugador + " WHERE id =" + idJefe + "");
-
-	}
+	
 
 }

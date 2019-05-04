@@ -57,18 +57,17 @@ public class Interfaz extends JFrame {
 
 		buttonBosque.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Conexion.conectar();
-				Bosque nwB = new Bosque();
-				nwB.NewScreen();
-
+				Pantano nwP = new Pantano();
+				nwP.NewScreen();
 				// contentPane.setVisible(false);
-				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				close();
+				//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				//close();
 
-				new Bosque();
-				Bosque bosqueVisible = new Bosque();
-				bosqueVisible.setVisible(true);
-
+				new Pantano();
+				Pantano pantanoVisible = new Pantano();
+				pantanoVisible.setVisible(true);
+			  
+				buttonPantano.setEnabled(false);
 			}
 
 		});
@@ -79,17 +78,17 @@ public class Interfaz extends JFrame {
 		JButton buttonMontana = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cover2.png")));
 		buttonMontana.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Montana nwM = new Montana();
-				nwM.NewScreen();
+				Pantano nwP = new Pantano();
+				nwP.NewScreen();
 				// contentPane.setVisible(false);
 				//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				//close();
 
-				new  Montana();
-				 Montana montanaVisible = new Montana();
-				 montanaVisible.setVisible(true);
+				new Pantano();
+				Pantano pantanoVisible = new Pantano();
+				pantanoVisible.setVisible(true);
 			  
-				buttonMontana.setEnabled(false);
+				buttonPantano.setEnabled(false);
 
 			}
 		});

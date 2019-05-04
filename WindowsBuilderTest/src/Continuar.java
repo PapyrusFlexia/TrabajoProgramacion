@@ -44,31 +44,31 @@ public class Continuar extends JFrame {
 		JButton btnLeeroyJenkinsContinuar = new JButton("LEEROY JENKINS! CONTINUAR");
 		btnLeeroyJenkinsContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				turnoJugador vidasContinuar = new turnoJugador(); /////////////////////////////////////////////
-				if (vidasContinuar.getVidaActualTres() >= 1) {
+				//turnoJugador vidasContinuar = new turnoJugador(); /////////////////////////////////////////////
+			//	if (vidasContinuar.getVidaActualTres() >= 1) {
 					//accionJugador.tercerJefePantano();
 
-					combatePantano combatePantanoVisible = new combatePantano();
-					combatePantanoVisible.setVisible(true);
+					//combatePantano combatePantanoVisible = new combatePantano();
+				//	combatePantanoVisible.setVisible(true);
 
-					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					close();
+					//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					//close();
 
-					dispose();
+					//dispose();
+				
+				combatePantano nwcp = new combatePantano();
+				nwcp.NewScreen();
 
-				} else if  (vidasContinuar.getVidaActualSeis() >= 1){
+				// contentPane.setVisible(false);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				close();
 
-					combateMontana combateMontanaVisible = new combateMontana();
-					combateMontanaVisible.setVisible(true);
+				new combatePantano();
+				combatePantano combatepantanoVisible = new combatePantano();
+				combatepantanoVisible.setVisible(true);
+			
 
-					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					close();
-
-					dispose();
-
-				}
 			}
-
 		});
 		btnLeeroyJenkinsContinuar.setBounds(10, 79, 181, 23);
 		getContentPane().add(btnLeeroyJenkinsContinuar);

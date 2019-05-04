@@ -51,21 +51,7 @@ public class combatePantano extends JFrame {
 		getContentPane().setLayout(null);
 		
 		System.out.println("combate en el pantano");
-		JButton btnPruebaJugador = new JButton("IR A JUGADOR (PRUEBA)");
-		btnPruebaJugador.setBounds(168, 301, 222, 23);
-		getContentPane().add(btnPruebaJugador);
-		btnPruebaJugador.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new Jugador();
-				Jugador jugadorVisible = new Jugador(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
-				jugadorVisible.setVisible(true);
-
-				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				close();
-
-			}
-
-		});
+		
 
 		/*JButton comenzarCombate = new JButton("COMENZAR COMBATE");
 		getContentPane().add(comenzarCombate);
@@ -128,8 +114,20 @@ public class combatePantano extends JFrame {
 						
 					} else if (vidas.getVidaActualTres() >= 1) {
 						accionJugador.tercerJefePantano();
+					
 						System.out.println("FELICIDADES has superado el PANTANO");
 					
+					/*} else if (vidas.getVidaActualCuatro() >= 1) {
+						accionJugador.cuartoJefePantano();
+						System.out.println("luchas contra el 4 jefe");
+						System.out.println(vidas.getVidaActualCuatro());
+					} else if (vidas.getVidaActualCinco() >= 1) {
+						accionJugador.quintoJefePantano();
+						System.out.println("luchas contra el 5 jefe");
+					} else if (vidas.getVidaActualSeis() >= 1) {
+						accionJugador.sextoJefePantano();
+						System.out.println("FELICIDADES has superado la MONTAÑA");
+					}*/
 					}
 
 
