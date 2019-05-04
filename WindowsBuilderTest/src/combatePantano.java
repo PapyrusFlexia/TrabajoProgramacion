@@ -117,7 +117,7 @@ public class combatePantano extends JFrame {
 					
 						System.out.println("FELICIDADES has superado el PANTANO");
 					
-					/*} else if (vidas.getVidaActualCuatro() >= 1) {
+					} else if (vidas.getVidaActualCuatro() >= 1) {
 						accionJugador.cuartoJefePantano();
 						System.out.println("luchas contra el 4 jefe");
 						System.out.println(vidas.getVidaActualCuatro());
@@ -127,8 +127,8 @@ public class combatePantano extends JFrame {
 					} else if (vidas.getVidaActualSeis() >= 1) {
 						accionJugador.sextoJefePantano();
 						System.out.println("FELICIDADES has superado la MONTAÑA");
-					}*/
 					}
+					
 
 
 				/*} else if (counterInicio % 2 != 0) {

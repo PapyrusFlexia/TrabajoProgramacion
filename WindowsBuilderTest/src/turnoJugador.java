@@ -113,15 +113,15 @@ public class turnoJugador extends JFrame {
 			e.printStackTrace();
 
 		}
-	}
-		/*ResultSet rsCuatro = Conexion.EjecutarSentencia(consultaJefeCuatro);
+	
+		ResultSet rsCuatro = Conexion.EjecutarSentencia(consultaJefeCuatro);
 		try {
 			while (rsCuatro.next()) {
 
 				vidaActualCuatro = rsCuatro.getInt("vida");
 
 				if (rsCuatro.getInt("id") == 4) {
-					idJefeTres = rsCuatro.getInt("id");
+					idJefeCuatro = rsCuatro.getInt("id");
 				}
 				turnoJugadorGetSet kCuatro = new turnoJugadorGetSet(vidaActualCuatro, idJefeCuatro);
 
@@ -174,7 +174,7 @@ public class turnoJugador extends JFrame {
 			e.printStackTrace();
 
 		}
-	}*/
+}
 
 	public int getVidaActualUno() {
 		return vidaActualUno;
@@ -200,7 +200,7 @@ public class turnoJugador extends JFrame {
 		this.vidaActualTres = vidaActualTres;
 	}
 
-	/*public int getVidaActualCuatro() {
+	public int getVidaActualCuatro() {
 		return vidaActualCuatro;
 	}
 
@@ -222,7 +222,7 @@ public class turnoJugador extends JFrame {
 
 	public void setVidaActualSeis(int vidaActualSeis) {
 		this.vidaActualSeis = vidaActualSeis;
-	}*/
+	}
 
 	public void primerJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
@@ -296,7 +296,7 @@ public class turnoJugador extends JFrame {
 		}
 
 	}
-	/*public void cuartoJefePantano() {
+	public void cuartoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 	
 		vidaActualCuatro = vidaActualCuatro - dmgJugador;
@@ -363,7 +363,7 @@ public class turnoJugador extends JFrame {
 			cerrarPantano.dispose();
 		}
 
-	}*/
+	}
 
 	
 
