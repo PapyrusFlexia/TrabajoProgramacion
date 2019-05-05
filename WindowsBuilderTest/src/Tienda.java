@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -10,6 +11,17 @@ import java.awt.event.*;
 public class Tienda extends JFrame {
 
 	private JFrame frame;
+
+	int valorObjetoUno, valorObjetoDos, valorObjetoTres;
+	int idObjetoUno, idObjetoDos, idObjetoTres;
+	int oro = 200;
+	String consultaObjetoUno = "SELECT * FROM items ORDER BY RAND() LIMIT 1";
+	String consultaObjetoDos = "SELECT * FROM items ORDER BY RAND() LIMIT 1";
+	String consultaObjetoTres = "SELECT * FROM items ORDER BY RAND() LIMIT 1";
+
+	ArrayList<TiendaGetSet> meterRS = new ArrayList<TiendaGetSet>();
+	int sizeRStienda = meterRS.size();
+	TiendaGetSet objetoTienda = new TiendaGetSet(0, 0);
 
 	/**
 	 * Launch the application.
@@ -37,7 +49,74 @@ public class Tienda extends JFrame {
 
 		final JFrame dado = new JFrame();
 
-		JButton btnNewButton = new JButton("New button");
+		ResultSet rsUno = Conexion.EjecutarSentencia(consultaObjetoUno);
+		try {
+
+			while (rsUno.next()) {
+
+				valorObjetoUno = rsUno.getInt("valor");
+				idObjetoUno = rsUno.getInt("id");
+
+				TiendaGetSet kUno = new TiendaGetSet(valorObjetoUno, idObjetoUno);
+
+				meterRS.add(kUno);
+				// rsUno.close();
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		ResultSet rsDos = Conexion.EjecutarSentencia(consultaObjetoDos);
+		try {
+
+			while (rsDos.next()) {
+
+				valorObjetoDos = rsDos.getInt("valor");
+				idObjetoDos = rsUno.getInt("id");
+
+				TiendaGetSet kDos = new TiendaGetSet(valorObjetoDos, idObjetoDos);
+
+				meterRS.add(kDos);
+				// rsUno.close();
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		ResultSet rsTres = Conexion.EjecutarSentencia(consultaObjetoTres);
+		try {
+
+			while (rsTres.next()) {
+
+				valorObjetoTres = rsTres.getInt("valor");
+				idObjetoTres = rsUno.getInt("id");
+
+				TiendaGetSet kTres = new TiendaGetSet(valorObjetoTres, idObjetoTres);
+
+				meterRS.add(kTres);
+				// rsUno.close();
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		JButton btnNewButton = new JButton("COMPRAR OBJETO");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (oro >= valorObjetoUno ) {
+					
+				} else {
+					System.out.println("NO TIENES EL ORO PARA COMPRAR ESE OBJETO");
+				}
+			}
+
+		});
 		btnNewButton.setBounds(155, 293, 89, 23);
 		getContentPane().add(btnNewButton);
 
@@ -45,17 +124,7 @@ public class Tienda extends JFrame {
 		btnNewButton_1.setBounds(155, 327, 89, 23);
 		getContentPane().add(btnNewButton_1);
 
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(36, 297, 46, 14);
-		getContentPane().add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(36, 331, 46, 14);
-		getContentPane().add(lblNewLabel_1);
-
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setBounds(36, 367, 46, 14);
-		getContentPane().add(lblNewLabel_2);
 
 		JButton btnNewButton_2 = new JButton("New button");
 		btnNewButton_2.setBounds(155, 363, 89, 23);
@@ -65,8 +134,8 @@ public class Tienda extends JFrame {
 		lblTiraParaVer.setBounds(190, 492, 184, 14);
 		getContentPane().add(lblTiraParaVer);
 
-		JLabel lblTuOro = new JLabel("TU ORO: ");
-		lblTuOro.setBounds(430, 11, 69, 14);
+		JLabel lblTuOro = new JLabel("TU ORO: " + oro);
+		lblTuOro.setBounds(430, 11, 119, 14);
 		getContentPane().add(lblTuOro);
 
 		JLabel lblBienvenidoALa = new JLabel("BIENVENIDO A LA TIENDA DE DO\u00D1A EUGENIA");
@@ -200,11 +269,7 @@ public class Tienda extends JFrame {
 
 				// Dado Tirada = new Dado();//
 				// Tirada.tirarDado(6);//
-				JOptionPane.showMessageDialog(dado.getComponent(0), "Has sacado un " + tirada); // EL
-																								// 20
-																								// ES
-																								// LO
-																								// MAXIMO
+				JOptionPane.showMessageDialog(dado.getComponent(0), "Has sacado un " + tirada); 
 
 			}
 		});
@@ -212,6 +277,30 @@ public class Tienda extends JFrame {
 		btnNewButton_3.setBounds(234, 540, 89, 23);
 		getContentPane().add(btnNewButton_3);
 
+	}
+
+	public int getValorObjetoUno() {
+		return valorObjetoUno;
+	}
+
+	public void setValorObjetoUno(int valorObjetoUno) {
+		this.valorObjetoUno = valorObjetoUno;
+	}
+
+	public int getValorObjetoDos() {
+		return valorObjetoDos;
+	}
+
+	public void setValorObjetoDos(int valorObjetoDos) {
+		this.valorObjetoDos = valorObjetoDos;
+	}
+
+	public int getValorObjetoTres() {
+		return valorObjetoTres;
+	}
+
+	public void setValorObjetoTres(int valorObjetoTres) {
+		this.valorObjetoTres = valorObjetoTres;
 	}
 
 	/**
@@ -226,5 +315,14 @@ public class Tienda extends JFrame {
 	public void close() {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+	}
+
+	public void AddBaseDeDatos(String id, String nombre, String poder, String valor, String categoria, String tipo) {
+
+		Conexion.conectar();
+
+		Conexion.EjecutarUpdate("INSERT INTO inventario VALUES (\"" + id + "\",\"" + nombre + "\",\"" + poder + "\",\""
+				+ valor + "\",\"" + categoria + "\",\"" + tipo + "\")");
+
 	}
 }
