@@ -1,5 +1,8 @@
 import java.sql.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.awt.*;
 
 import javax.print.DocFlavor.URL;
@@ -11,8 +14,7 @@ import BBDD.Conexion;
 import java.awt.event.*;
 
 import javax.swing.*;
-
-
+import java.io.*;
 
 public class combatePantano extends JFrame {
 
@@ -24,8 +26,8 @@ public class combatePantano extends JFrame {
 	int min = 1;
 	int max = 10;
 	int counterInicio = ThreadLocalRandom.current().nextInt(min, max + 1);
-	
-	
+
+
 	// int counterInicio = (int)Math.random();
 
 	/**
@@ -45,12 +47,6 @@ public class combatePantano extends JFrame {
 		});
 	}
 
-	
-	private void setIcon() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Lizardmen.png")));
-		
-	}
-
 	public combatePantano() {
 
 		JFrame jframe = new JFrame("combatePantano");
@@ -59,47 +55,46 @@ public class combatePantano extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 596, 795);
 		getContentPane().setLayout(null);
-		
-       /* JLabel background = new JLabel(new ImageIcon("Pantano.png"));
-        background.setBounds(10, 32, 560, 394);
-		
-        JLabel foreground = new JLabel(new ImageIcon("Lizardmen.png"));
-        foreground.setBounds(20, 384, 214, 193);
 
+		/*
+		 * JLabel background = new JLabel(new ImageIcon("Pantano.gif"));
+		 * background.setBounds(10, 52, 524, 240);
+		 * 
+		 * JLabel foreground = new JLabel(new ImageIcon("Lizardmen.gif"));
+		 * foreground.setBounds(50, 52, 108, 195);
+		 * 
+		 * 
+		 * background.setLayout(new GridBagLayout()); background.add(foreground);
+		 * add(background);
+		 * 
+		 * // pack();
+		 * 
+		 * setLocationByPlatform(true); setVisible(true);
+		 */
+		Icon backgroundIcon = new ImageIcon("Pantano.gif");
+		Icon foregroundIcon = new ImageIcon("Lizardmen.gif");
 
-        background.setLayout(new GridBagLayout());
-        background.add(foreground);
-        add(background);
+		JLabel background = new JLabel(
+				new ImageIcon("C:\\Users\\pablo\\eclipse-workspace\\WindowsBuilderTest\\Pantano.gif"));
+		JLabel foreground = new JLabel(
+				new ImageIcon("C:\\Users\\pablo\\eclipse-workspace\\WindowsBuilderTest\\Lizardmen.gif"));
 
-        pack();
+		background.setSize(backgroundIcon.getIconWidth(), backgroundIcon.getIconHeight());
+		foreground.setSize(foregroundIcon.getIconWidth(), foregroundIcon.getIconHeight());
+		// background.setLocation(0, 0);
+		// foreground.setLocation(30, 30);
+		background.setBounds(10, 52, 524, 240);
+		foreground.setBounds(50, 52, 108, 195);
+		// background.setLayout(null);
+		background.add(foreground);
+		getContentPane().setLayout(null);
+		getContentPane().add(background);
 
-        setLocationByPlatform(true);
-        setVisible(true); */
-		 /* Icon backgroundIcon = new ImageIcon(new URL("http://s5.favim.com/orig/51/animated-gif-gif-hands-sign-language-Favim.com-542945.gif"));
-	      Icon foregroundIcon = new ImageIcon(new URL("http://i.imgur.com/89HANHg.gif"));
+		getContentPane().setPreferredSize(new Dimension(backgroundIcon.getIconWidth(), backgroundIcon.getIconHeight()));
+		// pack();
 
-	        JLabel background = new JLabel(backgroundIcon);
-	        JLabel foreground = new JLabel(foregroundIcon);
-
-	     
-	        background.setSize(backgroundIcon.getIconWidth(), backgroundIcon.getIconHeight());
-	        foreground.setSize(foregroundIcon.getIconWidth(), foregroundIcon.getIconHeight());
-	        background.setLocation(0, 0);
-	        foreground.setLocation(30, 30);
-	        background.setLayout(null);
-	        background.add(foreground);
-	        setLayout(null);
-	        add(background);
-
-	        // set size of frame to size of content
-	        setResizable(false);
-	        getContentPane().setPreferredSize(new Dimension(backgroundIcon.getIconWidth(), backgroundIcon.getIconHeight()));
-	        pack();
-
-	        setLocationRelativeTo(null);
-	        setVisible(true);*/
-
-		
+		setLocationRelativeTo(null);
+		setVisible(true);
 
 		/*
 		 * JButton comenzarCombate = new JButton("COMENZAR COMBATE");
@@ -132,6 +127,12 @@ public class combatePantano extends JFrame {
 		 * comenzarCombate.setBounds(185, 133, 178, 23);
 		 * getContentPane().add(comenzarCombate);
 		 */
+		// JTextArea log = new JTextArea();
+		// log.setBounds(71, 424, 442, 142);
+		// getContentPane().add(log);
+		// log.append( "Hello World" );
+
+		// frame.getContentPane().add(log);
 
 		JButton btnpasarTurno = new JButton("PASAR TURNO");
 		getContentPane().add(btnpasarTurno);
@@ -143,61 +144,83 @@ public class combatePantano extends JFrame {
 				// if (counterInicio % 2 == 0) {
 				accionJugador = new turnoJugador();
 				if (vidas.getVidaActualUno() >= 1) {
-					
 
-					
-					
 					accionJefe = new Jefe();
 					accionJugador.primerJefePantano();
+					
+					accionJugador.log();
+					
 					// if (vidas.getVidaActualUno() < 1){
 					// frame.setVisible(false);
 					// }
 				} else if (vidas.getVidaActualDos() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.segundoJefePantano();
+					
+					accionJugador.log();
 
 				} else if (vidas.getVidaActualTres() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.tercerJefePantano();
+					
+					accionJugador.log();
 					System.out.println("FELICIDADES has superado el PANTANO");
 
 				} else if (vidas.getVidaActualCuatro() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.cuartoJefePantano();
+					
+					accionJugador.log();
 
 				} else if (vidas.getVidaActualCinco() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.quintoJefePantano();
+					
+					accionJugador.log();
 
 				} else if (vidas.getVidaActualSeis() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.sextoJefePantano();
+					
+					accionJugador.log();
 					System.out.println("FELICIDADES has superado el DESIERTO");
 
 				} else if (vidas.getVidaActualSiete() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.septimoJefePantano();
+					
+					accionJugador.log();
 
 				} else if (vidas.getVidaActualOcho() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.octavoJefePantano();
+					
+					accionJugador.log();
 
 				} else if (vidas.getVidaActualNueve() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.novenoJefePantano();
+					
+					accionJugador.log();
 					System.out.println("FELICIDADES has superado la MONTAÑA");
 
 				} else if (vidas.getVidaActualDiez() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.decimoJefePantano();
+					
+					accionJugador.log();
 
 				} else if (vidas.getVidaActualOnce() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.undecimoJefePantano();
+					
+					accionJugador.log();
 
 				} else if (vidas.getVidaActualDoce() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.duodecimoJefePantano();
+					
+					accionJugador.log();
 					System.out.println("FELICIDADES has superado el VOLCÁN");
 				}
 
@@ -232,20 +255,18 @@ public class combatePantano extends JFrame {
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.setBounds(481, 11, 89, 23);
 		getContentPane().add(btnVolver);
-		
-	/*	JLabel lblGif = new JLabel("");
-		lblGif.setIcon(new ImageIcon("C:\\Users\\pablo\\eclipse-workspace\\WindowsBuilderTest\\Pantano.gif"));
-		lblGif.setBounds(10, 32, 560, 394);
-		getContentPane().add(lblGif);
-		
-		JLabel lblGifJugador = new JLabel("");
-		lblGifJugador.setIcon(new ImageIcon("C:\\Users\\pablo\\eclipse-workspace\\WindowsBuilderTest\\Lizardmen.gif"));
-		lblGifJugador.setBounds(20, 384, 214, 193);
-		getContentPane().add(lblGifJugador);*/
-		
-		 
-		
-		
+
+		/*
+		 * JLabel lblGif = new JLabel(""); lblGif.setIcon(new ImageIcon(
+		 * "C:\\Users\\pablo\\eclipse-workspace\\WindowsBuilderTest\\Pantano.gif"));
+		 * lblGif.setBounds(10, 32, 560, 394); getContentPane().add(lblGif);
+		 * 
+		 * JLabel lblGifJugador = new JLabel(""); lblGifJugador.setIcon(new ImageIcon(
+		 * "C:\\Users\\pablo\\eclipse-workspace\\WindowsBuilderTest\\Lizardmen.gif"));
+		 * lblGifJugador.setBounds(20, 384, 214, 193);
+		 * getContentPane().add(lblGifJugador);
+		 */
+
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Pantano();
@@ -264,6 +285,27 @@ public class combatePantano extends JFrame {
 	public JFrame getFrame() {
 		return frame;
 	}
+
+	/*public void log() {
+		try {
+
+			// This block configure the logger with handler and formatter
+			fh = new FileHandler("C:\\Users\\pablo\\eclipse-workspace\\WindowsBuilderTest\\src\\Log.log");
+			logger.addHandler(fh);
+			SimpleFormatter formatter = new SimpleFormatter();
+			fh.setFormatter(formatter);
+
+			// the following statement is used to log any messages
+			logger.info("My first log");
+
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		logger.info("Hi How r u?");
+	}*/
 
 	/*
 	 * public void pasarTurno() { ======= public void pasarTurno() { >>>>>>> branch
