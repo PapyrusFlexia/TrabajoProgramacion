@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class turnoJugador extends JFrame {
 
-	private JFrame frame;
+
 	final JFrame dado = new JFrame();
 	static int tirada = Dado.tirarDado(3) + 1;
 
@@ -33,6 +33,9 @@ public class turnoJugador extends JFrame {
 	int vidaActualDiez;
 	int vidaActualOnce;
 	int vidaActualDoce;
+
+	String nombreJefeUno, nombreJefeDos, nombreJefeTres, nombreJefeCuatro, nombreJefeCinco, nombreJefeSeis,
+			nombreJefeSiete, nombreJefeOcho, nombreJefeNueve, nombreJefeDiez, nombreJefeOnce, nombreJefeDoce;
 
 	int idJefeUno, idJefeDos, idJefeTres, idJefeCuatro, idJefeCinco, idJefeSeis, idJefeSiete, idJefeOcho, idJefeNueve,
 			idJefeDiez, idJefeOnce, idJefeDoce;
@@ -60,7 +63,7 @@ public class turnoJugador extends JFrame {
 
 	ArrayList<turnoJugadorGetSet> meterRS = new ArrayList<turnoJugadorGetSet>();
 	int sizeRSjefe = meterRS.size();
-	turnoJugadorGetSet objetoJefe = new turnoJugadorGetSet(0, 0);
+	// turnoJugadorGetSet objetoJefe = new turnoJugadorGetSet(0, 0);
 
 	public turnoJugador() {
 
@@ -75,11 +78,13 @@ public class turnoJugador extends JFrame {
 
 				vidaActualUno = rsUno.getInt("vida");
 
+				nombreJefeUno = rsUno.getString("nombre");
+
 				if (rsUno.getInt("id") == 1) {
 					idJefeUno = rsUno.getInt("id");
 
 				}
-				turnoJugadorGetSet kUno = new turnoJugadorGetSet(vidaActualUno, idJefeUno);
+				turnoJugadorGetSet kUno = new turnoJugadorGetSet(vidaActualUno, idJefeUno, nombreJefeUno);
 
 				meterRS.add(kUno);
 				// rsUno.close();
@@ -96,11 +101,13 @@ public class turnoJugador extends JFrame {
 
 				vidaActualDos = rsDos.getInt("vida");
 
+				nombreJefeDos = rsDos.getString("nombre");
+
 				if (rsDos.getInt("id") == 2) {
 					idJefeDos = rsDos.getInt("id");
 
 				}
-				turnoJugadorGetSet kDos = new turnoJugadorGetSet(vidaActualDos, idJefeDos);
+				turnoJugadorGetSet kDos = new turnoJugadorGetSet(vidaActualDos, idJefeDos, nombreJefeDos);
 
 				meterRS.add(kDos);
 				// rsDos.close();
@@ -117,10 +124,12 @@ public class turnoJugador extends JFrame {
 
 				vidaActualTres = rsTres.getInt("vida");
 
+				nombreJefeTres = rsTres.getString("nombre");
+
 				if (rsTres.getInt("id") == 3) {
 					idJefeTres = rsTres.getInt("id");
 				}
-				turnoJugadorGetSet kTres = new turnoJugadorGetSet(vidaActualTres, idJefeTres);
+				turnoJugadorGetSet kTres = new turnoJugadorGetSet(vidaActualTres, idJefeTres, nombreJefeTres);
 
 				meterRS.add(kTres);
 				// rsTres.close();
@@ -138,10 +147,12 @@ public class turnoJugador extends JFrame {
 
 				vidaActualCuatro = rsCuatro.getInt("vida");
 
+				nombreJefeCuatro = rsCuatro.getString("nombre");
+
 				if (rsCuatro.getInt("id") == 4) {
 					idJefeCuatro = rsCuatro.getInt("id");
 				}
-				turnoJugadorGetSet kCuatro = new turnoJugadorGetSet(vidaActualCuatro, idJefeCuatro);
+				turnoJugadorGetSet kCuatro = new turnoJugadorGetSet(vidaActualCuatro, idJefeCuatro, nombreJefeCuatro);
 
 				meterRS.add(kCuatro);
 				// rsTres.close();
@@ -158,10 +169,12 @@ public class turnoJugador extends JFrame {
 
 				vidaActualCinco = rsCinco.getInt("vida");
 
+				nombreJefeCinco = rsCinco.getString("nombre");
+
 				if (rsCinco.getInt("id") == 5) {
 					idJefeCinco = rsCinco.getInt("id");
 				}
-				turnoJugadorGetSet kCinco = new turnoJugadorGetSet(vidaActualCinco, idJefeCinco);
+				turnoJugadorGetSet kCinco = new turnoJugadorGetSet(vidaActualCinco, idJefeCinco, nombreJefeCinco);
 
 				meterRS.add(kCinco);
 				// rsTres.close();
@@ -178,10 +191,12 @@ public class turnoJugador extends JFrame {
 
 				vidaActualSeis = rsSeis.getInt("vida");
 
+				nombreJefeSeis = rsSeis.getString("nombre");
+
 				if (rsSeis.getInt("id") == 6) {
 					idJefeSeis = rsSeis.getInt("id");
 				}
-				turnoJugadorGetSet kSeis = new turnoJugadorGetSet(vidaActualSeis, idJefeSeis);
+				turnoJugadorGetSet kSeis = new turnoJugadorGetSet(vidaActualSeis, idJefeSeis, nombreJefeSeis);
 
 				meterRS.add(kSeis);
 				// rsTres.close();
@@ -199,11 +214,13 @@ public class turnoJugador extends JFrame {
 
 				vidaActualSiete = rsSiete.getInt("vida");
 
+				nombreJefeSiete = rsSiete.getString("nombre");
+
 				if (rsSiete.getInt("id") == 7) {
 					idJefeSiete = rsSiete.getInt("id");
 
 				}
-				turnoJugadorGetSet kSiete = new turnoJugadorGetSet(vidaActualSiete, idJefeSiete);
+				turnoJugadorGetSet kSiete = new turnoJugadorGetSet(vidaActualSiete, idJefeSiete, nombreJefeSiete);
 
 				meterRS.add(kSiete);
 				// rsUno.close();
@@ -220,11 +237,13 @@ public class turnoJugador extends JFrame {
 
 				vidaActualOcho = rsOcho.getInt("vida");
 
+				nombreJefeOcho = rsOcho.getString("nombre");
+
 				if (rsOcho.getInt("id") == 8) {
 					idJefeOcho = rsOcho.getInt("id");
 
 				}
-				turnoJugadorGetSet kOcho = new turnoJugadorGetSet(vidaActualOcho, idJefeOcho);
+				turnoJugadorGetSet kOcho = new turnoJugadorGetSet(vidaActualOcho, idJefeOcho, nombreJefeOcho);
 
 				meterRS.add(kOcho);
 				// rsDos.close();
@@ -241,10 +260,12 @@ public class turnoJugador extends JFrame {
 
 				vidaActualNueve = rsNueve.getInt("vida");
 
+				nombreJefeNueve = rsNueve.getString("nombre");
+
 				if (rsNueve.getInt("id") == 9) {
 					idJefeNueve = rsNueve.getInt("id");
 				}
-				turnoJugadorGetSet kNueve = new turnoJugadorGetSet(vidaActualNueve, idJefeNueve);
+				turnoJugadorGetSet kNueve = new turnoJugadorGetSet(vidaActualNueve, idJefeNueve, nombreJefeNueve);
 
 				meterRS.add(kNueve);
 				// rsTres.close();
@@ -262,10 +283,12 @@ public class turnoJugador extends JFrame {
 
 				vidaActualDiez = rsDiez.getInt("vida");
 
+				nombreJefeDiez = rsDiez.getString("nombre");
+
 				if (rsDiez.getInt("id") == 10) {
 					idJefeDiez = rsDiez.getInt("id");
 				}
-				turnoJugadorGetSet kDiez = new turnoJugadorGetSet(vidaActualDiez, idJefeDiez);
+				turnoJugadorGetSet kDiez = new turnoJugadorGetSet(vidaActualDiez, idJefeDiez, nombreJefeDiez);
 
 				meterRS.add(kDiez);
 				// rsTres.close();
@@ -282,10 +305,12 @@ public class turnoJugador extends JFrame {
 
 				vidaActualOnce = rsOnce.getInt("vida");
 
+				nombreJefeOnce = rsOnce.getString("nombre");
+
 				if (rsOnce.getInt("id") == 11) {
 					idJefeOnce = rsOnce.getInt("id");
 				}
-				turnoJugadorGetSet kOnce = new turnoJugadorGetSet(vidaActualOnce, idJefeOnce);
+				turnoJugadorGetSet kOnce = new turnoJugadorGetSet(vidaActualOnce, idJefeOnce, nombreJefeOnce);
 
 				meterRS.add(kOnce);
 				// rsTres.close();
@@ -302,10 +327,12 @@ public class turnoJugador extends JFrame {
 
 				vidaActualDoce = rsDoce.getInt("vida");
 
+				nombreJefeDoce = rsDoce.getString("nombre");
+
 				if (rsDoce.getInt("id") == 12) {
 					idJefeDoce = rsDoce.getInt("id");
 				}
-				turnoJugadorGetSet kDoce = new turnoJugadorGetSet(vidaActualDoce, idJefeDoce);
+				turnoJugadorGetSet kDoce = new turnoJugadorGetSet(vidaActualDoce, idJefeDoce, nombreJefeDoce);
 
 				meterRS.add(kDoce);
 				// rsTres.close();
@@ -417,7 +444,7 @@ public class turnoJugador extends JFrame {
 	public void primerJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 		vidaActualUno = vidaActualUno - dmgJugador;
-		AddBaseDeDatos(vidaActualUno, idJefeUno);
+		AddBaseDeDatos(vidaActualUno, idJefeUno, nombreJefeUno);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -430,8 +457,7 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combatePantano cerrarPantano = new combatePantano();
-			cerrarPantano.dispose();
+			
 		}
 
 	}
@@ -441,7 +467,7 @@ public class turnoJugador extends JFrame {
 		// vidaActualDos = (Integer) meterRS.get(0).getVida();
 
 		vidaActualDos = vidaActualDos - dmgJugador;
-		AddBaseDeDatos(vidaActualDos, idJefeDos);
+		AddBaseDeDatos(vidaActualDos, idJefeDos, nombreJefeDos);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -454,8 +480,7 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combatePantano cerrarPantano = new combatePantano();
-			cerrarPantano.dispose();
+		
 
 		}
 	}
@@ -464,7 +489,7 @@ public class turnoJugador extends JFrame {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 
 		vidaActualTres = vidaActualTres - dmgJugador;
-		AddBaseDeDatos(vidaActualTres, idJefeTres);
+		AddBaseDeDatos(vidaActualTres, idJefeTres, nombreJefeTres);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -477,8 +502,7 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combatePantano cerrarPantano = new combatePantano();
-			cerrarPantano.dispose();
+			
 		}
 
 	}
@@ -487,7 +511,7 @@ public class turnoJugador extends JFrame {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 
 		vidaActualCuatro = vidaActualCuatro - dmgJugador;
-		AddBaseDeDatos(vidaActualCuatro, idJefeCuatro);
+		AddBaseDeDatos(vidaActualCuatro, idJefeCuatro, nombreJefeCuatro);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -500,8 +524,7 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combatePantano cerrarPantano = new combatePantano();
-			cerrarPantano.dispose();
+			
 		}
 
 	}
@@ -509,7 +532,7 @@ public class turnoJugador extends JFrame {
 	public void quintoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 		vidaActualCinco = vidaActualCinco - dmgJugador;
-		AddBaseDeDatos(vidaActualCinco, idJefeCinco);
+		AddBaseDeDatos(vidaActualCinco, idJefeCinco, nombreJefeCinco);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -522,8 +545,7 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combatePantano cerrarPantano = new combatePantano();
-			cerrarPantano.dispose();
+			
 		}
 
 	}
@@ -531,7 +553,7 @@ public class turnoJugador extends JFrame {
 	public void sextoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 		vidaActualSeis = vidaActualSeis - dmgJugador;
-		AddBaseDeDatos(vidaActualSeis, idJefeSeis);
+		AddBaseDeDatos(vidaActualSeis, idJefeSeis, nombreJefeSeis);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -544,8 +566,7 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combatePantano cerrarPantano = new combatePantano();
-			cerrarPantano.dispose();
+			
 		}
 
 	}
@@ -553,7 +574,7 @@ public class turnoJugador extends JFrame {
 	public void septimoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 		vidaActualSiete = vidaActualSiete - dmgJugador;
-		AddBaseDeDatos(vidaActualSiete, idJefeSiete);
+		AddBaseDeDatos(vidaActualSiete, idJefeSiete, nombreJefeSiete);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -566,8 +587,7 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combatePantano cerrarPantano = new combatePantano();
-			cerrarPantano.dispose();
+			
 		}
 
 	}
@@ -575,7 +595,7 @@ public class turnoJugador extends JFrame {
 	public void octavoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 		vidaActualOcho = vidaActualOcho - dmgJugador;
-		AddBaseDeDatos(vidaActualOcho, idJefeOcho);
+		AddBaseDeDatos(vidaActualOcho, idJefeOcho, nombreJefeOcho);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -588,8 +608,7 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combatePantano cerrarPantano = new combatePantano();
-			cerrarPantano.dispose();
+			
 		}
 
 	}
@@ -599,7 +618,7 @@ public class turnoJugador extends JFrame {
 		// vidaActualDos = (Integer) meterRS.get(0).getVida();
 
 		vidaActualNueve = vidaActualNueve - dmgJugador;
-		AddBaseDeDatos(vidaActualNueve, idJefeNueve);
+		AddBaseDeDatos(vidaActualNueve, idJefeNueve, nombreJefeNueve);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -612,8 +631,7 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combatePantano cerrarPantano = new combatePantano();
-			cerrarPantano.dispose();
+			
 
 		}
 	}
@@ -622,7 +640,7 @@ public class turnoJugador extends JFrame {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 
 		vidaActualDiez = vidaActualDiez - dmgJugador;
-		AddBaseDeDatos(vidaActualDiez, idJefeDiez);
+		AddBaseDeDatos(vidaActualDiez, idJefeDiez, nombreJefeDiez);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -635,8 +653,7 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combatePantano cerrarPantano = new combatePantano();
-			cerrarPantano.dispose();
+		
 		}
 
 	}
@@ -645,7 +662,7 @@ public class turnoJugador extends JFrame {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 
 		vidaActualOnce = vidaActualOnce - dmgJugador;
-		AddBaseDeDatos(vidaActualOnce, idJefeOnce);
+		AddBaseDeDatos(vidaActualOnce, idJefeOnce, nombreJefeOnce);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -658,8 +675,7 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combatePantano cerrarPantano = new combatePantano();
-			cerrarPantano.dispose();
+			
 		}
 
 	}
@@ -667,7 +683,7 @@ public class turnoJugador extends JFrame {
 	public void duodecimoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
 		vidaActualDoce = vidaActualDoce - dmgJugador;
-		AddBaseDeDatos(vidaActualDoce, idJefeDoce);
+		AddBaseDeDatos(vidaActualDoce, idJefeDoce, nombreJefeDoce);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
 				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
 
@@ -680,8 +696,8 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			combatePantano cerrarPantano = new combatePantano();
-			cerrarPantano.dispose();
+		
+
 		}
 
 	}
@@ -709,31 +725,70 @@ public class turnoJugador extends JFrame {
 
 			logger.info("Daño causado por el JUGADOR: " + dmgStringJugador);
 
-			if (vidaActualUno < 1) {
-				logger.info(" ");
-			} else if (vidaActualDos < 1) {
-				logger.info(" ");
-			} else if (vidaActualTres < 1) {
-				logger.info(" ");
-			} else if (vidaActualCuatro < 1) {
-				logger.info(" ");
-			} else if (vidaActualCinco < 1) {
-				logger.info(" ");
-			} else if (vidaActualSeis < 1) {
-				logger.info(" ");
-			} else if (vidaActualSiete < 1) {
-				logger.info(" ");
-			} else if (vidaActualOcho < 1) {
-				logger.info(" ");
-			} else if (vidaActualNueve < 1) {
-				logger.info(" ");
-			} else if (vidaActualDiez < 1) {
-				logger.info(" ");
-			} else if (vidaActualOnce < 1) {
-				logger.info(" ");
-			} else if (vidaActualDoce < 1) {
-				logger.info(" ");
+			if (vidaActualUno > 0) {
+				logger.info(" El JEFE " + nombreJefeUno + " tiene: " + vidaActualUno + " de vida" + "\n");
+
+			} else if (vidaActualDos > 0) {
+				logger.info(" JEFES muertos: " + nombreJefeUno + "\n");
+
+				logger.info(" El siguiente JEFE: " + nombreJefeDos + " tiene: " + vidaActualDos + " de vida" + "\n");
+
+			} else if (vidaActualTres > 0) {
+				logger.info(" JEFES muertos: " + nombreJefeUno + ", " + nombreJefeDos);
+
+				logger.info("El siguiente JEFE: " + nombreJefeTres + " tiene: " + vidaActualTres + " de vida");
+			} else if (vidaActualCuatro > 0) {
+				logger.info(" JEFES muertos: " + nombreJefeUno + ", " + nombreJefeDos + ", " + nombreJefeTres);
+
+				logger.info("El siguiente JEFE: " + nombreJefeCuatro + " tiene: " + vidaActualCuatro + " de vida");
+			} else if (vidaActualCinco > 0) {
+				logger.info(" JEFES muertos: " + nombreJefeUno + ", " + nombreJefeDos + ", " + nombreJefeTres + ", "
+						+ nombreJefeCuatro);
+
+				logger.info("El siguiente JEFE: " + nombreJefeCinco + " tiene: " + vidaActualCinco + " de vida");
+			} else if (vidaActualSeis > 0) {
+				logger.info(" JEFES muertos: " + nombreJefeUno + ", " + nombreJefeDos + ", " + nombreJefeTres + ", "
+						+ nombreJefeCuatro + ", " + nombreJefeCinco);
+
+				logger.info("El siguiente JEFE: " + nombreJefeSeis + " tiene: " + vidaActualSeis + " de vida");
+			} else if (vidaActualSiete > 0) {
+				logger.info(" JEFES muertos: " + nombreJefeUno + ", " + nombreJefeDos + ", " + nombreJefeTres + ", "
+						+ nombreJefeCuatro + ", " + nombreJefeCinco + ", " + nombreJefeSeis);
+
+				logger.info("El siguiente JEFE: " + nombreJefeSiete + " tiene: " + vidaActualSiete + " de vida");
+			} else if (vidaActualOcho > 0) {
+				logger.info(" JEFES muertos: " + nombreJefeUno + ", " + nombreJefeDos + ", " + nombreJefeTres + ", "
+						+ nombreJefeCuatro + ", " + nombreJefeCinco + ", " + nombreJefeSeis + ", " + nombreJefeSiete);
+
+				logger.info("El siguiente JEFE: " + nombreJefeOcho + " tiene: " + vidaActualOcho + " de vida");
+			} else if (vidaActualNueve > 0) {
+				logger.info(" JEFES muertos: " + nombreJefeUno + ", " + nombreJefeDos + ", " + nombreJefeTres + ", "
+						+ nombreJefeCuatro + ", " + nombreJefeCinco + ", " + nombreJefeSeis + ", " + nombreJefeSiete
+						+ ", " + nombreJefeOcho);
+				logger.info("El siguiente JEFE: " + nombreJefeNueve + " tiene: " + vidaActualNueve + " de vida");
+			} else if (vidaActualDiez > 0) {
+				logger.info(" JEFES muertos: " + nombreJefeUno + ", " + nombreJefeDos + ", " + nombreJefeTres + ", "
+						+ nombreJefeCuatro + ", " + nombreJefeCinco + ", " + nombreJefeSeis + ", " + nombreJefeSiete
+						+ ", " + nombreJefeOcho + ", " + nombreJefeNueve);
+				logger.info("El siguiente JEFE: " + nombreJefeDiez + " tiene: " + vidaActualDiez + " de vida");
+			} else if (vidaActualOnce > 0) {
+				logger.info(" JEFES muertos: " + nombreJefeUno + ", " + nombreJefeDos + ", " + nombreJefeTres + ", "
+						+ nombreJefeCuatro + ", " + nombreJefeCinco + ", " + nombreJefeSeis + ", " + nombreJefeSiete
+						+ ", " + nombreJefeOcho + ", " + nombreJefeNueve + ", " + nombreJefeDiez);
+				logger.info("El siguiente  JEFE: " + nombreJefeOnce + " tiene: " + vidaActualOnce + " de vida");
+			} else if (vidaActualDoce > 0) {
+				logger.info(" JEFES muertos: " + nombreJefeUno + ", " + nombreJefeDos + ", " + nombreJefeTres + ", "
+						+ nombreJefeCuatro + ", " + nombreJefeCinco + ", " + nombreJefeSeis + ", " + nombreJefeSiete
+						+ ", " + nombreJefeOcho + ", " + nombreJefeNueve + ", " + nombreJefeDiez + ", "
+						+ nombreJefeOnce);
+				logger.info("El siguiente JEFE " + nombreJefeDoce + " tiene: " + vidaActualDoce + " de vida");
+
+				logger.info(" JEFES muertos: " + nombreJefeUno + ", " + nombreJefeDos + ", " + nombreJefeTres + ", "
+						+ nombreJefeCuatro + ", " + nombreJefeCinco + ", " + nombreJefeSeis + ", " + nombreJefeSiete
+						+ ", " + nombreJefeOcho + ", " + nombreJefeNueve + ", " + nombreJefeDiez + ", " + nombreJefeOnce
+						+ ", " + nombreJefeDoce);
 			}
+
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -742,18 +797,14 @@ public class turnoJugador extends JFrame {
 
 	}
 
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
+	
 
 	public void close() {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public void AddBaseDeDatos(int vidaJugador, int idJefe) {
+	public void AddBaseDeDatos(int vidaJugador, int idJefe, String nombreJefe) {
 
 		Conexion.conectar();
 

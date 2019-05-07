@@ -8,7 +8,8 @@ public class Continuar extends JFrame {
 
 	private JFrame frame;
 	private JTextField txtAtencinSiContinuas;
-	private turnoJugador accionJugador;
+	//private turnoJugador accionJugador;
+	
 
 	/**
 	 * Launch the application.
@@ -44,29 +45,28 @@ public class Continuar extends JFrame {
 		JButton btnLeeroyJenkinsContinuar = new JButton("LEEROY JENKINS! CONTINUAR");
 		btnLeeroyJenkinsContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//turnoJugador vidasContinuar = new turnoJugador(); /////////////////////////////////////////////
-			//	if (vidasContinuar.getVidaActualTres() >= 1) {
-					//accionJugador.tercerJefePantano();
+				// turnoJugador vidasContinuar = new turnoJugador();
+				// /////////////////////////////////////////////
+				// if (vidasContinuar.getVidaActualTres() >= 1) {
+				// accionJugador.tercerJefePantano();
 
-					//combatePantano combatePantanoVisible = new combatePantano();
-				//	combatePantanoVisible.setVisible(true);
+				// combatePantano combatePantanoVisible = new combatePantano();
+				// combatePantanoVisible.setVisible(true);
 
-					//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					//close();
+				// setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				// close();
 
-					//dispose();
-				
+				// dispose();
+
+				// combatePantano nwcp = new combatePantano();
 				combatePantano nwcp = new combatePantano();
-				nwcp.NewScreen();
+				//nwcombatePantano.NewScreen();
 
 				// contentPane.setVisible(false);
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				close();
 
-				new combatePantano();
-				combatePantano combatepantanoVisible = new combatePantano();
-				combatepantanoVisible.setVisible(true);
-			
+				nwcp.setVisible(true);
 
 			}
 		});

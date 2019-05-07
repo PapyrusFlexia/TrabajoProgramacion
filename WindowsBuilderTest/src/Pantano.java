@@ -83,15 +83,13 @@ public class Pantano extends JFrame {
 					tiendaVisible.setVisible(true);
 				} else {
 					combatePantano nwcombatePantano = new combatePantano();
-					nwcombatePantano.NewScreen();
+					//nwcombatePantano.NewScreen();
 
 					// contentPane.setVisible(false);
 					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					close();
 
-					new combatePantano();
-					combatePantano combatePantanoVisible = new combatePantano();
-					combatePantanoVisible.setVisible(true);
+					nwcombatePantano.setVisible(true);
 
 				}
 

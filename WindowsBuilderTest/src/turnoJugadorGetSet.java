@@ -1,15 +1,17 @@
 public class turnoJugadorGetSet {
-	
+
 	private int vida;
 	private int id;
-	
-	public turnoJugadorGetSet(int vida, int id) {
+	private String nombre;
+
+	public turnoJugadorGetSet(int vida, int id, String nombre) {
 		super();
 		this.vida = vida;
 		this.id = id;
+		this.nombre = nombre;
 	}
 
-	public  int getVida() {
+	public int getVida() {
 		return vida;
 	}
 
@@ -25,11 +27,17 @@ public class turnoJugadorGetSet {
 		this.id = id;
 	}
 
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	@Override
 	public String toString() {
-		return "turnoJugadorGetSet [vida=" + vida + ", id=" + id + "]";
+		return "turnoJugadorGetSet [vida=" + vida + ", id=" + id + ", nombre=" + nombre + "]";
 	}
-	
-	
 
 }
