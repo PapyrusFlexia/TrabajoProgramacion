@@ -1,5 +1,8 @@
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -7,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import BBDD.Conexion;
 
 import java.awt.event.*;
+import java.io.IOException;
 
 public class Jefe extends JFrame {
 
@@ -16,6 +20,8 @@ public class Jefe extends JFrame {
 	int idActual;
 	int id_jugador;
 	int cogerId;
+	Logger logger = Logger.getLogger("MyLog");
+	FileHandler fh;
 
 	
 	String consulta = "SELECT * FROM jugadores ORDER BY RAND() LIMIT 1";
@@ -177,6 +183,39 @@ public class Jefe extends JFrame {
 	
 	public int tirarJefe(){
 		 return tirada = Dado.tirarDado(3)+ 1;
+	}
+	
+	public void logJefe() {
+		//Jefe tiradaJefe = new Jefe();
+		//int dmgJefe = tiradaJefe.tirarJefe();
+		//String dmgStringJefe = String.valueOf(dmgJefe); 
+		int dmgJefe = tirada;
+		String dmgStringJefe = String.valueOf(dmgJefe); 
+		
+		try {
+
+			// This block configure the logger with handler and formatter
+			fh = new FileHandler("C:\\Users\\pablo\\eclipse-workspace\\WindowsBuilderTest\\src\\Log.log");
+			logger.addHandler(fh);
+			SimpleFormatter formatter = new SimpleFormatter();
+			fh.setFormatter(formatter);
+
+			// the following statement is used to log any messages
+			logger.info("Daño causado por el JEFE: " +dmgStringJefe);
+			
+			if(vidaActual < 1) {
+			logger.info("HAS MUERTO ");
+			}
+		
+			
+
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		
 	}
 
 

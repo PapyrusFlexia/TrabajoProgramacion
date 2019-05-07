@@ -17,7 +17,7 @@ public class turnoJugador extends JFrame {
 	private JFrame frame;
 	final JFrame dado = new JFrame();
 	static int tirada = Dado.tirarDado(3) + 1;
-	
+
 	Logger logger = Logger.getLogger("MyLog");
 	FileHandler fh;
 
@@ -689,14 +689,14 @@ public class turnoJugador extends JFrame {
 	public int tirarJugador() {
 		return tirada = Dado.tirarDado(3) + 1;
 	}
-	
-	public void log() {
-		Jefe tiradaJefe = new Jefe();
-		int dmgJefe = tiradaJefe.tirarJefe();
-		String dmgStringJefe = String.valueOf(dmgJefe); 
+
+	public void logJugador() {
+		// Jefe tiradaJefe = new Jefe();
+		// int dmgJefe = tiradaJefe.tirarJefe();
+		// String dmgStringJefe = String.valueOf(dmgJefe);
 		int dmgJugador = tirada;
-		String dmgStringJugador = String.valueOf(dmgJugador); 
-		
+		String dmgStringJugador = String.valueOf(dmgJugador);
+
 		try {
 
 			// This block configure the logger with handler and formatter
@@ -706,16 +706,40 @@ public class turnoJugador extends JFrame {
 			fh.setFormatter(formatter);
 
 			// the following statement is used to log any messages
-			logger.info("Daño causado por el JEFE: " + dmgStringJefe);
-			logger.info("Daño causado por el JUGADOR: " +dmgStringJugador);
 
+			logger.info("Daño causado por el JUGADOR: " + dmgStringJugador);
+
+			if (vidaActualUno < 1) {
+				logger.info(" ");
+			} else if (vidaActualDos < 1) {
+				logger.info(" ");
+			} else if (vidaActualTres < 1) {
+				logger.info(" ");
+			} else if (vidaActualCuatro < 1) {
+				logger.info(" ");
+			} else if (vidaActualCinco < 1) {
+				logger.info(" ");
+			} else if (vidaActualSeis < 1) {
+				logger.info(" ");
+			} else if (vidaActualSiete < 1) {
+				logger.info(" ");
+			} else if (vidaActualOcho < 1) {
+				logger.info(" ");
+			} else if (vidaActualNueve < 1) {
+				logger.info(" ");
+			} else if (vidaActualDiez < 1) {
+				logger.info(" ");
+			} else if (vidaActualOnce < 1) {
+				logger.info(" ");
+			} else if (vidaActualDoce < 1) {
+				logger.info(" ");
+			}
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		
 	}
 
 	private void initialize() {

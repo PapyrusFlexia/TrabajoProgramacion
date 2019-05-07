@@ -148,7 +148,9 @@ public class combatePantano extends JFrame {
 					accionJefe = new Jefe();
 					accionJugador.primerJefePantano();
 					
-					accionJugador.log();
+					accionJefe.logJefe();
+					accionJugador.logJugador();
+					
 					
 					// if (vidas.getVidaActualUno() < 1){
 					// frame.setVisible(false);
@@ -157,70 +159,81 @@ public class combatePantano extends JFrame {
 					accionJefe = new Jefe();
 					accionJugador.segundoJefePantano();
 					
-					accionJugador.log();
+					accionJefe.logJefe();
+					accionJugador.logJugador();
 
 				} else if (vidas.getVidaActualTres() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.tercerJefePantano();
 					
-					accionJugador.log();
+					accionJefe.logJefe();
+					accionJugador.logJugador();
 					System.out.println("FELICIDADES has superado el PANTANO");
 
 				} else if (vidas.getVidaActualCuatro() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.cuartoJefePantano();
 					
-					accionJugador.log();
+					accionJefe.logJefe();
+					accionJugador.logJugador();
 
 				} else if (vidas.getVidaActualCinco() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.quintoJefePantano();
 					
-					accionJugador.log();
+					accionJefe.logJefe();
+					accionJugador.logJugador();
 
 				} else if (vidas.getVidaActualSeis() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.sextoJefePantano();
 					
-					accionJugador.log();
+					accionJefe.logJefe();
+					accionJugador.logJugador();
 					System.out.println("FELICIDADES has superado el DESIERTO");
 
 				} else if (vidas.getVidaActualSiete() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.septimoJefePantano();
 					
-					accionJugador.log();
+					accionJefe.logJefe();
+					accionJugador.logJugador();
 
 				} else if (vidas.getVidaActualOcho() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.octavoJefePantano();
 					
-					accionJugador.log();
+					accionJefe.logJefe();
+					accionJugador.logJugador();
 
 				} else if (vidas.getVidaActualNueve() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.novenoJefePantano();
 					
-					accionJugador.log();
+					accionJefe.logJefe();
+					accionJugador.logJugador();
 					System.out.println("FELICIDADES has superado la MONTAÑA");
 
 				} else if (vidas.getVidaActualDiez() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.decimoJefePantano();
 					
-					accionJugador.log();
+					accionJefe.logJefe();
+					accionJugador.logJugador();
 
 				} else if (vidas.getVidaActualOnce() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.undecimoJefePantano();
 					
-					accionJugador.log();
+					accionJefe.logJefe();
+					accionJugador.logJugador();
 
 				} else if (vidas.getVidaActualDoce() >= 1) {
 					accionJefe = new Jefe();
 					accionJugador.duodecimoJefePantano();
 					
-					accionJugador.log();
+					accionJefe.logJefe();
+					accionJugador.logJugador();
 					System.out.println("FELICIDADES has superado el VOLCÁN");
 				}
 
