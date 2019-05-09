@@ -1,12 +1,35 @@
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Vector;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import BBDD.Conexion;
+
 import java.awt.event.*;
 
 public class Inventario extends JFrame {
 
-	private JFrame frame;
+	int idInventario;
+	String nombreInventario;
+	int poderInventario;
+	int valorInventario;
+	String categoriaInventario;
+	String tipoInventario;
+	String idInventarioStr;
+	String poderInventarioStr;
+	String valorInventarioStr;
+	private JTextField nombre;
+	private JTable jt;
+	ArrayList<TiendaGetSet> meterRS = new ArrayList<TiendaGetSet>();
+	int sizeRStienda = meterRS.size();
+
+	String query = "SELECT * FROM inventario";
+	String[] columnas = { "ID", "NOMBRE", "PODER", "VALOR", "CATEGORÍA", "TIPO" };
+	DefaultTableModel tableModel = new DefaultTableModel(columnas, 0);
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -32,6 +55,57 @@ public class Inventario extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 596, 795);
 		getContentPane().setLayout(null);
+		
+		nombre = new JTextField();
+		nombre.setBounds(90, 230, 120, 20);
+		getContentPane().add(nombre);
+		nombre.setColumns(10);
+
+
+
+		ResultSet rs = Conexion.EjecutarSentencia(query);
+		tableModel.addRow(columnas);
+
+		try {
+			
+
+			while (rs.next()) {
+				idInventario = rs.getInt("id");
+				idInventarioStr = String.valueOf(idInventario);
+				nombreInventario = rs.getString("nombre");
+				poderInventario = rs.getInt("poder");
+				poderInventarioStr = String.valueOf(poderInventario);
+				valorInventario = rs.getInt("valor");
+				valorInventarioStr = String.valueOf(valorInventario);
+				categoriaInventario = rs.getString("categoria");
+				tipoInventario = rs.getString("tipo");
+
+				TiendaGetSet k = new TiendaGetSet(idInventario, nombreInventario, poderInventario, valorInventario,
+						categoriaInventario, tipoInventario);
+
+				meterRS.add(k);
+
+				String[] data = { idInventarioStr, nombreInventario, poderInventarioStr, valorInventarioStr,
+						categoriaInventario, tipoInventario };
+
+				tableModel.addRow(data);
+
+			}
+			// jt = new JTable(tableModel);
+			// jt.setBounds(30, 461, 488, -161);
+			// jt.setVisible(true);
+			// getContentPane().add(jt);
+
+			// jt.setPreferredScrollableViewportSize(new Dimension(450, 63));
+			// jt.setFillsViewportHeight(true);
+
+			// JScrollPane jps = new JScrollPane(jt);
+			// getContentPane().add(jps);
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
 
 		JLabel lblNewLabel = new JLabel(new ImageIcon("103127.png"));
 		lblNewLabel.setBounds(73, 0, 335, 114);
@@ -41,84 +115,47 @@ public class Inventario extends JFrame {
 		lblInventario.setBounds(113, 40, 78, 14);
 		getContentPane().add(lblInventario);
 
-		JLabel lblArmas = new JLabel("ARMAS");
-		lblArmas.setBounds(73, 165, 46, 14);
-		getContentPane().add(lblArmas);
-
-		JLabel lblNewLabel_1 = new JLabel("New label1");
-		lblNewLabel_1.setBounds(73, 190, 78, 14);
-		getContentPane().add(lblNewLabel_1);
-
-		JLabel label = new JLabel("New label2");
-		label.setBounds(73, 215, 78, 14);
-		getContentPane().add(label);
-
-		JLabel label_1 = new JLabel("New label3");
-		label_1.setBounds(73, 240, 78, 14);
-		getContentPane().add(label_1);
-
-		JLabel label_2 = new JLabel("New label4");
-		label_2.setBounds(73, 265, 78, 14);
-		getContentPane().add(label_2);
-
-		JLabel label_3 = new JLabel("New label5");
-		label_3.setBounds(73, 290, 78, 14);
-		getContentPane().add(label_3);
-
-		JLabel label_4 = new JLabel("New label6");
-		label_4.setBounds(145, 190, 78, 14);
-		getContentPane().add(label_4);
-
-		JLabel label_5 = new JLabel("New label7");
-		label_5.setBounds(145, 215, 78, 14);
-		getContentPane().add(label_5);
-
-		JLabel label_6 = new JLabel("New label8");
-		label_6.setBounds(145, 240, 78, 14);
-		getContentPane().add(label_6);
-
-		JLabel label_7 = new JLabel("New label9");
-		label_7.setBounds(145, 265, 78, 14);
-		getContentPane().add(label_7);
-
-		JLabel label_8 = new JLabel("New label10");
-		label_8.setBounds(145, 290, 78, 14);
-		getContentPane().add(label_8);
-
-		JLabel lblArmaduras = new JLabel("ARMADURAS");
-		lblArmaduras.setBounds(145, 165, 69, 14);
-		getContentPane().add(lblArmaduras);
-
-		JLabel lblPocion = new JLabel("POCIONES");
-		lblPocion.setBounds(235, 165, 76, 14);
-		getContentPane().add(lblPocion);
-
-		JLabel label_9 = new JLabel("New label11");
-		label_9.setBounds(233, 190, 78, 14);
-		getContentPane().add(label_9);
-
-		JLabel label_10 = new JLabel("New label12");
-		label_10.setBounds(233, 215, 78, 14);
-		getContentPane().add(label_10);
-
-		JLabel label_11 = new JLabel("New label13");
-		label_11.setBounds(233, 240, 78, 14);
-		getContentPane().add(label_11);
-
-		JLabel label_12 = new JLabel("New label14");
-		label_12.setBounds(233, 265, 78, 14);
-		getContentPane().add(label_12);
-
-		JLabel label_13 = new JLabel("New label15");
-		label_13.setBounds(233, 290, 78, 14);
-		getContentPane().add(label_13);
-
 		JLabel lblOro = new JLabel("ORO:");
-		lblOro.setBounds(386, 165, 46, 14);
+		lblOro.setBounds(370, 40, 46, 14);
 		getContentPane().add(lblOro);
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.setBounds(481, 11, 89, 23);
 		getContentPane().add(btnVolver);
+
+		jt = new JTable(tableModel);
+		jt.setBounds(22, 255, 548, 490);
+		getContentPane().add(jt);
+		
+		JButton btnEquipar = new JButton("EQUIPAR");
+		btnEquipar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddBaseDeDatos(nombre.getText());
+				jt.getModel();
+				int i = jt.getSelectedRow();
+				if ( i >= 0) {
+					String seleccionar = (String) jt.getValueAt(i, 1);
+					tableModel.removeRow(i);
+					
+					
+				}
+			}
+		});
+		btnEquipar.setBounds(90, 196, 120, 23);
+		getContentPane().add(btnEquipar);
+		
+		JButton buttonDesequipar = new JButton("DESEQUIPAR");
+		buttonDesequipar.setBounds(336, 196, 120, 23);
+		getContentPane().add(buttonDesequipar);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(336, 230, 120, 20);
+		getContentPane().add(textField);
+
+		// table = new JTable();
+		// table.setBounds(170, 479, 292, 216);
+		// getContentPane().add(table);
+
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Tienda();
@@ -137,13 +174,13 @@ public class Inventario extends JFrame {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
 
 	public void close() {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+	}
+	
+	public static void AddBaseDeDatos(String nombre) {
+		Conexion.conectar();
+		Conexion.EjecutarUpdate("UPDATE inventario SET categoria = \"enfundado\" WHERE nombre = \"" + nombre + "\"");
 	}
 }
