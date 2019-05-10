@@ -14,7 +14,6 @@ import java.io.IOException;
 
 public class turnoJugador extends JFrame {
 
-
 	final JFrame dado = new JFrame();
 	static int tirada = Dado.tirarDado(3) + 1;
 
@@ -40,7 +39,11 @@ public class turnoJugador extends JFrame {
 	int idJefeUno, idJefeDos, idJefeTres, idJefeCuatro, idJefeCinco, idJefeSeis, idJefeSiete, idJefeOcho, idJefeNueve,
 			idJefeDiez, idJefeOnce, idJefeDoce;
 
+	int poderEquipamiento;
+
 	int dmgJugador = tirarJugador();
+
+	int dmgTotalJugador;
 
 	int cogerIdMontana;
 
@@ -56,6 +59,7 @@ public class turnoJugador extends JFrame {
 	String consultaJefeDiez = "SELECT * FROM jefes WHERE id= 10";
 	String consultaJefeOnce = "SELECT * FROM jefes WHERE id= 11";
 	String consultaJefeDoce = "SELECT * FROM jefes WHERE id= 12";
+	String consultaEstadisticas = "SELECT * FROM inventario WHERE categoria = \"enfundado\" AND tipo = \"arma\"";
 
 	// ResultSet rsUno = Conexion.EjecutarSentencia(consultaJefeUno);
 	// ResultSet rsDos = Conexion.EjecutarSentencia(consultaJefeDos);
@@ -63,6 +67,8 @@ public class turnoJugador extends JFrame {
 
 	ArrayList<turnoJugadorGetSet> meterRS = new ArrayList<turnoJugadorGetSet>();
 	int sizeRSjefe = meterRS.size();
+
+	ArrayList<equipamientoGetSet> meterRSEquipamiento = new ArrayList<equipamientoGetSet>();
 	// turnoJugadorGetSet objetoJefe = new turnoJugadorGetSet(0, 0);
 
 	public turnoJugador() {
@@ -343,6 +349,24 @@ public class turnoJugador extends JFrame {
 			e.printStackTrace();
 
 		}
+
+		ResultSet rsEstadisticas = Conexion.EjecutarSentencia(consultaEstadisticas);
+		try {
+
+			while (rsEstadisticas.next()) {
+
+				poderEquipamiento = rsEstadisticas.getInt("poder");
+
+				equipamientoGetSet kEstadisticas = new equipamientoGetSet(poderEquipamiento);
+
+				meterRSEquipamiento.add(kEstadisticas);
+				// rsUno.close();
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
 	}
 
 	public int getVidaActualUno() {
@@ -441,12 +465,23 @@ public class turnoJugador extends JFrame {
 		this.vidaActualDoce = vidaActualDoce;
 	}
 
+	public int getPoderEquipamiento() {
+		return poderEquipamiento;
+	}
+
+	public void setPoderEquipamiento(int poderEquipamiento) {
+		this.poderEquipamiento = poderEquipamiento;
+	}
+
 	public void primerJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
-		vidaActualUno = vidaActualUno - dmgJugador;
+		dmgTotalJugador = dmgJugador + poderEquipamiento;
+		vidaActualUno = vidaActualUno - dmgTotalJugador;
+		System.out.println(poderEquipamiento);
 		AddBaseDeDatos(vidaActualUno, idJefeUno, nombreJefeUno);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualUno < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -457,7 +492,6 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			
 		}
 
 	}
@@ -465,11 +499,12 @@ public class turnoJugador extends JFrame {
 	public void segundoJefePantano() {
 
 		// vidaActualDos = (Integer) meterRS.get(0).getVida();
-
-		vidaActualDos = vidaActualDos - dmgJugador;
+		dmgTotalJugador = dmgJugador + poderEquipamiento;
+		vidaActualDos = vidaActualDos - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualDos, idJefeDos, nombreJefeDos);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualDos < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -480,18 +515,17 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-		
-
 		}
 	}
 
 	public void tercerJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
-
-		vidaActualTres = vidaActualTres - dmgJugador;
+		dmgTotalJugador = dmgJugador + poderEquipamiento;
+		vidaActualTres = vidaActualTres - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualTres, idJefeTres, nombreJefeTres);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualTres < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -502,18 +536,18 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			
 		}
 
 	}
 
 	public void cuartoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
-
-		vidaActualCuatro = vidaActualCuatro - dmgJugador;
+		dmgTotalJugador = dmgJugador + poderEquipamiento;
+		vidaActualCuatro = vidaActualCuatro - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualCuatro, idJefeCuatro, nombreJefeCuatro);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualCuatro < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -524,17 +558,18 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			
 		}
 
 	}
 
 	public void quintoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
-		vidaActualCinco = vidaActualCinco - dmgJugador;
+		dmgTotalJugador = dmgJugador + poderEquipamiento;
+		vidaActualCinco = vidaActualCinco - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualCinco, idJefeCinco, nombreJefeCinco);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualCinco < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -545,17 +580,18 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			
 		}
 
 	}
 
 	public void sextoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
-		vidaActualSeis = vidaActualSeis - dmgJugador;
+		dmgTotalJugador = dmgJugador + poderEquipamiento;
+		vidaActualSeis = vidaActualSeis - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualSeis, idJefeSeis, nombreJefeSeis);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualSeis < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -566,17 +602,18 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			
 		}
 
 	}
 
 	public void septimoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
-		vidaActualSiete = vidaActualSiete - dmgJugador;
+		dmgTotalJugador = dmgJugador + poderEquipamiento;
+		vidaActualSiete = vidaActualSiete - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualSiete, idJefeSiete, nombreJefeSiete);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualSiete < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -587,17 +624,18 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			
 		}
 
 	}
 
 	public void octavoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
-		vidaActualOcho = vidaActualOcho - dmgJugador;
+		dmgTotalJugador = dmgJugador + poderEquipamiento;
+		vidaActualOcho = vidaActualOcho - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualOcho, idJefeOcho, nombreJefeOcho);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualOcho < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -608,7 +646,6 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			
 		}
 
 	}
@@ -616,11 +653,12 @@ public class turnoJugador extends JFrame {
 	public void novenoJefePantano() {
 
 		// vidaActualDos = (Integer) meterRS.get(0).getVida();
-
-		vidaActualNueve = vidaActualNueve - dmgJugador;
+		dmgTotalJugador = dmgJugador + poderEquipamiento;
+		vidaActualNueve = vidaActualNueve - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualNueve, idJefeNueve, nombreJefeNueve);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualNueve < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -631,18 +669,17 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			
-
 		}
 	}
 
 	public void decimoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
-
-		vidaActualDiez = vidaActualDiez - dmgJugador;
+		dmgTotalJugador = dmgJugador + poderEquipamiento;
+		vidaActualDiez = vidaActualDiez - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualDiez, idJefeDiez, nombreJefeDiez);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualDiez < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -653,18 +690,18 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-		
 		}
 
 	}
 
 	public void undecimoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
-
-		vidaActualOnce = vidaActualOnce - dmgJugador;
+		dmgTotalJugador = dmgJugador + poderEquipamiento;
+		vidaActualOnce = vidaActualOnce - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualOnce, idJefeOnce, nombreJefeOnce);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualOnce < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -675,17 +712,18 @@ public class turnoJugador extends JFrame {
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
 
-			
 		}
 
 	}
 
 	public void duodecimoJefePantano() {
 		// vidaActualUno = (Integer) meterRS.get(0).getVida();
-		vidaActualDoce = vidaActualDoce - dmgJugador;
+		dmgTotalJugador = dmgJugador + poderEquipamiento;
+		vidaActualDoce = vidaActualDoce - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualDoce, idJefeDoce, nombreJefeDoce);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " , has quitado al JEFE " + dmgJugador + " de vida");
+				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualDoce < 1) {
 			JOptionPane.showMessageDialog(dado.getComponent(0), "El JEFE a muerto");
@@ -695,8 +733,6 @@ public class turnoJugador extends JFrame {
 
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			close();
-
-		
 
 		}
 
@@ -711,7 +747,8 @@ public class turnoJugador extends JFrame {
 		// int dmgJefe = tiradaJefe.tirarJefe();
 		// String dmgStringJefe = String.valueOf(dmgJefe);
 		int dmgJugador = tirada;
-		String dmgStringJugador = String.valueOf(dmgJugador);
+		int dmgTotalJugador = dmgJugador + poderEquipamiento;
+		String dmgStringJugador = String.valueOf(dmgTotalJugador);
 
 		try {
 
@@ -796,8 +833,6 @@ public class turnoJugador extends JFrame {
 		}
 
 	}
-
-	
 
 	public void close() {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);

@@ -55,19 +55,16 @@ public class Inventario extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 596, 795);
 		getContentPane().setLayout(null);
-		
+
 		nombre = new JTextField();
 		nombre.setBounds(90, 230, 120, 20);
 		getContentPane().add(nombre);
 		nombre.setColumns(10);
 
-
-
 		ResultSet rs = Conexion.EjecutarSentencia(query);
 		tableModel.addRow(columnas);
 
 		try {
-			
 
 			while (rs.next()) {
 				idInventario = rs.getInt("id");
@@ -96,9 +93,6 @@ public class Inventario extends JFrame {
 			// jt.setVisible(true);
 			// getContentPane().add(jt);
 
-			// jt.setPreferredScrollableViewportSize(new Dimension(450, 63));
-			// jt.setFillsViewportHeight(true);
-
 			// JScrollPane jps = new JScrollPane(jt);
 			// getContentPane().add(jps);
 
@@ -106,6 +100,8 @@ public class Inventario extends JFrame {
 
 			e.printStackTrace();
 		}
+		
+		
 
 		JLabel lblNewLabel = new JLabel(new ImageIcon("103127.png"));
 		lblNewLabel.setBounds(73, 0, 335, 114);
@@ -125,28 +121,41 @@ public class Inventario extends JFrame {
 		jt = new JTable(tableModel);
 		jt.setBounds(22, 255, 548, 490);
 		getContentPane().add(jt);
-		
+
 		JButton btnEquipar = new JButton("EQUIPAR");
 		btnEquipar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AddBaseDeDatos(nombre.getText());
 				jt.getModel();
 				int i = jt.getSelectedRow();
-				if ( i >= 0) {
+				if (i >= 0) {
 					String seleccionar = (String) jt.getValueAt(i, 1);
 					tableModel.removeRow(i);
-					
-					
+					AddBaseDeDatos(seleccionar);
+
 				}
 			}
 		});
 		btnEquipar.setBounds(90, 196, 120, 23);
 		getContentPane().add(btnEquipar);
-		
-		JButton buttonDesequipar = new JButton("DESEQUIPAR");
-		buttonDesequipar.setBounds(336, 196, 120, 23);
-		getContentPane().add(buttonDesequipar);
-		
+
+		JButton btnDesequipar = new JButton("DESEQUIPAR");
+		btnDesequipar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DeleteBaseDeDatos(nombre.getText(), categoriaInventario);
+				jt.getModel();
+				int i = jt.getSelectedRow();
+				if (i >= 0) {
+					String deseleccionar = (String) jt.getValueAt(i, 1);
+					tableModel.removeRow(i);
+					AddBaseDeDatos(deseleccionar);
+
+				}
+			}
+		});
+		btnDesequipar.setBounds(336, 196, 120, 23);
+		getContentPane().add(btnDesequipar);
+
 		textField = new JTextField();
 		textField.setColumns(10);
 		textField.setBounds(336, 230, 120, 20);
@@ -178,9 +187,15 @@ public class Inventario extends JFrame {
 	public void close() {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 	}
-	
+
 	public static void AddBaseDeDatos(String nombre) {
-		Conexion.conectar();
+
 		Conexion.EjecutarUpdate("UPDATE inventario SET categoria = \"enfundado\" WHERE nombre = \"" + nombre + "\"");
+	}
+
+	public static void DeleteBaseDeDatos(String nombre, String categoria) {
+
+		Conexion.EjecutarUpdate(
+				"UPDATE inventario SET categoria = \" desenfundado \"  WHERE nombre = \"" + nombre + "\"");
 	}
 }

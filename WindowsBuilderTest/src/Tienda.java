@@ -132,6 +132,7 @@ public class Tienda extends JFrame {
 				if (oro >= valorObjetoUno) {
 					AddBaseDeDatos(idObjetoUno, nombreObjetoUno, poderObjetoUno, valorObjetoUno, categoriaObjetoUno,
 							tipoObjetoUno);
+					System.out.println(nombreObjetoUno);
 				} else {
 					System.out.println("NO TIENES EL ORO PARA COMPRAR ESE OBJETO");
 					System.out.println("Tu oro actual: " + oro);
@@ -143,11 +144,12 @@ public class Tienda extends JFrame {
 		getContentPane().add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("COMPRAR OBJETO");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (oro >= valorObjetoDos) {
 					AddBaseDeDatos(idObjetoDos, nombreObjetoDos, poderObjetoDos, valorObjetoDos, categoriaObjetoDos,
 							tipoObjetoDos);
+					System.out.println(nombreObjetoDos);
 				} else {
 					System.out.println("NO TIENES EL ORO PARA COMPRAR ESE OBJETO");
 					System.out.println("Tu oro actual: " + oro);
@@ -159,11 +161,13 @@ public class Tienda extends JFrame {
 		getContentPane().add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("COMPRAR OBJETO");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (oro >= valorObjetoTres) {
 					AddBaseDeDatos(idObjetoTres, nombreObjetoTres, poderObjetoTres, valorObjetoTres,
 							categoriaObjetoTres, tipoObjetoTres);
+					
+					System.out.println(nombreObjetoTres);
 				} else {
 					System.out.println("NO TIENES EL ORO PARA COMPRAR ESE OBJETO");
 					System.out.println("Tu oro actual: " + oro);
@@ -324,12 +328,14 @@ public class Tienda extends JFrame {
 		lblNewLabel.setBounds(302, 297, 229, 14);
 		getContentPane().add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(302, 331, 46, 14);
+		JLabel lblNewLabel_1 = new JLabel("[ " +idObjetoDos + " " +nombreObjetoDos + " " + poderObjetoDos + " " + valorObjetoDos + " " + categoriaObjetoDos +
+				" " +	tipoObjetoDos + " ]");
+		lblNewLabel_1.setBounds(302, 331, 229, 14);
 		getContentPane().add(lblNewLabel_1);
 
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setBounds(302, 367, 46, 14);
+		JLabel lblNewLabel_2 = new JLabel("[ " +idObjetoTres + " " +nombreObjetoTres + " " + poderObjetoTres + " " + valorObjetoTres + " " + categoriaObjetoTres +
+				" " +	tipoObjetoTres + " ]");
+		lblNewLabel_2.setBounds(302, 367, 229, 14);
 		getContentPane().add(lblNewLabel_2);
 
 	}
