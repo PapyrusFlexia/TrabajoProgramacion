@@ -14,24 +14,34 @@ import java.io.IOException;
 
 public class Jefe extends JFrame {
 
+	final JFrame dado = new JFrame();
 	static int tirada = Dado.tirarDado(3) + 1;
 	int vidaActual;
-	int idActual;
-	int id_jugador;
+	int idJugador;
 	int cogerId;
+	String nombreJugador;
 	Logger logger = Logger.getLogger("MyLog");
 	FileHandler fh;
 
-	String consulta = "SELECT * FROM jugadores ORDER BY RAND() LIMIT 1";
+	String consulta = "SELECT * FROM jugadores WHERE id= 1";
+	String consultaEstadisticas = "SELECT * FROM inventario WHERE categoria = \"enfundado\" AND tipo = \"arma\"";
 
 	// System.out.println("turno " + turnoActual);
 
-	ResultSet rs = Conexion.EjecutarSentencia(consulta);
-
 	// String[] meterRS = new String[3];
+	int poderEquipamiento;
+
+	
+
+	int dmgJefe = tirarJefe();
+	
+	int dmgTotalJefe;
+
 	ArrayList<JefeGetSet> meterRS = new ArrayList<JefeGetSet>();
 	int sizeRSjefe = meterRS.size();
-	JefeGetSet objetoJefe = new JefeGetSet(0, 0);
+
+	ArrayList<equipamientoGetSet> meterRSEquipamiento = new ArrayList<equipamientoGetSet>();
+	// JefeGetSet objetoJefe = new JefeGetSet(0, 0);
 	// JefeGetSet k = new JefeGetSet(vidaActual, id_jugador);
 
 	/**
@@ -52,106 +62,112 @@ public class Jefe extends JFrame {
 
 	public Jefe() {
 
-		final JFrame dado = new JFrame();
-
-		int dmgJefe = tirarJefe();
 		// this.combate = combate;
 
 		// Dado Tirada = new Dado();//
 		// Tirada.tirarDado(6);//
-		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"El jefe ha sacado " + dmgJefe + " , pierdes " + dmgJefe + " de vida");
 
+		ResultSet rs = Conexion.EjecutarSentencia(consulta);
 		try {
 
-			// ResultSet rs = Conexion.EjecutarSentencia("SELECT vida FROM jugadores WHERE
-			// nombre = \"manolo\"");
-			// ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM jugadores ORDER BY
-			// RAND() LIMIT 1");
-			// id_jugador= rs.getInt("id");
-
-			// System.out.println(Conexion.EjecutarSentencia(query));
 			while (rs.next()) {
 
-				// meterRS.add(rs.getString(1));
 				vidaActual = rs.getInt("vida");
-				id_jugador = rs.getInt("id");
-				// cogerId = rs.getInt("id");
 
-				JefeGetSet k = new JefeGetSet(vidaActual, id_jugador);
+				nombreJugador = rs.getString("nombre");
+
+				if (rs.getInt("id") == 1) {
+					idJugador = rs.getInt("id");
+
+				}
+				JefeGetSet k = new JefeGetSet(vidaActual, idJugador, nombreJugador);
 
 				meterRS.add(k);
-
+				// rsUno.close();
 			}
-			System.out.println(meterRS);
-			System.out.println(((JefeGetSet) meterRS.get(0)).getVida());
-			// System.out.println("id " +((JefeGetSet) meterRS.get(0)).getId());
-			// objetoJefe.setVida() =
-
-			// idActual = (Integer) meterRS.get(1).getId();
-			if (id_jugador == 1) {
-
-				System.out.println("id " + id_jugador);
-				vidaActual = (Integer) meterRS.get(0).getVida();
-
-				vidaActual = vidaActual - dmgJefe;
-				if (vidaActual < 1) {
-					JOptionPane.showMessageDialog(dado.getComponent(0), "Has muerto");
-					new Muerte();
-					Muerte muerteVisible = new Muerte(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
-					muerteVisible.setVisible(true);
-
-					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					close();
-				}
-			} else {
-				System.out.println("El JEFE ha fallado");
-			}
-
-			System.out.println(vidaActual);
-
-			/*
-			 * System.out.println(k.getVida());
-			 * System.out.println("1 la vida original es igual a " + vidaActual); vidaActual
-			 * = k.getVida(); System.out.println("2 la vida actual es igual a " +
-			 * vidaActual); vidaActual = vidaActual - dmgJefe;
-			 * System.out.println("3 la vida actual es igual a " + vidaActual+
-			 * " el daño del jefe es" + dmgJefe);
-			 * 
-			 * System.out.println("la vida actual " + vidaActual);
-			 */
-
-			// objetoJefe.setVida(); = meterRS.get(0);
-			// System.out.println(JefeGetSet.getVida());
-
-			// for(int x=0;x<sizeRSjefe;x++) {
-			// vidaActual = vidaActual - dmgJefe;
-			// int vidaTemporal = meterRS.get(0);
-			// meterRS.get(1) = meterRS.get(1) - dmgJefe;
-			// System.out.println(meterRS.toString());
-			AddBaseDeDatos(vidaActual);
-			// }
 
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-
 		}
 
-		// for(int x=0;x<sizeRSjefe;x++) {
-		// vidaActual = vidaActual - dmgJefe;
-		// System.out.println(meterRS.get(x));
-		// meterRS.get(x) = meterRS.get(x) - dmgJefe;
-		// AddBaseDeDatos(vidaActual);
-		// }
+		ResultSet rsEstadisticas = Conexion.EjecutarSentencia(consultaEstadisticas);
+		try {
 
+			while (rsEstadisticas.next()) {
+
+				poderEquipamiento = rsEstadisticas.getInt("poder");
+
+				equipamientoGetSet kEstadisticas = new equipamientoGetSet(poderEquipamiento);
+
+				meterRSEquipamiento.add(kEstadisticas);
+				// rsUno.close();
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		// rsUno.close();
+	}
+
+	// for(int x=0;x<sizeRSjefe;x++) {
+	// vidaActual = vidaActual - dmgJefe;
+	// System.out.println(meterRS.get(x));
+	// meterRS.get(x) = meterRS.get(x) - dmgJefe;
+	// AddBaseDeDatos(vidaActual);
+	// }
+
+	/*
+	 * if (vidaActual < 1) { JOptionPane.showMessageDialog(dado.getComponent(0),
+	 * "Has muerto"); new Muerte(); Muerte muerteVisible = new Muerte(); // QUITAR
+	 * CUANDO SE TERMINE EL PROGRAMA muerteVisible.setVisible(true);
+	 * 
+	 * setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); close(); }
+	 */
+
+	public int getVidaActual() {
+		return vidaActual;
+	}
+
+	public void setVidaActual(int vidaActual) {
+		this.vidaActual = vidaActual;
+	}
+
+	public void ataqueJefe() {
 		/*
-		 * if (vidaActual < 1) { JOptionPane.showMessageDialog(dado.getComponent(0),
-		 * "Has muerto"); new Muerte(); Muerte muerteVisible = new Muerte(); // QUITAR
-		 * CUANDO SE TERMINE EL PROGRAMA muerteVisible.setVisible(true);
+		 * vidaActualUno = (Integer) meterRS.get(0).getVida(); vidaActual = vidaActual -
+		 * dmgJefe; if (vidaActual < 1) {
+		 * JOptionPane.showMessageDialog(dado.getComponent(0), "Has muerto"); new
+		 * Muerte(); Muerte muerteVisible = new Muerte(); // QUITAR CUANDO SE TERMINE EL
+		 * PROGRAMA muerteVisible.setVisible(true);
 		 * 
 		 * setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); close(); }
 		 */
+		System.out.println(dmgTotalJefe);
+		System.out.println(dmgJefe);
+		System.out.println(vidaActual);
+
+		dmgTotalJefe = dmgJefe - poderEquipamiento;
+		vidaActual = vidaActual - dmgTotalJefe;
+
+		System.out.println(dmgTotalJefe);
+		System.out.println(dmgJefe);
+		System.out.println(vidaActual);
+		AddBaseDeDatos(vidaActual, idJugador);
+		JOptionPane.showMessageDialog(dado.getComponent(0),
+				"El JEFE te ha causado " + dmgJefe + " puntos de daño , mitigas: " + poderEquipamiento
+						+ " de daño  , el JEFE te ha quitado: " + dmgTotalJefe + " de vida");
+
+		if (vidaActual < 1) {
+			JOptionPane.showMessageDialog(dado.getComponent(0), "Has muerto");
+			new Muerte();
+			Muerte muerteVisible = new Muerte(); // QUITAR CUANDO SE TERMINE EL PROGRAMA
+			muerteVisible.setVisible(true);
+
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			close();
+		}
 
 	}
 
@@ -200,13 +216,13 @@ public class Jefe extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 
-	public void AddBaseDeDatos(int vidaJugador) {
+	public void AddBaseDeDatos(int vidaJugador, int idJefe) {
 		Conexion.conectar();
 		// Conexion.EjecutarUpdate("UPDATE jugadores SET vida = \""+ vidaJugador +
 		// "\"");
 		// Conexion.EjecutarUpdate("UPDATE jugadores SET vida = " + vidaJugador + "
 		// WHERE nombre = " + "\"manolo\"");
-		Conexion.EjecutarUpdate("UPDATE jugadores SET vida =" + vidaJugador + " WHERE id =" + id_jugador + "");
+		Conexion.EjecutarUpdate("UPDATE jugadores SET vida =" + vidaJugador + " WHERE id =" + idJefe + "");
 
 	}
 }

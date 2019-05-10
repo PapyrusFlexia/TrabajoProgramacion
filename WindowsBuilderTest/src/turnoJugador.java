@@ -503,7 +503,7 @@ public class turnoJugador extends JFrame {
 		vidaActualDos = vidaActualDos - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualDos, idJefeDos, nombreJefeDos);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+				"Has hecho " + dmgJugador + " puntos de daño ,bonificación por arma: " + poderEquipamiento
 						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualDos < 1) {
@@ -524,7 +524,7 @@ public class turnoJugador extends JFrame {
 		vidaActualTres = vidaActualTres - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualTres, idJefeTres, nombreJefeTres);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+				"Has hecho " + dmgJugador + " puntos de daño ,bonificación por arma: " + poderEquipamiento
 						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualTres < 1) {
@@ -546,7 +546,7 @@ public class turnoJugador extends JFrame {
 		vidaActualCuatro = vidaActualCuatro - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualCuatro, idJefeCuatro, nombreJefeCuatro);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+				"Has hecho " + dmgJugador + " puntosde daño ,bonificación por arma: " + poderEquipamiento
 						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualCuatro < 1) {
@@ -568,7 +568,7 @@ public class turnoJugador extends JFrame {
 		vidaActualCinco = vidaActualCinco - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualCinco, idJefeCinco, nombreJefeCinco);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+				"Has hecho " + dmgJugador + " puntos de daño ,bonificación por arma: " + poderEquipamiento
 						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualCinco < 1) {
@@ -590,7 +590,7 @@ public class turnoJugador extends JFrame {
 		vidaActualSeis = vidaActualSeis - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualSeis, idJefeSeis, nombreJefeSeis);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+				"Has hecho " + dmgJugador + " puntos de daño ,bonificación por arma: " + poderEquipamiento
 						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualSeis < 1) {
@@ -612,7 +612,7 @@ public class turnoJugador extends JFrame {
 		vidaActualSiete = vidaActualSiete - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualSiete, idJefeSiete, nombreJefeSiete);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+				"Has hecho " + dmgJugador + " puntos de daño ,bonificación por arma: " + poderEquipamiento
 						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualSiete < 1) {
@@ -634,7 +634,7 @@ public class turnoJugador extends JFrame {
 		vidaActualOcho = vidaActualOcho - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualOcho, idJefeOcho, nombreJefeOcho);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+				"Has hecho " + dmgJugador + " puntos de daño ,bonificación por arma: " + poderEquipamiento
 						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualOcho < 1) {
@@ -657,7 +657,7 @@ public class turnoJugador extends JFrame {
 		vidaActualNueve = vidaActualNueve - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualNueve, idJefeNueve, nombreJefeNueve);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+				"Has hecho " + dmgJugador + " puntos de daño ,bonificación por arma: " + poderEquipamiento
 						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualNueve < 1) {
@@ -678,7 +678,7 @@ public class turnoJugador extends JFrame {
 		vidaActualDiez = vidaActualDiez - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualDiez, idJefeDiez, nombreJefeDiez);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+				"Has hecho " + dmgJugador + " puntos de daño ,bonificación por arma: " + poderEquipamiento
 						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualDiez < 1) {
@@ -700,7 +700,7 @@ public class turnoJugador extends JFrame {
 		vidaActualOnce = vidaActualOnce - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualOnce, idJefeOnce, nombreJefeOnce);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+				"Has hecho " + dmgJugador + " puntos de daño ,bonificación por arma: " + poderEquipamiento
 						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualOnce < 1) {
@@ -722,7 +722,7 @@ public class turnoJugador extends JFrame {
 		vidaActualDoce = vidaActualDoce - dmgTotalJugador;
 		AddBaseDeDatos(vidaActualDoce, idJefeDoce, nombreJefeDoce);
 		JOptionPane.showMessageDialog(dado.getComponent(0),
-				"Has sacado " + dmgJugador + " de daño ,bonificación por arma: " + poderEquipamiento
+				"Has hecho " + dmgJugador + " puntos de daño ,bonificación por arma: " + poderEquipamiento
 						+ " , has quitado al JEFE " + dmgTotalJugador + " de vida");
 
 		if (vidaActualDoce < 1) {
