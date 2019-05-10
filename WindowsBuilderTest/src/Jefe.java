@@ -24,7 +24,7 @@ public class Jefe extends JFrame {
 	FileHandler fh;
 
 	String consulta = "SELECT * FROM jugadores WHERE id= 1";
-	String consultaEstadisticas = "SELECT * FROM inventario WHERE categoria = \"enfundado\" AND tipo = \"arma\"";
+	String consultaEstadisticas = "SELECT * FROM inventario WHERE categoria = \"enfundado\" AND tipo = \"armadura\"";
 
 	// System.out.println("turno " + turnoActual);
 
