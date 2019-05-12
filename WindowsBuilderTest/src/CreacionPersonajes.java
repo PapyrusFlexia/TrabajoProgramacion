@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.text.NumberFormat;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -49,9 +50,16 @@ public class CreacionPersonajes extends JFrame {
 		textField.setColumns(10);
 		
 		textFieldid = new JTextField();
+		textFieldid.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+			}
+		});
 		textFieldid.setBounds(193, 124, 86, 20);
 		getContentPane().add(textFieldid);
 		textFieldid.setColumns(10);
+		
+		
 
 		JLabel lblid = new JLabel("id");
 		lblid.setBounds(56, 127, 46, 14);
@@ -107,6 +115,7 @@ public class CreacionPersonajes extends JFrame {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				AddBaseDeDatos(textFieldid.getText(), textField.getText(), VidaTotal, atkInicial, VidaTotal); // RELLENAR
+			
 
 			}
 
