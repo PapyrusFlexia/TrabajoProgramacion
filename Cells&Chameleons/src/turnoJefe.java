@@ -24,7 +24,7 @@ public class turnoJefe extends JFrame {
 	FileHandler fh;
 
 	String consulta = "SELECT * FROM jugadores WHERE id= 1";
-	String consultaEstadisticas = "SELECT * FROM inventario WHERE categoria = \"equipado\" AND tipo = \"armadura\"";
+	String consultaEstadisticas = "SELECT * FROM inventario WHERE estado = \"equipado\" AND tipo = \"armadura\"";
 
 	int poderEquipamiento;
 

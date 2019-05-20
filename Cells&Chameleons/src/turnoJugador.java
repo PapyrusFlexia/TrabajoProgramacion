@@ -61,7 +61,7 @@ public class turnoJugador extends JFrame {
 	String consultaJefeDiez = "SELECT * FROM jefes WHERE id= 10";
 	String consultaJefeOnce = "SELECT * FROM jefes WHERE id= 11";
 	String consultaJefeDoce = "SELECT * FROM jefes WHERE id= 12";
-	String consultaEstadisticas = "SELECT * FROM inventario WHERE categoria = \"equipado\" AND tipo = \"arma\"";
+	String consultaEstadisticas = "SELECT * FROM inventario WHERE estado = \"equipado\" AND tipo = \"arma\"";
 	String consultaOro = "SELECT oro FROM jugadores WHERE id = \"1\"";
 	String consultaVidaJugador = "SELECT * FROM jugadores WHERE id= 1";
 

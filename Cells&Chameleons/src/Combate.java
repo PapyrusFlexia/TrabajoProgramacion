@@ -42,23 +42,26 @@ public class Combate extends JFrame {
 	JLabel foregroundJefe;
 	JLabel barraJugador;
 	JLabel barraJefe;
-	
+
 	int podervidaMenor, podervidaMedia, podervidaMayor, oro;
 
 	int vidaJugador;
-	
-	
-	String consultavidaMenor = "SELECT * FROM inventario WHERE categoria = \"equipado\" AND tipo = \"pocion\" AND nombre = \"vidamenor\"";
-	String consultavidaMedia = "SELECT * FROM inventario WHERE categoria = \"equipado\" AND tipo = \"pocion\" AND nombre = \"vidamedia\"";
-	String consultavidaMayor = "SELECT * FROM inventario WHERE categoria = \"equipado\" AND tipo = \"pocion\" AND nombre = \"vidamayor\"";
+
+	String consultavidaMenor = "SELECT * FROM inventario WHERE estado = \"equipado\" AND tipo = \"pocion\" AND nombre = \"vidamenor\"";
+	String consultavidaMedia = "SELECT * FROM inventario WHERE estado = \"equipado\" AND tipo = \"pocion\" AND nombre = \"vidamedia\"";
+	String consultavidaMayor = "SELECT * FROM inventario WHERE estado = \"equipado\" AND tipo = \"pocion\" AND nombre = \"vidamayor\"";
 	String consultaVidaJugador = "SELECT * FROM jugadores WHERE id= 1";
 
 	ArrayList<equipamientoGetSet> meterRSvida = new ArrayList<equipamientoGetSet>();
 	ArrayList<vidaJugadorGetSet> meterRSvidaJugador = new ArrayList<vidaJugadorGetSet>();
 	private JLabel lblNewLabel;
 	private JLabel label;
-	
-	/** se recogen los valores de todos los jefes y de la vida del jugador en los resultset y se llaman dependiendo si ha muerto el anterior, a parte de botones para subir la vida dependiendo de la poción que se use **/
+
+	/**
+	 * se recogen los valores de todos los jefes y de la vida del jugador en los
+	 * resultset y se llaman dependiendo si ha muerto el anterior, a parte de
+	 * botones para subir la vida dependiendo de la poción que se use
+	 **/
 
 	public Combate() {
 		Toolkit marco = Toolkit.getDefaultToolkit();
@@ -145,7 +148,7 @@ public class Combate extends JFrame {
 
 		String codigo = new String(), path = "src\\Log.log";
 
-		FileReader fr = null;  // CREA LOS FICHEROS PARA ESCRIBIR EL REGISTRO DE COMBATE
+		FileReader fr = null; // CREA LOS FICHEROS PARA ESCRIBIR EL REGISTRO DE COMBATE
 		BufferedReader entrada = null;
 
 		try {
@@ -190,88 +193,86 @@ public class Combate extends JFrame {
 		getContentPane().add(backgroundV);
 
 		elegirPj.cogerId();
-		
+
 		// DEPENDIENDO DEL PERSONAJE QUE ELIJAS SE VISUALIZARA UNO U OTRO
 		int numPj = elegirPj.getCambiarPj();
 		System.out.println(numPj);
 		foreground = new JLabel("");
 		if (numPj == 1) {
-			System.out.println("funciona" + numPj);
+			
 			foreground = new JLabel(new ImageIcon("src\\Humano.gif"));
 			foreground.setBounds(100, 52, 108, 195);
 			backgroundP.add(foreground);
-			
+
 			foreground = new JLabel(new ImageIcon("src\\Humano.gif"));
 			foreground.setBounds(100, 52, 108, 195);
 			backgroundD.add(foreground);
-			
+
 			foreground = new JLabel(new ImageIcon("src\\Humano.gif"));
 			foreground.setBounds(100, 52, 108, 195);
 			backgroundM.add(foreground);
-			
+
 			foreground = new JLabel(new ImageIcon("src\\Humano.gif"));
 			foreground.setBounds(100, 52, 108, 195);
 			backgroundV.add(foreground);
 
 		} else if (numPj == 2) {
-			System.out.println("funciona" + numPj);
+			
 			foreground = new JLabel(new ImageIcon("src\\Lizardmen.gif"));
 			foreground.setBounds(100, 52, 108, 195);
 			backgroundP.add(foreground);
-			
+
 			foreground = new JLabel(new ImageIcon("src\\Lizardmen.gif"));
 			foreground.setBounds(100, 52, 108, 195);
 			backgroundD.add(foreground);
-			
+
 			foreground = new JLabel(new ImageIcon("src\\Lizardmen.gif"));
 			foreground.setBounds(100, 52, 108, 195);
 			backgroundM.add(foreground);
-			
+
 			foreground = new JLabel(new ImageIcon("src\\Lizardmen.gif"));
 			foreground.setBounds(100, 52, 108, 195);
 			backgroundV.add(foreground);
 
 		} else if (numPj == 3) {
-			System.out.println("funciona" + numPj);
+			
 			foreground = new JLabel(new ImageIcon("src\\Elfo.gif"));
 			foreground.setBounds(100, 52, 108, 195);
 			backgroundP.add(foreground);
-			
-			foreground = new JLabel(new ImageIcon("src\\Elfo.gif"));
-			foreground.setBounds(100, 52, 108, 195);
-			backgroundD.add(foreground);
-			
-			foreground = new JLabel(new ImageIcon("src\\Elfo.gif"));
-			foreground.setBounds(100, 52, 108, 195);
-			backgroundM.add(foreground);
-			
-			foreground = new JLabel(new ImageIcon("src\\Elfo.gif"));
-			foreground.setBounds(100, 52, 108, 195);
-			backgroundV.add(foreground);
-		
-		} else if (numPj == 4) {
-			System.out.println("funciona" + numPj);
-			foreground = new JLabel(new ImageIcon("src\\Enano.gif"));
-			foreground.setBounds(100, 32, 108, 195);
-			backgroundP.add(foreground);
-			
-			foreground = new JLabel(new ImageIcon("src\\Enano.gif"));
-			foreground.setBounds(100, 32, 108, 195);
-			backgroundD.add(foreground);
-			
-			foreground = new JLabel(new ImageIcon("src\\Enano.gif"));
-			foreground.setBounds(100, 32, 108, 195);
-			backgroundM.add(foreground);
-			
-			foreground = new JLabel(new ImageIcon("src\\Enano.gif"));
-			foreground.setBounds(100, 32, 108, 195);
-			backgroundV.add(foreground);
-			
-		} 
-		
 
-		barraJugador = new JLabel(
-				new ImageIcon("Cells&Chameleons\\jugadorVida.gif"));
+			foreground = new JLabel(new ImageIcon("src\\Elfo.gif"));
+			foreground.setBounds(100, 52, 108, 195);
+			backgroundD.add(foreground);
+
+			foreground = new JLabel(new ImageIcon("src\\Elfo.gif"));
+			foreground.setBounds(100, 52, 108, 195);
+			backgroundM.add(foreground);
+
+			foreground = new JLabel(new ImageIcon("src\\Elfo.gif"));
+			foreground.setBounds(100, 52, 108, 195);
+			backgroundV.add(foreground);
+
+		} else if (numPj == 4) {
+			
+			foreground = new JLabel(new ImageIcon("src\\Enano.gif"));
+			foreground.setBounds(100, 32, 108, 195);
+			backgroundP.add(foreground);
+
+			foreground = new JLabel(new ImageIcon("src\\Enano.gif"));
+			foreground.setBounds(100, 32, 108, 195);
+			backgroundD.add(foreground);
+
+			foreground = new JLabel(new ImageIcon("src\\Enano.gif"));
+			foreground.setBounds(100, 32, 108, 195);
+			backgroundM.add(foreground);
+
+			foreground = new JLabel(new ImageIcon("src\\Enano.gif"));
+			foreground.setBounds(100, 32, 108, 195);
+			backgroundV.add(foreground);
+
+		}
+
+		barraJugador = new JLabel(new ImageIcon("Cells&Chameleons\\jugadorVida.gif"));
 		barraJugador.setBounds(-76, 289, 467, 64);
 		getContentPane().add(barraJugador);
 
@@ -304,8 +305,7 @@ public class Combate extends JFrame {
 					lblNewLabel.setBounds(215, 333, 132, 14);
 					getContentPane().add(lblNewLabel);
 
-					foregroundJefe = new JLabel(
-							new ImageIcon("src\\Frikon.gif"));
+					foregroundJefe = new JLabel(new ImageIcon("src\\Frikon.gif"));
 					foregroundJefe.setBounds(450, 52, 108, 195);
 					backgroundP.add(foregroundJefe);
 
@@ -334,8 +334,7 @@ public class Combate extends JFrame {
 					lblNewLabel.setBounds(215, 333, 132, 14);
 					getContentPane().add(lblNewLabel);
 
-					foregroundJefe = new JLabel(
-							new ImageIcon("src\\Stefan.gif"));
+					foregroundJefe = new JLabel(new ImageIcon("src\\Stefan.gif"));
 					foregroundJefe.setBounds(450, 52, 108, 195);
 					backgroundP.add(foregroundJefe);
 
@@ -362,8 +361,7 @@ public class Combate extends JFrame {
 					lblNewLabel.setBounds(215, 333, 132, 14);
 					getContentPane().add(lblNewLabel);
 
-					foregroundJefe = new JLabel(
-							new ImageIcon("src\\Tgei.gif"));
+					foregroundJefe = new JLabel(new ImageIcon("src\\Tgei.gif"));
 					foregroundJefe.setBounds(450, 52, 108, 195);
 					backgroundP.add(foregroundJefe);
 					accionJefe.ataqueJefe();
@@ -371,7 +369,7 @@ public class Combate extends JFrame {
 
 					accionJefe.logJefe();
 					accionJugador.logJugador();
-					System.out.println("FELICIDADES has superado el PANTANO");
+					JOptionPane.showMessageDialog(dado.getComponent(0), "FELICIDADES has superado el PANTANO");
 
 					if (accionJugador.getVidaActualTres() <= 0) {
 						dispose();
@@ -392,8 +390,7 @@ public class Combate extends JFrame {
 					lblNewLabel.setBounds(215, 333, 132, 14);
 					getContentPane().add(lblNewLabel);
 
-					foregroundJefe = new JLabel(new ImageIcon(
-							"src\\Camaleonidas.gif"));
+					foregroundJefe = new JLabel(new ImageIcon("src\\Camaleonidas.gif"));
 					foregroundJefe.setBounds(300, 52, 320, 300);
 					backgroundD.add(foregroundJefe);
 
@@ -422,8 +419,7 @@ public class Combate extends JFrame {
 					lblNewLabel.setBounds(215, 333, 132, 14);
 					getContentPane().add(lblNewLabel);
 
-					foregroundJefe = new JLabel(
-							new ImageIcon("src\\Slackman.gif"));
+					foregroundJefe = new JLabel(new ImageIcon("src\\Slackman.gif"));
 					foregroundJefe.setBounds(450, 52, 108, 195);
 					backgroundD.add(foregroundJefe);
 
@@ -451,8 +447,7 @@ public class Combate extends JFrame {
 					lblNewLabel = new JLabel("VIDA JUGADOR: " + vidaJugador);
 					lblNewLabel.setBounds(215, 333, 132, 14);
 					getContentPane().add(lblNewLabel);
-					foregroundJefe = new JLabel(
-							new ImageIcon("src\\its.gif"));
+					foregroundJefe = new JLabel(new ImageIcon("src\\its.gif"));
 					foregroundJefe.setBounds(450, 52, 108, 195);
 					backgroundD.add(foregroundJefe);
 
@@ -461,7 +456,7 @@ public class Combate extends JFrame {
 
 					accionJefe.logJefe();
 					accionJugador.logJugador();
-					System.out.println("FELICIDADES has superado el DESIERTO");
+					JOptionPane.showMessageDialog(dado.getComponent(0), "FELICIDADES has superado el DESIERTO");
 
 					if (accionJugador.getVidaActualSeis() <= 0) {
 						dispose();
@@ -482,8 +477,7 @@ public class Combate extends JFrame {
 					lblNewLabel.setBounds(215, 333, 132, 14);
 					getContentPane().add(lblNewLabel);
 
-					foregroundJefe = new JLabel(
-							new ImageIcon("src\\Uganda.gif"));
+					foregroundJefe = new JLabel(new ImageIcon("src\\Uganda.gif"));
 					foregroundJefe.setBounds(450, 52, 108, 250);
 					backgroundM.add(foregroundJefe);
 					accionJefe.ataqueJefe();
@@ -511,8 +505,7 @@ public class Combate extends JFrame {
 					lblNewLabel.setBounds(215, 333, 132, 14);
 					getContentPane().add(lblNewLabel);
 
-					foregroundJefe = new JLabel(
-							new ImageIcon("src\\Somebody.gif"));
+					foregroundJefe = new JLabel(new ImageIcon("src\\Somebody.gif"));
 					foregroundJefe.setBounds(400, 52, 150, 195);
 					backgroundM.add(foregroundJefe);
 
@@ -541,8 +534,7 @@ public class Combate extends JFrame {
 					lblNewLabel.setBounds(215, 333, 132, 14);
 					getContentPane().add(lblNewLabel);
 
-					foregroundJefe = new JLabel(
-							new ImageIcon("src\\Shrek.gif"));
+					foregroundJefe = new JLabel(new ImageIcon("src\\Shrek.gif"));
 					foregroundJefe.setBounds(450, 52, 108, 195);
 					backgroundM.add(foregroundJefe);
 					accionJefe.ataqueJefe();
@@ -550,7 +542,7 @@ public class Combate extends JFrame {
 
 					accionJefe.logJefe();
 					accionJugador.logJugador();
-					System.out.println("FELICIDADES has superado la MONTAÑA");
+					JOptionPane.showMessageDialog(dado.getComponent(0), "FELICIDADES has superado la MONTAÑA");
 
 					if (accionJugador.getVidaActualNueve() <= 0) {
 						dispose();
@@ -571,8 +563,7 @@ public class Combate extends JFrame {
 					lblNewLabel.setBounds(215, 333, 132, 14);
 					getContentPane().add(lblNewLabel);
 
-					foregroundJefe = new JLabel(
-							new ImageIcon("src\\Shaggy.gif"));
+					foregroundJefe = new JLabel(new ImageIcon("src\\Shaggy.gif"));
 					foregroundJefe.setBounds(450, 52, 108, 195);
 					backgroundV.add(foregroundJefe);
 					accionJefe.ataqueJefe();
@@ -600,8 +591,7 @@ public class Combate extends JFrame {
 					lblNewLabel.setBounds(215, 333, 132, 14);
 					getContentPane().add(lblNewLabel);
 
-					foregroundJefe = new JLabel(
-							new ImageIcon("src\\Ricardo.gif"));
+					foregroundJefe = new JLabel(new ImageIcon("src\\Ricardo.gif"));
 					foregroundJefe.setBounds(450, 52, 108, 195);
 					backgroundV.add(foregroundJefe);
 					accionJefe.ataqueJefe();
@@ -629,8 +619,7 @@ public class Combate extends JFrame {
 					lblNewLabel.setBounds(215, 333, 132, 14);
 					getContentPane().add(lblNewLabel);
 
-					foregroundJefe = new JLabel(
-							new ImageIcon("src\\DIO.gif"));
+					foregroundJefe = new JLabel(new ImageIcon("src\\DIO.gif"));
 					foregroundJefe.setBounds(450, 52, 108, 195);
 					backgroundV.add(foregroundJefe);
 					accionJefe.ataqueJefe();
@@ -638,14 +627,12 @@ public class Combate extends JFrame {
 
 					accionJefe.logJefe();
 					accionJugador.logJugador();
-					System.out.println("FELICIDADES has superado el VOLCÁN");
+					JOptionPane.showMessageDialog(dado.getComponent(0), "FELICIDADES has superado el VOLCÁN");
 
 					if (accionJugador.getVidaActualDoce() <= 0) {
 						dispose();
 					}
 				}
-
-			
 
 			}
 
@@ -696,11 +683,11 @@ public class Combate extends JFrame {
 		JButton btnTomarsePocinPequea = new JButton("TOMARSE POCI\u00D3N MENOR");
 		btnTomarsePocinPequea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("vida antes de poti pqñ " + vidaJugador);
+
 				vidaJugador = vidaJugador + podervidaMenor;
 				System.out.println(podervidaMenor);
 				QuitarPocionMenor();
-				System.out.println("vida despues de poti pqñ " + vidaJugador);
+
 			}
 		});
 		btnTomarsePocinPequea.setBounds(21, 356, 207, 23);
@@ -709,10 +696,10 @@ public class Combate extends JFrame {
 		JButton button = new JButton("TOMARSE POCI\u00D3N MEDIANA");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("vida antes de poti media " + vidaJugador);
+
 				vidaJugador = vidaJugador + podervidaMedia;
 				QuitarPocionMedia();
-				System.out.println("vida despues de poti media " + vidaJugador);
+
 			}
 		});
 		button.setBounds(267, 356, 207, 23);
@@ -721,10 +708,10 @@ public class Combate extends JFrame {
 		JButton button_1 = new JButton("TOMARSE POCI\u00D3N GRANDE");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("vida antes de poti grande " + vidaJugador);
+
 				vidaJugador = vidaJugador + podervidaMayor;
 				QuitarPocionMayor();
-				System.out.println("vida antes de poti grande " + vidaJugador);
+
 			}
 		});
 		button_1.setBounds(506, 356, 207, 23);
@@ -735,40 +722,40 @@ public class Combate extends JFrame {
 		getContentPane().add(lblNewLabel);
 
 	}
-	
+
 	/** para hacer una tirada **/
 
 	public int tirarJugador() {
 		return tirada = Dado.tirarDado(3) + 1;
 	}
-	
+
 	/** para cerrar la pestaña **/
 
 	public void close() {
 		WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 	}
-	
+
 	/** para borrar las pociones una vez usadas **/
 
 	public static void QuitarPocionMenor() {
 		Conexion.conectar();
 		Conexion.EjecutarUpdate(
-				"DELETE FROM inventario WHERE categoria = \"equipado\" AND tipo = \"pocion\" AND nombre = \"vidamenor\"");
+				"DELETE FROM inventario WHERE estado = \"equipado\" AND tipo = \"pocion\" AND nombre = \"vidamenor\"");
 	}
-	
+
 	/** para borrar las pociones una vez usadas **/
 
 	public static void QuitarPocionMedia() {
 		Conexion.conectar();
 		Conexion.EjecutarUpdate(
-				"DELETE FROM inventario WHERE categoria = \"equipado\" AND tipo = \"pocion\" AND nombre = \"vidamedia\"");
+				"DELETE FROM inventario WHERE estado = \"equipado\" AND tipo = \"pocion\" AND nombre = \"vidamedia\"");
 	}
-	
+
 	/** para borrar las pociones una vez usadas **/
 
 	public static void QuitarPocionMayor() {
 		Conexion.conectar();
 		Conexion.EjecutarUpdate(
-				"DELETE FROM inventario WHERE categoria = \"equipado\" AND tipo = \"pocion\" AND nombre = \"vidamayor\"");
+				"DELETE FROM inventario WHERE estado = \"equipado\" AND tipo = \"pocion\" AND nombre = \"vidamayor\"");
 	}
 }

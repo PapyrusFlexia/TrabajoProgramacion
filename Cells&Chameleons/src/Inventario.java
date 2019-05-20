@@ -232,10 +232,10 @@ public class Inventario extends JFrame {
 		button_2.setBounds(489, 159, 133, 23);
 		getContentPane().add(button_2);
 
-		JButton button_3 = new JButton("ORDENAR CATEGORÍA");
+		JButton button_3 = new JButton("ORDENAR ESTADO");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ordenarCategoria();
+				ordenarEstado();
 			}
 		});
 		button_3.setBounds(272, 162, 167, 23);
@@ -285,9 +285,9 @@ public class Inventario extends JFrame {
 /**
  * cambia el estado del arma a desequipado
  * @param nombre
- * @param categoria
+ * @param estado
  */
-	public static void DeleteBaseDeDatos(String nombre, String categoria) {
+	public static void DeleteBaseDeDatos(String nombre, String estado) {
 
 		Conexion.EjecutarUpdate(
 				"UPDATE inventario SET estado = \" desequipado \"  WHERE nombre = \"" + nombre + "\"");
@@ -334,7 +334,7 @@ public class Inventario extends JFrame {
 		dispose();
 	}
 
-	public void ordenarCategoria() {
+	public void ordenarEstado() {
 
 		Conexion.EjecutarUpdate("ALTER TABLE inventario ORDER BY estado ASC");
 

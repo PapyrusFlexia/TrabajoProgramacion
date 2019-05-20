@@ -32,8 +32,10 @@ public class CreacionPersonajes extends JFrame {
 
 		});
 	}
-	
-	/** para crear un personaje, añadirlo a la base de datos y borrar el anterior **/
+
+	/**
+	 * para crear un personaje, añadirlo a la base de datos y borrar el anterior
+	 **/
 
 	public CreacionPersonajes() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +50,6 @@ public class CreacionPersonajes extends JFrame {
 		lblNewLabel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cambiarPj = 1;
-			
 
 			}
 
@@ -64,7 +65,7 @@ public class CreacionPersonajes extends JFrame {
 		lblNewLabel2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cambiarPj = 2;
-				
+
 			}
 
 		});
@@ -78,7 +79,7 @@ public class CreacionPersonajes extends JFrame {
 		lblNewLabel3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cambiarPj = 3;
-				
+
 			}
 
 		});
@@ -92,7 +93,7 @@ public class CreacionPersonajes extends JFrame {
 		lblNewLabel4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cambiarPj = 4;
-			
+
 			}
 
 		});
@@ -101,8 +102,6 @@ public class CreacionPersonajes extends JFrame {
 		lblNewLabel4.setContentAreaFilled(false);
 		lblNewLabel4.setBorderPainted(false);
 		getContentPane().add(lblNewLabel4);
-		
-		
 
 		Toolkit marco = Toolkit.getDefaultToolkit();
 
@@ -164,7 +163,7 @@ public class CreacionPersonajes extends JFrame {
 		getContentPane().add(lblTipo);
 
 		JLabel vidaActual = new JLabel();
-		vidaActual.setBounds(193, 247, 129, 14);
+		vidaActual.setBounds(193, 247, 249, 14);
 		getContentPane().add(vidaActual);
 
 		JLabel label_2 = new JLabel("1d4");
@@ -172,7 +171,7 @@ public class CreacionPersonajes extends JFrame {
 		getContentPane().add(label_2);
 
 		JLabel vidatotalfield = new JLabel();
-		vidatotalfield.setBounds(193, 343, 183, 20);
+		vidatotalfield.setBounds(193, 343, 282, 20);
 		getContentPane().add(vidatotalfield);
 
 		final JFrame dado = new JFrame();
@@ -181,7 +180,7 @@ public class CreacionPersonajes extends JFrame {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				DeleteBaseDeDatos();
-				AddBaseDeDatos(textFieldid.getText(), textField.getText(), VidaTotal, atkInicial, VidaTotal, oro); 
+				AddBaseDeDatos(textFieldid.getText(), textField.getText(), VidaTotal, atkInicial, VidaTotal, oro);
 
 				Interfaz nwc = new Interfaz();
 
@@ -206,7 +205,7 @@ public class CreacionPersonajes extends JFrame {
 				JOptionPane.showMessageDialog(dado.getComponent(0), "Has sacado un " + VidaTotal);
 				vidatotalfield.setText("Tienes " + VidaTotal + " de vida total");
 				vidaActual.setText("Tienes " + VidaTotal + " de vida actual");
-				
+
 				btnCrear.setEnabled(true);
 
 			}
@@ -215,17 +214,14 @@ public class CreacionPersonajes extends JFrame {
 		btndParaTu.setBounds(21, 238, 144, 23);
 		getContentPane().add(btndParaTu);
 
-		
-
 	}
-	
+
 	/** para coger el ID de la raza que hallamos elegido **/
 	public void cogerId() {
 		JButton lblNewLabel = new JButton(new ImageIcon("Humano.gif"));
 		lblNewLabel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cambiarPj = 1;
-				
 
 			}
 
@@ -241,7 +237,7 @@ public class CreacionPersonajes extends JFrame {
 		lblNewLabel2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cambiarPj = 2;
-				
+
 			}
 
 		});
@@ -255,7 +251,7 @@ public class CreacionPersonajes extends JFrame {
 		lblNewLabel3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cambiarPj = 3;
-			
+
 			}
 
 		});
@@ -269,7 +265,7 @@ public class CreacionPersonajes extends JFrame {
 		lblNewLabel4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cambiarPj = 4;
-				
+
 			}
 
 		});
@@ -281,7 +277,7 @@ public class CreacionPersonajes extends JFrame {
 	}
 
 	public int getCambiarPj() {
-		System.out.println("funciona" + cambiarPj);
+		
 		return cambiarPj;
 	}
 

@@ -3,16 +3,16 @@ public class TiendaGetSet {
 	private String nombre;
 	private int poder;
 	private int valor;
-	private String categoria;
+	private String estado;
 	private String tipo;
 
-	public TiendaGetSet(int id, String nombre, int poder, int valor, String categoria, String tipo) {
+	public TiendaGetSet(int id, String nombre, int poder, int valor, String estado, String tipo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.poder = poder;
 		this.valor = valor;
-		this.categoria = categoria;
+		this.estado = estado;
 		this.tipo = tipo;
 	}
 
@@ -48,12 +48,12 @@ public class TiendaGetSet {
 		this.valor = valor;
 	}
 
-	public String getCategoria() {
-		return categoria;
+	public String getEstado() {
+		return estado;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	public String getTipo() {
@@ -66,8 +66,8 @@ public class TiendaGetSet {
 
 	@Override
 	public String toString() {
-		return "TiendaGetSet [id=" + id + ", nombre=" + nombre + ", poder=" + poder + ", valor=" + valor
-				+ ", categoria=" + categoria + ", tipo=" + tipo + "]";
+		return "TiendaGetSet [id=" + id + ", nombre=" + nombre + ", poder=" + poder + ", valor=" + valor + ", estado="
+				+ estado + ", tipo=" + tipo + "]";
 	}
 
 }

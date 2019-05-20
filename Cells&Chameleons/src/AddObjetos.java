@@ -169,9 +169,9 @@ public class AddObjetos extends JFrame {
 		lblTipo.setBounds(56, 343, 46, 14);
 		getContentPane().add(lblTipo);
 
-		JLabel labelCategoria = new JLabel("categoria");
-		labelCategoria.setBounds(56, 384, 77, 14);
-		getContentPane().add(labelCategoria);
+		JLabel labelEstado = new JLabel("estado");
+		labelEstado.setBounds(56, 384, 77, 14);
+		getContentPane().add(labelEstado);
 
 		JLabel labelTipo = new JLabel("tipo");
 		labelTipo.setBounds(56, 425, 46, 14);
@@ -221,14 +221,14 @@ public class AddObjetos extends JFrame {
 	 * @param nombre
 	 * @param poder
 	 * @param valor
-	 * @param categoria
+	 * @param estado
 	 * @param tipo
 	 */
-	public static void AddBaseDeDatos(String id, String nombre, String poder, String valor, String categoria,
+	public static void AddBaseDeDatos(String id, String nombre, String poder, String valor, String estado,
 			String tipo) {
 		Conexion.conectar();
 		Conexion.EjecutarUpdate("INSERT INTO items VALUES (\"" + id + "\",\"" + nombre + "\",\"" + poder + "\",\""
-				+ valor + "\",\"" + categoria + "\",\"" + tipo + "\")");
+				+ valor + "\",\"" + estado + "\",\"" + tipo + "\")");
 
 	}
 }

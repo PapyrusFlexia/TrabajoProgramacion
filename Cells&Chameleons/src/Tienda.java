@@ -177,8 +177,8 @@ public class Tienda extends JFrame {
 					AddBaseDeDatosOro(oro);
 
 				} else {
-					System.out.println("NO TIENES EL ORO PARA COMPRAR ESE OBJETO");
-					System.out.println("Tu oro actual: " + oro);
+					JOptionPane.showMessageDialog(dado.getComponent(0),
+							"NO TIENES EL ORO PARA COMPRAR ESE OBJETO, Tu oro actual: " + oro);
 				}
 			}
 
@@ -202,8 +202,9 @@ public class Tienda extends JFrame {
 					AddBaseDeDatosOro(oro);
 
 				} else {
-					System.out.println("NO TIENES EL ORO PARA COMPRAR ESE OBJETO");
-					System.out.println("Tu oro actual: " + oro);
+					JOptionPane.showMessageDialog(dado.getComponent(0),
+							"NO TIENES EL ORO PARA COMPRAR ESE OBJETO, Tu oro actual: " + oro);
+					
 				}
 			}
 
@@ -227,8 +228,8 @@ public class Tienda extends JFrame {
 					AddBaseDeDatosOro(oro);
 
 				} else {
-					System.out.println("NO TIENES EL ORO PARA COMPRAR ESE OBJETO");
-					System.out.println("Tu oro actual: " + oro);
+					JOptionPane.showMessageDialog(dado.getComponent(0),
+							"NO TIENES EL ORO PARA COMPRAR ESE OBJETO, Tu oro actual: " + oro);
 				}
 			}
 
@@ -432,28 +433,30 @@ public class Tienda extends JFrame {
 		this.valorObjetoTres = valorObjetoTres;
 	}
 
-	public String getCategoriaObjetoUno() {
+	
+
+	public String getEstadoObjetoUno() {
 		return estadoObjetoUno;
 	}
 
-	public void setCategoriaObjetoUno(String categoriaObjetoUno) {
-		this.estadoObjetoUno = categoriaObjetoUno;
+	public void setEstadoObjetoUno(String estadoObjetoUno) {
+		this.estadoObjetoUno = estadoObjetoUno;
 	}
 
-	public String getCategoriaObjetoDos() {
+	public String getEstadoObjetoDos() {
 		return estadoObjetoDos;
 	}
 
-	public void setCategoriaObjetoDos(String categoriaObjetoDos) {
-		this.estadoObjetoDos = categoriaObjetoDos;
+	public void setEstadoObjetoDos(String estadoObjetoDos) {
+		this.estadoObjetoDos = estadoObjetoDos;
 	}
 
-	public String getCategoriaObjetoTres() {
+	public String getEstadoObjetoTres() {
 		return estadoObjetoTres;
 	}
 
-	public void setCategoriaObjetoTres(String categoriaObjetoTres) {
-		this.estadoObjetoTres = categoriaObjetoTres;
+	public void setEstadoObjetoTres(String estadoObjetoTres) {
+		this.estadoObjetoTres = estadoObjetoTres;
 	}
 
 	public String getTipoObjetoUno() {
@@ -497,7 +500,7 @@ public class Tienda extends JFrame {
 	 * @param nombre
 	 * @param poder
 	 * @param valor
-	 * @param categoria
+	 * @param estado
 	 * @param tipo
 	 */
 	public void AddBaseDeDatos(int id, String nombre, int poder, int valor, String estado, String tipo) {
