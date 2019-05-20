@@ -272,11 +272,11 @@ public class Combate extends JFrame {
 
 		}
 
-		barraJugador = new JLabel(new ImageIcon("Cells&Chameleons\\jugadorVida.gif"));
+		barraJugador = new JLabel(new ImageIcon("jugadorVida.gif"));
 		barraJugador.setBounds(-76, 289, 467, 64);
 		getContentPane().add(barraJugador);
 
-		barraJefe = new JLabel(new ImageIcon("Cells&Chameleons\\jefeVida.gif"));
+		barraJefe = new JLabel(new ImageIcon("jefeVida.gif"));
 		barraJefe.setBounds(377, 289, 374, 64);
 		getContentPane().add(barraJefe);
 
@@ -289,6 +289,10 @@ public class Combate extends JFrame {
 		getContentPane().add(btnpasarTurno);
 		btnpasarTurno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				lblNewLabel = new JLabel("VIDA JUGADOR: " + vidaJugador);
+				lblNewLabel.setBounds(215, 333, 132, 14);
+				getContentPane().add(lblNewLabel);
 
 				if (accionJugador.getVidaActualUno() >= 1) {
 
@@ -685,6 +689,7 @@ public class Combate extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				vidaJugador = vidaJugador + podervidaMenor;
+				System.out.println(vidaJugador);
 				System.out.println(podervidaMenor);
 				QuitarPocionMenor();
 
@@ -698,6 +703,7 @@ public class Combate extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				vidaJugador = vidaJugador + podervidaMedia;
+				System.out.println(vidaJugador);
 				QuitarPocionMedia();
 
 			}
@@ -710,6 +716,7 @@ public class Combate extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				vidaJugador = vidaJugador + podervidaMayor;
+				System.out.println(vidaJugador);
 				QuitarPocionMayor();
 
 			}
@@ -717,9 +724,7 @@ public class Combate extends JFrame {
 		button_1.setBounds(506, 356, 207, 23);
 		getContentPane().add(button_1);
 
-		lblNewLabel = new JLabel("VIDA JUGADOR: " + vidaJugador);
-		lblNewLabel.setBounds(215, 333, 132, 14);
-		getContentPane().add(lblNewLabel);
+		
 
 	}
 

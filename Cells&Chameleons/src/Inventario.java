@@ -165,8 +165,14 @@ public class Inventario extends JFrame {
 					String seleccionar = (String) jt.getValueAt(i, 1);
 					tableModel.removeRow(i);
 					AddBaseDeDatos(seleccionar);
+					
+					
 
 				}
+				Inventario actualizar = new Inventario();
+				actualizar.setVisible(true);
+
+				dispose();
 			}
 		});
 		btnEquipar.setBounds(178, 196, 120, 23);
@@ -182,8 +188,14 @@ public class Inventario extends JFrame {
 					String deseleccionar = (String) jt.getValueAt(i, 1);
 					tableModel.removeRow(i);
 					AddBaseDeDatos(deseleccionar);
+					
+					
 
 				}
+				Inventario actualizar = new Inventario();
+				actualizar.setVisible(true);
+
+				dispose();
 			}
 		});
 		btnDesequipar.setBounds(406, 196, 120, 23);
