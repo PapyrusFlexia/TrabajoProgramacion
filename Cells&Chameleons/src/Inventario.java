@@ -82,6 +82,11 @@ public class Inventario extends JFrame {
 		nombre.setBounds(178, 230, 120, 20);
 		getContentPane().add(nombre);
 		nombre.setColumns(10);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(406, 230, 120, 20);
+		getContentPane().add(textField);
 
 		ResultSet rs = Conexion.EjecutarSentencia(query);
 		tableModel.addRow(columnas);
@@ -181,7 +186,7 @@ public class Inventario extends JFrame {
 		JButton btnDesequipar = new JButton("DESEQUIPAR");
 		btnDesequipar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DeleteBaseDeDatos(nombre.getText(), estadoInventario);
+				DeleteBaseDeDatos(textField.getText(), estadoInventario);
 				jt.getModel();
 				int i = jt.getSelectedRow();
 				if (i >= 0) {
@@ -201,10 +206,7 @@ public class Inventario extends JFrame {
 		btnDesequipar.setBounds(406, 196, 120, 23);
 		getContentPane().add(btnDesequipar);
 
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(406, 230, 120, 20);
-		getContentPane().add(textField);
+		
 
 
 		JButton btnNewButton = new JButton("ORDENAR ID");
@@ -302,7 +304,7 @@ public class Inventario extends JFrame {
 	public static void DeleteBaseDeDatos(String nombre, String estado) {
 
 		Conexion.EjecutarUpdate(
-				"UPDATE inventario SET estado = \" desequipado \"  WHERE nombre = \"" + nombre + "\"");
+				"UPDATE inventario SET estado = \"desequipado \"  WHERE nombre = \"" + nombre + "\"");
 	}
 
 	public void ordenarId() {
