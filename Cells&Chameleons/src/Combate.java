@@ -330,7 +330,7 @@ public class Combate extends JFrame {
 					backgroundM.setVisible(false);
 					backgroundV.setVisible(false);
 
-					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualUno());
+					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualDos());
 					label.setBounds(474, 333, 132, 14);
 					getContentPane().add(label);
 
@@ -357,7 +357,7 @@ public class Combate extends JFrame {
 					backgroundM.setVisible(false);
 					backgroundV.setVisible(false);
 
-					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualUno());
+					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualTres());
 					label.setBounds(474, 333, 132, 14);
 					getContentPane().add(label);
 
@@ -386,7 +386,7 @@ public class Combate extends JFrame {
 					backgroundM.setVisible(false);
 					backgroundV.setVisible(false);
 
-					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualUno());
+					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualCuatro());
 					label.setBounds(474, 333, 132, 14);
 					getContentPane().add(label);
 
@@ -415,7 +415,7 @@ public class Combate extends JFrame {
 					backgroundM.setVisible(false);
 					backgroundV.setVisible(false);
 
-					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualUno());
+					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualCinco());
 					label.setBounds(474, 333, 132, 14);
 					getContentPane().add(label);
 
@@ -444,7 +444,7 @@ public class Combate extends JFrame {
 					backgroundM.setVisible(false);
 					backgroundV.setVisible(false);
 
-					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualUno());
+					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualSeis());
 					label.setBounds(474, 333, 132, 14);
 					getContentPane().add(label);
 
@@ -473,7 +473,7 @@ public class Combate extends JFrame {
 					backgroundM.setVisible(true);
 					backgroundV.setVisible(false);
 
-					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualUno());
+					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualSiete());
 					label.setBounds(474, 333, 132, 14);
 					getContentPane().add(label);
 
@@ -501,7 +501,7 @@ public class Combate extends JFrame {
 					backgroundM.setVisible(true);
 					backgroundV.setVisible(false);
 
-					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualUno());
+					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualOcho());
 					label.setBounds(474, 333, 132, 14);
 					getContentPane().add(label);
 
@@ -530,7 +530,7 @@ public class Combate extends JFrame {
 					backgroundM.setVisible(true);
 					backgroundV.setVisible(false);
 
-					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualUno());
+					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualNueve());
 					label.setBounds(474, 333, 132, 14);
 					getContentPane().add(label);
 
@@ -559,7 +559,7 @@ public class Combate extends JFrame {
 					backgroundM.setVisible(false);
 					backgroundV.setVisible(true);
 
-					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualUno());
+					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualDiez());
 					label.setBounds(474, 333, 132, 14);
 					getContentPane().add(label);
 
@@ -587,7 +587,7 @@ public class Combate extends JFrame {
 					backgroundM.setVisible(false);
 					backgroundV.setVisible(true);
 
-					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualUno());
+					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualOnce());
 					label.setBounds(474, 333, 132, 14);
 					getContentPane().add(label);
 
@@ -615,7 +615,7 @@ public class Combate extends JFrame {
 					backgroundM.setVisible(false);
 					backgroundV.setVisible(true);
 
-					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualUno());
+					label = new JLabel("VIDA JEFE: " + accionJugador.getVidaActualDoce());
 					label.setBounds(474, 333, 132, 14);
 					getContentPane().add(label);
 
